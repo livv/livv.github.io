@@ -5,19 +5,20 @@
   
 
   
-  <title>Archives | vvlvv</title>
+  <title>mac os terminal skill | vvlvv</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="The medium is the message">
-<meta name="keywords" content="livv">
-<meta property="og:type" content="website">
-<meta property="og:title" content="vvlvv">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="##control+u 如果你在一条终端命令中发现有输入错误的话，那么用 control+u 快捷键可以直接删除这一整条命令，然后你就可以重新输入。 ##mkdir 很多人可能会很熟悉在 mkdir 是在「终端」中创建文件夹的工具，比如mkdir ./abc，即可在当前目录创建一个名为 abc 的文件夹。但如果想要建立更多层级的目录呢？就需要用 mkdir -p 命令来解决，比如： 1mkdir">
+<meta name="keywords" content="mac,terminal">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mac os terminal skill">
+<meta property="og:url" content="http://yoursite.com/2013/07/03/2013-07-03-mac-os-terminal-skill/index.html">
 <meta property="og:site_name" content="vvlvv">
-<meta property="og:description" content="The medium is the message">
+<meta property="og:description" content="##control+u 如果你在一条终端命令中发现有输入错误的话，那么用 control+u 快捷键可以直接删除这一整条命令，然后你就可以重新输入。 ##mkdir 很多人可能会很熟悉在 mkdir 是在「终端」中创建文件夹的工具，比如mkdir ./abc，即可在当前目录创建一个名为 abc 的文件夹。但如果想要建立更多层级的目录呢？就需要用 mkdir -p 命令来解决，比如： 1mkdir">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-12T12:04:36.555Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vvlvv">
-<meta name="twitter:description" content="The medium is the message">
+<meta name="twitter:title" content="mac os terminal skill">
+<meta name="twitter:description" content="##control+u 如果你在一条终端命令中发现有输入错误的话，那么用 control+u 快捷键可以直接删除这一整条命令，然后你就可以重新输入。 ##mkdir 很多人可能会很熟悉在 mkdir 是在「终端」中创建文件夹的工具，比如mkdir ./abc，即可在当前目录创建一个名为 abc 的文件夹。但如果想要建立更多层级的目录呢？就需要用 mkdir -p 命令来解决，比如： 1mkdir">
   
     <link rel="alternate" href="/atom.xml" title="vvlvv" type="application/atom+xml">
   
@@ -68,226 +69,77 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/06/17/2016-06-17-使用xcode查找项目中的中文字符串/" class="archive-article-date">
-  <time datetime="2016-06-17T01:02:27.000Z" itemprop="datePublished">Jun 17</time>
+        <section id="main"><article id="post-2013-07-03-mac-os-terminal-skill" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/07/03/2013-07-03-mac-os-terminal-skill/" class="article-date">
+  <time datetime="2013-07-03T02:35:00.000Z" itemprop="datePublished">2013-07-03</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/17/2016-06-17-使用xcode查找项目中的中文字符串/">2016--6-17-使用xcode查找项目中的中文字符串</a>
+    <h1 class="article-title" itemprop="name">
+      mac os terminal skill
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##control+u</p>
+<p>如果你在一条终端命令中发现有输入错误的话，那么用 control+u 快捷键可以直接删除这一整条命令，然后你就可以重新输入。</p>
+<p>##mkdir</p>
+<p>很多人可能会很熟悉在 mkdir 是在「终端」中创建文件夹的工具，比如mkdir ./abc，即可在当前目录创建一个名为 abc 的文件夹。但如果想要建立更多层级的目录呢？就需要用 mkdir -p 命令来解决，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ./abc/123/guomii/xxx</span><br></pre></td></tr></table></figure>
+<p>##!!</p>
+<p>有时候，你写了一条长长的命令，按回车之后发现没有执行权限，需要在命令前添加 sudo，这时你可能要崩溃。不过其实可以用 <code>sudo !!</code> 这条命令来解决，它执行的效果和 sudo {上一条命令} 是一样的。</p>
+<p>另外，! 在「终端」中还有一个妙用——它可以用来执行你最后一次以特定字母开头的命令。比如你在一个「终端」会话中已经执行过ls,mkdir,find,chown 等多条命令。这时你可以用 !l 来执行 ls，用 !f 来执行 find…大家都看懂了吧？(very cool)</p>
+<p>##history</p>
+<p>用 history 命令可以显示你最近执行过的命令历史记录，你还可以指定显示条数，比如 history 20即可显示最近的20条命令历史记录。此外，你还可以筛选包含特定字符的命令，比如用 <code>history | grep mk</code>，就可以只显示历史记录中包含 mk 的命令。</p>
+<p>##&amp;&amp;</p>
+<p>&amp;&amp; 可以将两条命令合并成一条命令，其实我们在之前的文章中，已经多次应用过这种写法了，大家可以返回去看看。</p>
+<p>##reset</p>
+<p>reset 的作用很简单——将目前「终端」屏幕上的内容清空，就好像刚刚打开终端一样。（不如新建一个标签，然后关掉之前的，感觉这样更快捷。）</p>
+<p>其实输入命令远没有快捷键方便，“control+l” 可以清屏，”command+k”可以全部清除。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2013/07/03/2013-07-03-mac-os-terminal-skill/" data-id="cjkrk60c0001d5mg6hwlkr3e1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/terminal/">terminal</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/07/17/2013-07-17-iphone-lcd-clock-use-system-font/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          iphone lcd clock use system font
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/06/27/2013-06-27-wget-tutorials/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">wget tutorials</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/" class="archive-article-date">
-  <time datetime="2016-03-03T09:22:01.000Z" itemprop="datePublished">Mar 3</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/">Build-Time CFBundleVersion Values in WatchKit Apps</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/" class="archive-article-date">
-  <time datetime="2016-02-25T09:39:31.000Z" itemprop="datePublished">Feb 25</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/">ARC下OC对象和CF对象之间的桥接(bridge)</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/02/24/2016-02-24-Xcode-Debug-LLDB/" class="archive-article-date">
-  <time datetime="2016-02-24T07:10:59.000Z" itemprop="datePublished">Feb 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/02/24/2016-02-24-Xcode-Debug-LLDB/">Xcode Debug 竟这般美丽</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2013" class="archive-year">2013</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/12/23/2013-12-23-autorelease/" class="archive-article-date">
-  <time datetime="2013-12-23T14:43:12.000Z" itemprop="datePublished">Dec 23</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/12/23/2013-12-23-autorelease/">autorelease 到底是个什么鬼？</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/07/17/2013-07-17-iphone-lcd-clock-use-system-font/" class="archive-article-date">
-  <time datetime="2013-07-17T14:16:00.000Z" itemprop="datePublished">Jul 17</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/07/17/2013-07-17-iphone-lcd-clock-use-system-font/">iphone lcd clock use system font</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/07/03/2013-07-03-mac-os-terminal-skill/" class="archive-article-date">
-  <time datetime="2013-07-03T02:35:00.000Z" itemprop="datePublished">Jul 3</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/07/03/2013-07-03-mac-os-terminal-skill/">mac os terminal skill</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/06/27/2013-06-27-wget-tutorials/" class="archive-article-date">
-  <time datetime="2013-06-27T07:05:00.000Z" itemprop="datePublished">Jun 27</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/06/27/2013-06-27-wget-tutorials/">wget tutorials</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/06/21/2013-06-21-git-log-geek/" class="archive-article-date">
-  <time datetime="2013-06-21T06:21:00.000Z" itemprop="datePublished">Jun 21</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/06/21/2013-06-21-git-log-geek/">git log geek</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/06/13/2013-06-13-mac-terminal-color/" class="archive-article-date">
-  <time datetime="2013-06-13T05:49:00.000Z" itemprop="datePublished">Jun 13</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/06/13/2013-06-13-mac-terminal-color/">mac terminal 彩色</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

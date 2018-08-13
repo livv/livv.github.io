@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Mac OS timing start script | vvlvv</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前面的文章提到过Linux Crontab，用法几乎一样。 12345sudo crontab -e//回车后输入密码//进入VI编辑，输入* * * * * say hello//这个地方可以放脚本的路径保存即可。这样每分钟都会听到hello了 123456五个星星表示minute — 分钟，从 0 到 59 之间的任何整数 hour — 小时，从 0 到 23 之间的任何整数 day — 日期">
+<meta name="keywords" content="mac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac OS timing start script">
+<meta property="og:url" content="http://yoursite.com/2012/04/18/2012-04-18-mac-os-timing-start-script/index.html">
+<meta property="og:site_name" content="vvlvv">
+<meta property="og:description" content="前面的文章提到过Linux Crontab，用法几乎一样。 12345sudo crontab -e//回车后输入密码//进入VI编辑，输入* * * * * say hello//这个地方可以放脚本的路径保存即可。这样每分钟都会听到hello了 123456五个星星表示minute — 分钟，从 0 到 59 之间的任何整数 hour — 小时，从 0 到 23 之间的任何整数 day — 日期">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-12T12:04:36.552Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mac OS timing start script">
+<meta name="twitter:description" content="前面的文章提到过Linux Crontab，用法几乎一样。 12345sudo crontab -e//回车后输入密码//进入VI编辑，输入* * * * * say hello//这个地方可以放脚本的路径保存即可。这样每分钟都会听到hello了 123456五个星星表示minute — 分钟，从 0 到 59 之间的任何整数 hour — 小时，从 0 到 23 之间的任何整数 day — 日期">
+  
+    <link rel="alternate" href="/atom.xml" title="vvlvv" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">vvlvv</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">人生短短数十载，本该淡淡然！</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2012-04-18-mac-os-timing-start-script" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/04/18/2012-04-18-mac-os-timing-start-script/" class="article-date">
+  <time datetime="2012-04-18T08:54:00.000Z" itemprop="datePublished">2012-04-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mac OS timing start script
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前面的文章提到过<a href="http://livv.github.com/blog/2012/03/01/linux-crontab/" target="_blank" rel="noopener">Linux Crontab</a>，用法几乎一样。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo crontab -e//回车后输入密码</span><br><span class="line">//进入VI编辑，输入</span><br><span class="line">* * * * * say hello//这个地方可以放脚本的路径</span><br><span class="line">保存即可。</span><br><span class="line">这样每分钟都会听到hello了</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">五个星星表示</span><br><span class="line">minute — 分钟，从 0 到 59 之间的任何整数 </span><br><span class="line">hour — 小时，从 0 到 23 之间的任何整数 </span><br><span class="line">day — 日期，从 1 到 31 之间的任何整数（如果指定了月份，必须是该月份的有效日期） </span><br><span class="line">month — 月份，从 1 到 12 之间的任何整数（或使用月份的英文简写如 jan、feb 等等） </span><br><span class="line">dayofweek — 星期，从 0 到 7 之间的任何整数，这里的 0 或 7 代表星期日（或使用星期的英文简写如 sun、mon 等等）</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">crontab -l显示目前所有的任务</span><br><span class="line">crontab -r删除所有的任务</span><br><span class="line">crontab -e编辑任务</span><br></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>以上方法好像不能调用本地sh脚本，改用<code>~/Library/LaunchAgents/vv.redmine.bak.plist</code> 这样每天12:30调用<code>/Users/wei/architect/redmine_bak/redmine_bak.sh</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span><br><span class="line">&lt;plist version=&quot;1.0&quot;&gt;</span><br><span class="line">&lt;dict&gt;</span><br><span class="line">        &lt;key&gt;Label&lt;/key&gt;</span><br><span class="line">        &lt;string&gt;vv.redmine.bak&lt;/string&gt;</span><br><span class="line">        &lt;key&gt;ProgramArguments&lt;/key&gt;</span><br><span class="line">        &lt;array&gt;</span><br><span class="line">                &lt;string&gt;/Users/wei/architect/redmine_bak/redmine_bak.sh&lt;/string&gt;</span><br><span class="line">        &lt;/array&gt;</span><br><span class="line">        &lt;key&gt;StartCalendarInterval&lt;/key&gt;</span><br><span class="line">        &lt;array&gt;</span><br><span class="line">                &lt;dict&gt;</span><br><span class="line">                        &lt;key&gt;Minute&lt;/key&gt;</span><br><span class="line">                        &lt;integer&gt;30&lt;/integer&gt;</span><br><span class="line">                &lt;/dict&gt;</span><br><span class="line">                &lt;dict&gt;</span><br><span class="line">                        &lt;key&gt;Hour&lt;/key&gt;</span><br><span class="line">                        &lt;integer&gt;12&lt;/integer&gt;</span><br><span class="line">                &lt;/dict&gt;</span><br><span class="line">        &lt;/array&gt;</span><br><span class="line">&lt;/dict&gt;</span><br><span class="line">&lt;/plist&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>本该淡淡然~~~</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2012/04/18/2012-04-18-mac-os-timing-start-script/" data-id="cjkrk60bl000e5mg670rw8bxt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2012/04/18/2012-04-18-android-development-on-os-x-without-eclipse/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Android development on OS X without Eclipse
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2012/04/17/2012-04-17-mac-auto-run-tomcat/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">mac auto run tomcat</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARC/">ARC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debug/">Debug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Home-Brew/">Home Brew</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory/">Memory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WatchKit/">WatchKit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xcode/">Xcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminal/">terminal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/Debug/" style="font-size: 10px;">Debug</a> <a href="/tags/Home-Brew/" style="font-size: 10px;">Home Brew</a> <a href="/tags/Memory/" style="font-size: 10px;">Memory</a> <a href="/tags/WatchKit/" style="font-size: 10px;">WatchKit</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/iOS/" style="font-size: 17.5px;">iOS</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mac/" style="font-size: 20px;">mac</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/terminal/" style="font-size: 15px;">terminal</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/06/17/2016-06-17-使用xcode查找项目中的中文字符串/">2016--6-17-使用xcode查找项目中的中文字符串</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/">Build-Time CFBundleVersion Values in WatchKit Apps</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/">ARC下OC对象和CF对象之间的桥接(bridge)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/24/2016-02-24-Xcode-Debug-LLDB/">Xcode Debug 竟这般美丽</a>
+          </li>
+        
+          <li>
+            <a href="/2013/12/23/2013-12-23-autorelease/">autorelease 到底是个什么鬼？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 vvlvv<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

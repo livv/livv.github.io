@@ -5,19 +5,20 @@
   
 
   
-  <title>Archives | vvlvv</title>
+  <title>MAC下Android的Eclipse开发环境的搭建 | vvlvv</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="The medium is the message">
-<meta name="keywords" content="livv">
-<meta property="og:type" content="website">
-<meta property="og:title" content="vvlvv">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="####一．Eclipse的下载    到网站：http://www.eclipse.org/downloads/，由于我们是用Java开发的所以步骤如下：  找到“Eclipse IDE for java Developers”此处右上角会根据你当前使用的系统自动选择，Mac下就会自动选择位“Mac OS X（Cocoa）”  然后点击右边的“Mac OS X 64bit”（这里我的Pro是i5">
+<meta name="keywords" content="android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MAC下Android的Eclipse开发环境的搭建">
+<meta property="og:url" content="http://yoursite.com/2013/01/08/2013-01-08-mac-android-eclipse/index.html">
 <meta property="og:site_name" content="vvlvv">
-<meta property="og:description" content="The medium is the message">
+<meta property="og:description" content="####一．Eclipse的下载    到网站：http://www.eclipse.org/downloads/，由于我们是用Java开发的所以步骤如下：  找到“Eclipse IDE for java Developers”此处右上角会根据你当前使用的系统自动选择，Mac下就会自动选择位“Mac OS X（Cocoa）”  然后点击右边的“Mac OS X 64bit”（这里我的Pro是i5">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-12T12:04:36.553Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vvlvv">
-<meta name="twitter:description" content="The medium is the message">
+<meta name="twitter:title" content="MAC下Android的Eclipse开发环境的搭建">
+<meta name="twitter:description" content="####一．Eclipse的下载    到网站：http://www.eclipse.org/downloads/，由于我们是用Java开发的所以步骤如下：  找到“Eclipse IDE for java Developers”此处右上角会根据你当前使用的系统自动选择，Mac下就会自动选择位“Mac OS X（Cocoa）”  然后点击右边的“Mac OS X 64bit”（这里我的Pro是i5">
   
     <link rel="alternate" href="/atom.xml" title="vvlvv" type="application/atom+xml">
   
@@ -68,226 +69,91 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/06/17/2016-06-17-使用xcode查找项目中的中文字符串/" class="archive-article-date">
-  <time datetime="2016-06-17T01:02:27.000Z" itemprop="datePublished">Jun 17</time>
+        <section id="main"><article id="post-2013-01-08-mac-android-eclipse" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/01/08/2013-01-08-mac-android-eclipse/" class="article-date">
+  <time datetime="2013-01-08T15:52:00.000Z" itemprop="datePublished">2013-01-08</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/17/2016-06-17-使用xcode查找项目中的中文字符串/">2016--6-17-使用xcode查找项目中的中文字符串</a>
+    <h1 class="article-title" itemprop="name">
+      MAC下Android的Eclipse开发环境的搭建
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>####一．Eclipse的下载</p>
+<p>   到网站：<a href="http://www.eclipse.org/downloads/" target="_blank" rel="noopener">http://www.eclipse.org/downloads/</a>，由于我们是用Java开发的所以步骤如下：</p>
+<ol>
+<li><p>找到“Eclipse IDE for java Developers”此处右上角会根据你当前使用的系统自动选择，Mac下就会自动选择位“Mac OS X（Cocoa）”</p>
+</li>
+<li><p>然后点击右边的“Mac OS X 64bit”（这里我的Pro是i5处理器可以用64位的），根据你的机器也可以选择“Mac OS X 32bit”进行下载。</p>
+</li>
+</ol>
+<p>####二．安装ADT</p>
+<p>   <strong><em>ADT</em></strong>是Android应用程序的开发环境</p>
+<ol>
+<li><p>点击菜单中的Help ——&gt; Install New Software⋯ ;</p>
+</li>
+<li><p>在弹出的对话框中有个“Work with”，在右边的输入栏中输入：<code>https://dl-ssl.google.com/android/eclipse/</code> 然后下面就会pending出来一个“Developer Tools”，勾选上，然后一路的Next下去就可以安装完成。(如果想开发NDK，顺便选上NDK plugins)</p>
+</li>
+</ol>
+<p>####三．设定ADT</p>
+<p>   在菜单栏Refactor中如果能看到Android的标签表示ADT安装成功。</p>
+<ol>
+<li><p>下载Android SDK、NDK（通过HomeBrew安装）</p>
+</li>
+<li><p>安装Android SDK，然后在菜单栏Eclipse —&gt; Preferences（偏好设置）,会弹出一个Preferences对话框，选Android，然后在SDK Loaction中填入刚下载的SDK的路径或者点击右边的Browser选择。</p>
+</li>
+<li><p>生成模拟器，菜单栏Window —&gt; Android SDK and AVD Manger 会弹出对话框，然后在对话框中选择new开始按自己的需求新建模拟器，至此就大功告成了！</p>
+</li>
+</ol>
+<blockquote>
+<p>本该淡淡然~~~</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2013/01/08/2013-01-08-mac-android-eclipse/" data-id="cjkrk60bq000n5mg6g3jlzxzx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/01/10/2013-01-10-sips-on-osx/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          在 OS X 系统中使用 sips 命令批量处理图片
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/01/05/2013-01-05-mac-linux-date/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">mac linux date</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/" class="archive-article-date">
-  <time datetime="2016-03-03T09:22:01.000Z" itemprop="datePublished">Mar 3</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/">Build-Time CFBundleVersion Values in WatchKit Apps</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/" class="archive-article-date">
-  <time datetime="2016-02-25T09:39:31.000Z" itemprop="datePublished">Feb 25</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/">ARC下OC对象和CF对象之间的桥接(bridge)</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/02/24/2016-02-24-Xcode-Debug-LLDB/" class="archive-article-date">
-  <time datetime="2016-02-24T07:10:59.000Z" itemprop="datePublished">Feb 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/02/24/2016-02-24-Xcode-Debug-LLDB/">Xcode Debug 竟这般美丽</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2013" class="archive-year">2013</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/12/23/2013-12-23-autorelease/" class="archive-article-date">
-  <time datetime="2013-12-23T14:43:12.000Z" itemprop="datePublished">Dec 23</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/12/23/2013-12-23-autorelease/">autorelease 到底是个什么鬼？</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/07/17/2013-07-17-iphone-lcd-clock-use-system-font/" class="archive-article-date">
-  <time datetime="2013-07-17T14:16:00.000Z" itemprop="datePublished">Jul 17</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/07/17/2013-07-17-iphone-lcd-clock-use-system-font/">iphone lcd clock use system font</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/07/03/2013-07-03-mac-os-terminal-skill/" class="archive-article-date">
-  <time datetime="2013-07-03T02:35:00.000Z" itemprop="datePublished">Jul 3</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/07/03/2013-07-03-mac-os-terminal-skill/">mac os terminal skill</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/06/27/2013-06-27-wget-tutorials/" class="archive-article-date">
-  <time datetime="2013-06-27T07:05:00.000Z" itemprop="datePublished">Jun 27</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/06/27/2013-06-27-wget-tutorials/">wget tutorials</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/06/21/2013-06-21-git-log-geek/" class="archive-article-date">
-  <time datetime="2013-06-21T06:21:00.000Z" itemprop="datePublished">Jun 21</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/06/21/2013-06-21-git-log-geek/">git log geek</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/06/13/2013-06-13-mac-terminal-color/" class="archive-article-date">
-  <time datetime="2013-06-13T05:49:00.000Z" itemprop="datePublished">Jun 13</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/06/13/2013-06-13-mac-terminal-color/">mac terminal 彩色</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

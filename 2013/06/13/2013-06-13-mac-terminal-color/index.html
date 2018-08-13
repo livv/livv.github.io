@@ -5,19 +5,20 @@
   
 
   
-  <title>Archives | vvlvv</title>
+  <title>mac terminal 彩色 | vvlvv</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="The medium is the message">
-<meta name="keywords" content="livv">
-<meta property="og:type" content="website">
-<meta property="og:title" content="vvlvv">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="###彩色化ls的输出 Mac中BSD的ls命令可以使用-G参数彩色化输出的文件列表，需要配置LSCOLORS环境变量定义颜色，具体配置方法可以输入man ls查看。 不过，我推荐安装Linux使用的GNU Coreutils替换Mac的ls命令，因为：  Coreutils提供了配置工具，定义颜色代码更加方便； Coreutils包含的不仅仅是ls，同时作为Linux用户，我更习惯于使用GNU的">
+<meta name="keywords" content="mac,terminal">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mac terminal 彩色">
+<meta property="og:url" content="http://yoursite.com/2013/06/13/2013-06-13-mac-terminal-color/index.html">
 <meta property="og:site_name" content="vvlvv">
-<meta property="og:description" content="The medium is the message">
+<meta property="og:description" content="###彩色化ls的输出 Mac中BSD的ls命令可以使用-G参数彩色化输出的文件列表，需要配置LSCOLORS环境变量定义颜色，具体配置方法可以输入man ls查看。 不过，我推荐安装Linux使用的GNU Coreutils替换Mac的ls命令，因为：  Coreutils提供了配置工具，定义颜色代码更加方便； Coreutils包含的不仅仅是ls，同时作为Linux用户，我更习惯于使用GNU的">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-12T12:04:36.554Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vvlvv">
-<meta name="twitter:description" content="The medium is the message">
+<meta name="twitter:title" content="mac terminal 彩色">
+<meta name="twitter:description" content="###彩色化ls的输出 Mac中BSD的ls命令可以使用-G参数彩色化输出的文件列表，需要配置LSCOLORS环境变量定义颜色，具体配置方法可以输入man ls查看。 不过，我推荐安装Linux使用的GNU Coreutils替换Mac的ls命令，因为：  Coreutils提供了配置工具，定义颜色代码更加方便； Coreutils包含的不仅仅是ls，同时作为Linux用户，我更习惯于使用GNU的">
   
     <link rel="alternate" href="/atom.xml" title="vvlvv" type="application/atom+xml">
   
@@ -68,226 +69,96 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/06/17/2016-06-17-使用xcode查找项目中的中文字符串/" class="archive-article-date">
-  <time datetime="2016-06-17T01:02:27.000Z" itemprop="datePublished">Jun 17</time>
+        <section id="main"><article id="post-2013-06-13-mac-terminal-color" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/06/13/2013-06-13-mac-terminal-color/" class="article-date">
+  <time datetime="2013-06-13T05:49:00.000Z" itemprop="datePublished">2013-06-13</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/17/2016-06-17-使用xcode查找项目中的中文字符串/">2016--6-17-使用xcode查找项目中的中文字符串</a>
+    <h1 class="article-title" itemprop="name">
+      mac terminal 彩色
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###彩色化ls的输出</p>
+<p>Mac中BSD的ls命令可以使用-G参数彩色化输出的文件列表，需要配置LSCOLORS环境变量定义颜色，具体配置方法可以输入man ls查看。</p>
+<p>不过，我推荐安装Linux使用的GNU Coreutils替换Mac的ls命令，因为：</p>
+<ul>
+<li>Coreutils提供了配置工具，定义颜色代码更加方便；</li>
+<li>Coreutils包含的不仅仅是ls，同时作为Linux用户，我更习惯于使用GNU的各种shell工具。</li>
+</ul>
+<hr>
+<ul>
+<li>通过Homebrew安装Coreutils</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install xz coreutils</span><br></pre></td></tr></table></figure>
+<p>注：Coreutils并不依赖于xz，但它的源码是用xz格式压缩的，安装xz才能解压。</p>
+<ul>
+<li>生成颜色定义文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gdircolors --print-database &gt; ~/.dir_colors</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在<code>~/.bash_profile</code>配置文件中加入以下代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if brew list | grep coreutils &gt; /dev/null ; then</span><br><span class="line">  PATH=&quot;$(brew --prefix coreutils)/libexec/gnubin:$PATH&quot;</span><br><span class="line">  alias ls=&apos;ls -F --show-control-chars --color=auto&apos;</span><br><span class="line">  eval `gdircolors -b $HOME/.dir_colors`</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>gdircolor的作用就是设置ls命令使用的环境变量LS_COLORS（BSD是LSCOLORS），我们可以修改~/.dir_colors自定义文件的颜色，此文件中的注释已经包含各种颜色取值的说明。</p>
+<ul>
+<li>grep高亮显示关键字</li>
+</ul>
+<p>这个很简单，加上<code>--color</code>参数就可以了，为了使用方便，可以在<code>~/.bash_profile</code>配置文件中加上alias定义。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alias grep=&apos;grep --color&apos;</span><br><span class="line">alias egrep=&apos;egrep --color&apos;</span><br><span class="line">alias fgrep=&apos;fgrep --color&apos;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Vim语法高亮</li>
+</ul>
+<p>在Vim中输入命令:syntax on激活语法高亮，若需要Vim启动时自动激活，在<code>~/.vimrc</code>中添加一行<code>syntax on</code>即可。</p>
+<blockquote>
+<p>本该淡淡然~~~</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2013/06/13/2013-06-13-mac-terminal-color/" data-id="cjkrk60by00195mg6p5lsgogh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/terminal/">terminal</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/06/21/2013-06-21-git-log-geek/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          git log geek
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/06/13/2013-06-13-homebrew-uninstall/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Homebrew uninstall</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/" class="archive-article-date">
-  <time datetime="2016-03-03T09:22:01.000Z" itemprop="datePublished">Mar 3</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/">Build-Time CFBundleVersion Values in WatchKit Apps</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/" class="archive-article-date">
-  <time datetime="2016-02-25T09:39:31.000Z" itemprop="datePublished">Feb 25</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/">ARC下OC对象和CF对象之间的桥接(bridge)</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/02/24/2016-02-24-Xcode-Debug-LLDB/" class="archive-article-date">
-  <time datetime="2016-02-24T07:10:59.000Z" itemprop="datePublished">Feb 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/02/24/2016-02-24-Xcode-Debug-LLDB/">Xcode Debug 竟这般美丽</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2013" class="archive-year">2013</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/12/23/2013-12-23-autorelease/" class="archive-article-date">
-  <time datetime="2013-12-23T14:43:12.000Z" itemprop="datePublished">Dec 23</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/12/23/2013-12-23-autorelease/">autorelease 到底是个什么鬼？</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/07/17/2013-07-17-iphone-lcd-clock-use-system-font/" class="archive-article-date">
-  <time datetime="2013-07-17T14:16:00.000Z" itemprop="datePublished">Jul 17</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/07/17/2013-07-17-iphone-lcd-clock-use-system-font/">iphone lcd clock use system font</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/07/03/2013-07-03-mac-os-terminal-skill/" class="archive-article-date">
-  <time datetime="2013-07-03T02:35:00.000Z" itemprop="datePublished">Jul 3</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/07/03/2013-07-03-mac-os-terminal-skill/">mac os terminal skill</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/06/27/2013-06-27-wget-tutorials/" class="archive-article-date">
-  <time datetime="2013-06-27T07:05:00.000Z" itemprop="datePublished">Jun 27</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/06/27/2013-06-27-wget-tutorials/">wget tutorials</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/06/21/2013-06-21-git-log-geek/" class="archive-article-date">
-  <time datetime="2013-06-21T06:21:00.000Z" itemprop="datePublished">Jun 21</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/06/21/2013-06-21-git-log-geek/">git log geek</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/06/13/2013-06-13-mac-terminal-color/" class="archive-article-date">
-  <time datetime="2013-06-13T05:49:00.000Z" itemprop="datePublished">Jun 13</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/06/13/2013-06-13-mac-terminal-color/">mac terminal 彩色</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

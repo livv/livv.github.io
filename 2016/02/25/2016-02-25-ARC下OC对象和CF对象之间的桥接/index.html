@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>ARC下OC对象和CF对象之间的桥接(bridge) | vvlvv</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在iOS开发时我们有时会用到Core Foundation对象简称CF，例如Core Graphics、Core Text，并且我们可能需要将CF对象和OC对象进行互相转化，我们知道，ARC环境下编译器不会自动管理CF对象的内存，所以当我们创建了一个CF对象以后就需要我们使用CFRelease将其手动释放，那么CF和OC相互转化的时候该如何管理内存呢？答案就是我们在需要时可以使用__bridge,">
+<meta name="keywords" content="iOS,ARC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ARC下OC对象和CF对象之间的桥接(bridge)">
+<meta property="og:url" content="http://yoursite.com/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/index.html">
+<meta property="og:site_name" content="vvlvv">
+<meta property="og:description" content="在iOS开发时我们有时会用到Core Foundation对象简称CF，例如Core Graphics、Core Text，并且我们可能需要将CF对象和OC对象进行互相转化，我们知道，ARC环境下编译器不会自动管理CF对象的内存，所以当我们创建了一个CF对象以后就需要我们使用CFRelease将其手动释放，那么CF和OC相互转化的时候该如何管理内存呢？答案就是我们在需要时可以使用__bridge,">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-12T12:04:36.555Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ARC下OC对象和CF对象之间的桥接(bridge)">
+<meta name="twitter:description" content="在iOS开发时我们有时会用到Core Foundation对象简称CF，例如Core Graphics、Core Text，并且我们可能需要将CF对象和OC对象进行互相转化，我们知道，ARC环境下编译器不会自动管理CF对象的内存，所以当我们创建了一个CF对象以后就需要我们使用CFRelease将其手动释放，那么CF和OC相互转化的时候该如何管理内存呢？答案就是我们在需要时可以使用__bridge,">
+  
+    <link rel="alternate" href="/atom.xml" title="vvlvv" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">vvlvv</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">人生短短数十载，本该淡淡然！</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2016-02-25-ARC下OC对象和CF对象之间的桥接" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/" class="article-date">
+  <time datetime="2016-02-25T09:39:31.000Z" itemprop="datePublished">2016-02-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ARC下OC对象和CF对象之间的桥接(bridge)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在iOS开发时我们有时会用到Core Foundation对象简称CF，例如Core Graphics、Core Text，并且我们可能需要将CF对象和OC对象进行互相转化，我们知道，ARC环境下编译器不会自动管理CF对象的内存，所以当我们创建了一个CF对象以后就需要我们使用CFRelease将其手动释放，那么CF和OC相互转化的时候该如何管理内存呢？答案就是我们在需要时可以使用<code>__bridge</code>, <code>__bridge_transfer</code>, <code>__bridge_retained</code>，具体介绍和用法如下:</p>
+<h4 id="bridge"><a href="#bridge" class="headerlink" title="__bridge"></a><em>__bridge</em></h4><p>CF和OC对象转化时只涉及对象类型不涉及对象所有权的转化；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSURL *url = [[NSURL alloc] initWithString:@&quot;http://www.baidu.com&quot;];</span><br><span class="line">CFURLRef ref = (CFURLRef)url;</span><br></pre></td></tr></table></figure>
+<p>上面的这段代码在ARC环境下系统会给出错误提示和错误修正，修正后如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSURL *url = [[NSURL alloc] initWithString:@&quot;http://www.baidu.com&quot;];</span><br><span class="line">CFURLRef ref = (__bridge CFURLRef)url;</span><br></pre></td></tr></table></figure>
+<p>系统为我们自动添加了<code>__bridge</code>,因为是OC创建的对象并且在转换时没有涉及对象所有权的转换，所以上面的代码不需要加<code>CFRelease</code></p>
+<h4 id="bridge-transfer"><a href="#bridge-transfer" class="headerlink" title="__bridge_transfer"></a><em>__bridge_transfer</em></h4><p>常用在将CF对象转换成OC对象时，将CF对象的所有权交给OC对象，此时ARC就能自动管理该内存；（作用同<code>CFBridgingRelease</code>()）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CFStringRef cfString= CFURLCreateStringByAddingPercentEscapes(</span><br><span class="line">                                                              NULL,</span><br><span class="line">                                                              (__bridge CFStringRef)text,</span><br><span class="line">                                                              NULL,</span><br><span class="line">                                                              CFSTR(&quot;!*’();:@&amp;=+$,/?%#[]&quot;), </span><br><span class="line">                                                              kCFStringEncodingUTF8);</span><br><span class="line">NSString *ocString = (__bridge_transfer NSString *)cfString;</span><br></pre></td></tr></table></figure>
+<p>此时OC即获得了对象的所有权，ARC负责自动释放该对象。</p>
+<h4 id="bridge-retained"><a href="#bridge-retained" class="headerlink" title="__bridge_retained"></a><em>__bridge_retained</em></h4><p>（与<code>__bridge_transfer</code>相反）常用在将OC对象转换成CF对象时，将OC对象的所有权交给CF对象来管理；(作用同<code>CFBridgingRetain()</code>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NSURL *url = [[NSURL alloc] initWithString:@&quot;http://www.baidu.com&quot;];</span><br><span class="line">CFURLRef ref = (__bridge_retained CFURLRef)url;</span><br><span class="line">//todo something ...</span><br><span class="line">CFRelease(ref);</span><br></pre></td></tr></table></figure>
+<p>当使用<code>_bridge_retained</code>标识符以后，代表OC要将对象所有权交给CF对象自己来管理,所以我们要在ref使用完成以后用<code>CFRelease</code>将其手动释放.</p>
+<blockquote>
+<p>本该淡淡然~~~</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/" data-id="cjkrk60ca00275mg6ycgqidb0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ARC/">ARC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Build-Time CFBundleVersion Values in WatchKit Apps
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/02/24/2016-02-24-Xcode-Debug-LLDB/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Xcode Debug 竟这般美丽</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARC/">ARC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debug/">Debug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Home-Brew/">Home Brew</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory/">Memory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WatchKit/">WatchKit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xcode/">Xcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminal/">terminal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/Debug/" style="font-size: 10px;">Debug</a> <a href="/tags/Home-Brew/" style="font-size: 10px;">Home Brew</a> <a href="/tags/Memory/" style="font-size: 10px;">Memory</a> <a href="/tags/WatchKit/" style="font-size: 10px;">WatchKit</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/iOS/" style="font-size: 17.5px;">iOS</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mac/" style="font-size: 20px;">mac</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/terminal/" style="font-size: 15px;">terminal</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/06/17/2016-06-17-使用xcode查找项目中的中文字符串/">2016--6-17-使用xcode查找项目中的中文字符串</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/">Build-Time CFBundleVersion Values in WatchKit Apps</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/">ARC下OC对象和CF对象之间的桥接(bridge)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/24/2016-02-24-Xcode-Debug-LLDB/">Xcode Debug 竟这般美丽</a>
+          </li>
+        
+          <li>
+            <a href="/2013/12/23/2013-12-23-autorelease/">autorelease 到底是个什么鬼？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 vvlvv<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

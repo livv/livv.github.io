@@ -5,19 +5,20 @@
   
 
   
-  <title>Archives | vvlvv</title>
+  <title>HockeyKit run on OSX | vvlvv</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="The medium is the message">
-<meta name="keywords" content="livv">
-<meta property="og:type" content="website">
-<meta property="og:title" content="vvlvv">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="引子今天工作不是很忙，闲的无聊瞎逛。突然间发现了TestFight这个东东。很好用，但是弊端也很明显。每次打包ipa有20M+，上传服务器，进行OTA安装又要重新下载，太浪费时间了。不适合公司内部用。这个东东适合一些业余的团队在业余的时间做开发。及时性要求不高。google了之后发现还有个HockeyKit。 HockeyKit公司现在用的是HockeyApp，这个项目之前是开源的，后来变收费了。">
+<meta name="keywords" content="mac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HockeyKit run on OSX">
+<meta property="og:url" content="http://yoursite.com/2013/01/29/2013-01-29-hockeykit-run-on-osx/index.html">
 <meta property="og:site_name" content="vvlvv">
-<meta property="og:description" content="The medium is the message">
+<meta property="og:description" content="引子今天工作不是很忙，闲的无聊瞎逛。突然间发现了TestFight这个东东。很好用，但是弊端也很明显。每次打包ipa有20M+，上传服务器，进行OTA安装又要重新下载，太浪费时间了。不适合公司内部用。这个东东适合一些业余的团队在业余的时间做开发。及时性要求不高。google了之后发现还有个HockeyKit。 HockeyKit公司现在用的是HockeyApp，这个项目之前是开源的，后来变收费了。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-12T12:04:36.553Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vvlvv">
-<meta name="twitter:description" content="The medium is the message">
+<meta name="twitter:title" content="HockeyKit run on OSX">
+<meta name="twitter:description" content="引子今天工作不是很忙，闲的无聊瞎逛。突然间发现了TestFight这个东东。很好用，但是弊端也很明显。每次打包ipa有20M+，上传服务器，进行OTA安装又要重新下载，太浪费时间了。不适合公司内部用。这个东东适合一些业余的团队在业余的时间做开发。及时性要求不高。google了之后发现还有个HockeyKit。 HockeyKit公司现在用的是HockeyApp，这个项目之前是开源的，后来变收费了。">
   
     <link rel="alternate" href="/atom.xml" title="vvlvv" type="application/atom+xml">
   
@@ -68,226 +69,76 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/06/17/2016-06-17-使用xcode查找项目中的中文字符串/" class="archive-article-date">
-  <time datetime="2016-06-17T01:02:27.000Z" itemprop="datePublished">Jun 17</time>
+        <section id="main"><article id="post-2013-01-29-hockeykit-run-on-osx" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/01/29/2013-01-29-hockeykit-run-on-osx/" class="article-date">
+  <time datetime="2013-01-29T08:01:00.000Z" itemprop="datePublished">2013-01-29</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/17/2016-06-17-使用xcode查找项目中的中文字符串/">2016--6-17-使用xcode查找项目中的中文字符串</a>
+    <h1 class="article-title" itemprop="name">
+      HockeyKit run on OSX
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h3><p>今天工作不是很忙，闲的无聊瞎逛。突然间发现了<a href="https://testflightapp.com/" target="_blank" rel="noopener">TestFight</a>这个东东。很好用，但是弊端也很明显。每次打包ipa有20M+，上传服务器，进行OTA安装又要重新下载，太浪费时间了。不适合公司内部用。这个东东适合一些业余的团队在业余的时间做开发。及时性要求不高。google了之后发现还有个HockeyKit。</p>
+<h3 id="HockeyKit"><a href="#HockeyKit" class="headerlink" title="HockeyKit"></a>HockeyKit</h3><p>公司现在用的是HockeyApp，这个项目之前是开源的，后来变收费了。所以我们就一直停留在老的版本，功能很有限。突然发现了新大陆HockeyKit，免费开源。支持android和ios。Nice ^_^  马上搭建起来。现在我的mac上做测试，成功后再搭建到公司服务器上。</p>
+<ol>
+<li>项目地址<a href="https://github.com/TheRealKerni/HockeyKit" target="_blank" rel="noopener">https://github.com/TheRealKerni/HockeyKit</a>，克隆到本地，切换到master。目录有server，client，demo。只需要server就可以了。</li>
+<li>按照<a href="https://github.com/TheRealKerni/HockeyKit/wiki/Server" target="_blank" rel="noopener">wiki</a>的介绍安装，首先需要一个支持php5的服务器。lion自带了apache，修改httpd.conf，让apache支持php。（lion 需要命令来启动apache <code>sudo apachectl start</code>）<ul>
+<li>确保你的服务器的httpd.conf 中 AllowOverride All ，以支持HockeyKit Server中子目录的配置重载</li>
+<li>确保服务的rewirte可用（lion默认开启 LoadModule rewrite_module libexec/apache2/mod_rewrite.so)</li>
+</ul>
+</li>
+<li>其他的按照文档进行就可以了。大功告成， ^_^  最后点击install application，如果出现alertview提示错误，重新回到步骤2检查一下是否设置了AllowOverride All。</li>
+</ol>
+<blockquote>
+<p>本该淡淡然</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2013/01/29/2013-01-29-hockeykit-run-on-osx/" data-id="cjkrk60bt000u5mg6ve31ml1b" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/03/12/2013-03-12-launchctl-manual/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          launchctl manual
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/01/23/2013-01-23-store-password-security/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">密码安全存储解决方案</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/" class="archive-article-date">
-  <time datetime="2016-03-03T09:22:01.000Z" itemprop="datePublished">Mar 3</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/">Build-Time CFBundleVersion Values in WatchKit Apps</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/" class="archive-article-date">
-  <time datetime="2016-02-25T09:39:31.000Z" itemprop="datePublished">Feb 25</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/">ARC下OC对象和CF对象之间的桥接(bridge)</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/02/24/2016-02-24-Xcode-Debug-LLDB/" class="archive-article-date">
-  <time datetime="2016-02-24T07:10:59.000Z" itemprop="datePublished">Feb 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/02/24/2016-02-24-Xcode-Debug-LLDB/">Xcode Debug 竟这般美丽</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2013" class="archive-year">2013</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/12/23/2013-12-23-autorelease/" class="archive-article-date">
-  <time datetime="2013-12-23T14:43:12.000Z" itemprop="datePublished">Dec 23</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/12/23/2013-12-23-autorelease/">autorelease 到底是个什么鬼？</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/07/17/2013-07-17-iphone-lcd-clock-use-system-font/" class="archive-article-date">
-  <time datetime="2013-07-17T14:16:00.000Z" itemprop="datePublished">Jul 17</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/07/17/2013-07-17-iphone-lcd-clock-use-system-font/">iphone lcd clock use system font</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/07/03/2013-07-03-mac-os-terminal-skill/" class="archive-article-date">
-  <time datetime="2013-07-03T02:35:00.000Z" itemprop="datePublished">Jul 3</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/07/03/2013-07-03-mac-os-terminal-skill/">mac os terminal skill</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/06/27/2013-06-27-wget-tutorials/" class="archive-article-date">
-  <time datetime="2013-06-27T07:05:00.000Z" itemprop="datePublished">Jun 27</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/06/27/2013-06-27-wget-tutorials/">wget tutorials</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/06/21/2013-06-21-git-log-geek/" class="archive-article-date">
-  <time datetime="2013-06-21T06:21:00.000Z" itemprop="datePublished">Jun 21</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/06/21/2013-06-21-git-log-geek/">git log geek</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/06/13/2013-06-13-mac-terminal-color/" class="archive-article-date">
-  <time datetime="2013-06-13T05:49:00.000Z" itemprop="datePublished">Jun 13</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/06/13/2013-06-13-mac-terminal-color/">mac terminal 彩色</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

@@ -5,19 +5,20 @@
   
 
   
-  <title>Archives | vvlvv</title>
+  <title>Homebrew | vvlvv</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="The medium is the message">
-<meta name="keywords" content="livv">
-<meta property="og:type" content="website">
-<meta property="og:title" content="vvlvv">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="####删除Homebrew: 12345cd `brew –prefix`rm -rf Cellarbrew prunerm -rf Library .git .gitignore bin/brew README.md share/man/man1/brewrm -rf ~/Library/Caches/Homebrew ###Homebrew’s “brew doctor” - edit .b">
+<meta name="keywords" content="mac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Homebrew">
+<meta property="og:url" content="http://yoursite.com/2012/02/16/2012-02-16-homebrew/index.html">
 <meta property="og:site_name" content="vvlvv">
-<meta property="og:description" content="The medium is the message">
+<meta property="og:description" content="####删除Homebrew: 12345cd `brew –prefix`rm -rf Cellarbrew prunerm -rf Library .git .gitignore bin/brew README.md share/man/man1/brewrm -rf ~/Library/Caches/Homebrew ###Homebrew’s “brew doctor” - edit .b">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-12T12:04:36.552Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vvlvv">
-<meta name="twitter:description" content="The medium is the message">
+<meta name="twitter:title" content="Homebrew">
+<meta name="twitter:description" content="####删除Homebrew: 12345cd `brew –prefix`rm -rf Cellarbrew prunerm -rf Library .git .gitignore bin/brew README.md share/man/man1/brewrm -rf ~/Library/Caches/Homebrew ###Homebrew’s “brew doctor” - edit .b">
   
     <link rel="alternate" href="/atom.xml" title="vvlvv" type="application/atom+xml">
   
@@ -68,226 +69,69 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/06/17/2016-06-17-使用xcode查找项目中的中文字符串/" class="archive-article-date">
-  <time datetime="2016-06-17T01:02:27.000Z" itemprop="datePublished">Jun 17</time>
+        <section id="main"><article id="post-2012-02-16-homebrew" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/02/16/2012-02-16-homebrew/" class="article-date">
+  <time datetime="2012-02-16T05:33:00.000Z" itemprop="datePublished">2012-02-16</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/17/2016-06-17-使用xcode查找项目中的中文字符串/">2016--6-17-使用xcode查找项目中的中文字符串</a>
+    <h1 class="article-title" itemprop="name">
+      Homebrew
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>####删除Homebrew:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> `brew –prefix`</span><br><span class="line">rm -rf Cellar</span><br><span class="line">brew prune</span><br><span class="line">rm -rf Library .git .gitignore bin/brew README.md share/man/man1/brew</span><br><span class="line">rm -rf ~/Library/Caches/Homebrew</span><br></pre></td></tr></table></figure>
+<p>###Homebrew’s “brew doctor” - edit .bashrc</p>
+<p>If you run into problems with Homebrew it will always suggest to you to run ‘brew doctor’, which will check your Homebrew installation for common problems. For me, it looked like this:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> Jonas$ brew doctor</span><br><span class="line"> /usr/bin is <span class="keyword">in</span> your PATH before Homebrew<span class="string">'s bin. This means that system-provided programs will be used before Homebrew-provided ones. This is an issue if you install, for instance, Python.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Consider editing your .bashrc to put:</span></span><br><span class="line"><span class="string">/usr/local/bin</span></span><br><span class="line"><span class="string">ahead of /usr/bin in your $PATH.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Some brews install binaries to sbin instead of bin, but Homebrew'</span>s sbin was not found <span class="keyword">in</span> your path.</span><br><span class="line"></span><br><span class="line">Consider editing your .bashrc to add:</span><br><span class="line">/usr/<span class="built_in">local</span>/sbin</span><br><span class="line">to <span class="variable">$PATH</span>.</span><br></pre></td></tr></table></figure><br>Now, obviously I started googleing on how to edit my .bashrc, but I didn’t really find a good tutorial on the first try, that’s why I’m writing this one. After some more searching around I was able to figure out a solution that I’ll explain below.<br>On a standard Mac OS X Snow Leopard installation you won’t have a .bashrc file. However you should have a .profile file which does similar things. Here’s an article about the difference between .bashrc, .bash_profile and .profile files (the comments on that article provide some further clarification).<br>From what I understand it’s best to edit .profile in your home folder. To do this, start Terminal and type</p>
+<p>open -t ~/.profile</p>
+<p>This will open .profile with your default text editor.</p>
+<p>Then add the following line (the file might be empty so far):</p>
+<p>  export PATH=”/usr/local/bin:$PATH:/usr/local/sbin”</p>
+<p>Restart Terminal, run ‘brew doctor’ again and everything should be fine.<br>A short explanation on how that works: To see your current PATH you can run ‘echo $PATH’. The command above in .profile now simply puts ‘/usr/local/bin’ in front of your PATH and ‘/usr/local/sbin’ at the end of it and sets it as your new PATH.</p>
+<blockquote>
+<p>本该淡淡然~~~</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2012/02/16/2012-02-16-homebrew/" data-id="cjkrk60bb00025mg6d29ncnab" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2012/03/01/2012-03-01-linux-crontab/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          linux crontab
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/" class="archive-article-date">
-  <time datetime="2016-03-03T09:22:01.000Z" itemprop="datePublished">Mar 3</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/">Build-Time CFBundleVersion Values in WatchKit Apps</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/" class="archive-article-date">
-  <time datetime="2016-02-25T09:39:31.000Z" itemprop="datePublished">Feb 25</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/">ARC下OC对象和CF对象之间的桥接(bridge)</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/02/24/2016-02-24-Xcode-Debug-LLDB/" class="archive-article-date">
-  <time datetime="2016-02-24T07:10:59.000Z" itemprop="datePublished">Feb 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/02/24/2016-02-24-Xcode-Debug-LLDB/">Xcode Debug 竟这般美丽</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2013" class="archive-year">2013</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/12/23/2013-12-23-autorelease/" class="archive-article-date">
-  <time datetime="2013-12-23T14:43:12.000Z" itemprop="datePublished">Dec 23</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/12/23/2013-12-23-autorelease/">autorelease 到底是个什么鬼？</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/07/17/2013-07-17-iphone-lcd-clock-use-system-font/" class="archive-article-date">
-  <time datetime="2013-07-17T14:16:00.000Z" itemprop="datePublished">Jul 17</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/07/17/2013-07-17-iphone-lcd-clock-use-system-font/">iphone lcd clock use system font</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/07/03/2013-07-03-mac-os-terminal-skill/" class="archive-article-date">
-  <time datetime="2013-07-03T02:35:00.000Z" itemprop="datePublished">Jul 3</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/07/03/2013-07-03-mac-os-terminal-skill/">mac os terminal skill</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/06/27/2013-06-27-wget-tutorials/" class="archive-article-date">
-  <time datetime="2013-06-27T07:05:00.000Z" itemprop="datePublished">Jun 27</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/06/27/2013-06-27-wget-tutorials/">wget tutorials</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/06/21/2013-06-21-git-log-geek/" class="archive-article-date">
-  <time datetime="2013-06-21T06:21:00.000Z" itemprop="datePublished">Jun 21</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/06/21/2013-06-21-git-log-geek/">git log geek</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/06/13/2013-06-13-mac-terminal-color/" class="archive-article-date">
-  <time datetime="2013-06-13T05:49:00.000Z" itemprop="datePublished">Jun 13</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/06/13/2013-06-13-mac-terminal-color/">mac terminal 彩色</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

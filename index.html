@@ -5,17 +5,21 @@
   
 
   
-  <title>Hexo</title>
+  <title>vvlvv</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+  <meta name="description" content="The medium is the message">
+<meta name="keywords" content="livv">
+<meta property="og:type" content="website">
+<meta property="og:title" content="vvlvv">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="vvlvv">
+<meta property="og:description" content="The medium is the message">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="vvlvv">
+<meta name="twitter:description" content="The medium is the message">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="vvlvv" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -34,8 +38,12 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">vvlvv</a>
       </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">人生短短数十载，本该淡淡然！</a>
+        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -62,10 +70,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2016-06-17-使用xcode查找项目中的中文字符串" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/08/12/hello-world/" class="article-date">
-  <time datetime="2018-08-12T13:19:47.762Z" itemprop="datePublished">2018-08-12</time>
+    <a href="/2016/06/17/2016-06-17-使用xcode查找项目中的中文字符串/" class="article-date">
+  <time datetime="2016-06-17T01:02:27.000Z" itemprop="datePublished">2016-06-17</time>
 </a>
     
   </div>
@@ -76,7 +84,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/12/hello-world/">Hello World</a>
+      <a class="article-title" href="/2016/06/17/2016-06-17-使用xcode查找项目中的中文字符串/">2016--6-17-使用xcode查找项目中的中文字符串</a>
     </h1>
   
 
@@ -84,22 +92,593 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>项目刚启动的时候 我们一般为了快速开发 会在使用字符串的时候直接选择硬编码到代码中 比如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.lblTime.text = @&quot;1分钟前&quot;;</span><br></pre></td></tr></table></figure>
+<p>但是之后 如果有国际化的需求的话 我们又会改成这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.lblTime.text = NSLocalizedString(@&quot;one_min_ago&quot;, @&quot;1分钟前&quot;);</span><br></pre></td></tr></table></figure>
+<p>不过随着代码越来越多 不免有疏漏 所以有时我们要去搜索一些漏网之鱼 这里分享一个快捷的方法</p>
+<ol>
+<li>打开”Find Navigator”</li>
+<li>切换搜索模式到 “Find &gt; Regular Expression”</li>
+<li>输入@”[^”]<em>[\u4E00-\u9FA5]+[^”\n]</em>?” (swift请去掉”@” 输入@”[^”]<em>[\u4E00-\u9FA5]+[^”\n]</em>?” 就好了)</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/12/hello-world/" data-id="cjkqw04tq0000bk1znnxtkd08" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/06/17/2016-06-17-使用xcode查找项目中的中文字符串/" data-id="cjkrk60c900255mg66r9kehhk" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xcode/">Xcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/" class="article-date">
+  <time datetime="2016-03-03T09:22:01.000Z" itemprop="datePublished">2016-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/">Build-Time CFBundleVersion Values in WatchKit Apps</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>原文地址：<a href="http://ikennd.ac/blog/2015/05/build-time-cfbundleversion-values-in-watchkit-apps/" target="_blank" rel="noopener">http://ikennd.ac/blog/2015/05/build-time-cfbundleversion-values-in-watchkit-apps/</a></p>
+<p>当编译 WatchKit app 时，你经常会遇到下面的错误：</p>
+<blockquote>
+</blockquote>
+<p>error: The value of CFBundleVersion in your WatchKit app’s Info.plist (1) does not match the value in your companion app’s Info.plist (2). These values are required to match.</p>
+<p>很简单，对吗？我们只需要确保全部 target 的 <code>CFBundleVersion</code>的值一样。不过… 如果我们使用动态生成的<code>CFBundleVersion</code>，比如说，git 仓库的 commits 数量。那么，我们只需要在 Xcode 中找到 WatchKit app 的 target 。点击 “Build Phases” 选项卡，然后… oh NO 。 那里并没有我们所希望的东西。</p>
+<p>所以，如果我们需要 WatchKit app 在编译时匹配源 app 的 <code>CFBundleVersion</code>。我们该怎么办？首先，我们想知道这个匹配为什么不会自动完成。其次，在签名之前，我们试着从另一个 target 修改 WatchKit app 的Info.plist 文件。第三，我们想出下面这个可怕的变通方案。</p>
+<h3 id="可怕的变通方案"><a href="#可怕的变通方案" class="headerlink" title="可怕的变通方案"></a>可怕的变通方案</h3><p>这个变通方案就是生成一个包含版本信息定义的 header 文件。然后对 Info.plist 使用预处理，来更新 WatchKit app 的 Info.plist 文件。</p>
+<h4 id="step-1"><a href="#step-1" class="headerlink" title="step 1"></a>step 1</h4><p>新建一个target，选择 “other” 下的 “Aggregate”。</p>
+<p><img src="/images/2016-03-03-step1-new-aggregate-target.png" alt="step1"></p>
+<h4 id="step-2"><a href="#step-2" class="headerlink" title="step 2"></a>step 2</h4><p>在这个新建的 target 下，创建一个 shell script 来生成 header 文件，这个文件包含 C-style #define 语句，来定义version(s)。</p>
+<p>我的例子在这里生成了两个版本号（一个基于 git 版本库 commits 数量的版本号，一个详细版本号给出了详细的描述，commit的哈希值），然后放到build目录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">GIT_RELEASE_VERSION=$(git describe --tags --always --dirty --long)</span><br><span class="line">COMMITS=$(git rev-list HEAD | wc -l)</span><br><span class="line">COMMITS=$(($COMMITS))</span><br><span class="line"></span><br><span class="line">mkdir -p &quot;$BUILT_PRODUCTS_DIR/include&quot;</span><br><span class="line"></span><br><span class="line">echo &quot;#define CBL_VERBOSE_VERSION $&#123;GIT_RELEASE_VERSION#*v&#125;&quot; &gt; &quot;$BUILT_PRODUCTS_DIR/include/CBLVersions.h&quot;</span><br><span class="line">echo &quot;#define CBL_BUNDLE_VERSION $&#123;COMMITS&#125;&quot; &gt;&gt; &quot;$BUILT_PRODUCTS_DIR/include/CBLVersions.h&quot;</span><br><span class="line"></span><br><span class="line">echo &quot;Written to $BUILT_PRODUCTS_DIR/include/CBLVersions.h&quot;</span><br></pre></td></tr></table></figure>
+<p>这个脚本的输出文件如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#define CBL_VERBOSE_VERSION a6f5bd0-dirty</span><br><span class="line">#define CBL_BUNDLE_VERSION 1</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2016-03-03-step2-aggregate-with-script.png" alt="step2"></p>
+<h4 id="step-3"><a href="#step-3" class="headerlink" title="step 3"></a>step 3</h4><p>在其他 target 的“Build Phases”面板中“Target Dependencies”添加新创建的 “aggregate target”。你可以把它添加到所有的使用 version 的 target，但你肯定会把它添加到你的 WatchKit Extension target。</p>
+<p><img src="/images/2016-03-03-step3-dependency-setup.png" alt="step3"></p>
+<h4 id="step-4"><a href="#step-4" class="headerlink" title="step 4"></a>step 4</h4><p>Xcode 是相当聪明的，默认并行编译 target 依赖。然而，这将意味着你的 WatchKit app 将和 aggregate 在同一时间被构建，这将导致构建失败，因为 header 文件还没有及时生成。</p>
+<p>为了解决这个问题，编辑你的 target 的 scheme，在“Build”项，取消“Parallelize Build”的选中状态。这将强制 Xcode 在继续下一步之前等待 header 文件生成。</p>
+<p><img src="/images/2016-03-03-step4-scheme-build-options.png" alt="step4"></p>
+<h4 id="step-5"><a href="#step-5" class="headerlink" title="step 5"></a>step 5</h4><p>选中你的 target，在 build settings 中编辑如下几项：</p>
+<ul>
+<li>Preprocess Info.plist File should be set to Yes.</li>
+<li>Info.plist Other Preprocessor Flags should be set to -traditional.</li>
+<li>Info.plist Preprocessor Prefix File should be set to wherever your generated header file has been placed. In my case, it’s ${CONFIGURATION_BUILD_DIR}/include/CBLVersions.h.</li>
+</ul>
+<p><img src="/images/2016-03-03-step5-build-settings.png" alt="step5"></p>
+<h4 id="step-6"><a href="#step-6" class="headerlink" title="step 6"></a>step 6</h4><p>最后，编辑你的 Info.plist 文件，把<code>CFBundleVersion</code>匹配到你生成的 header 文件。在我的例子中，我设置<code>CFBundleVersion</code> 为 <code>CBL_BUNDLE_VERSION</code>。</p>
+<p><img src="/images/2016-03-03-step6-info-plist.png" alt="step6"></p>
+<h4 id="step-7"><a href="#step-7" class="headerlink" title="step 7"></a>step 7</h4><p>去苹果软件bug报告中心，要求（友好的）他们还给我们 build phases 为 WatchKit apps，如果你喜欢，你可以欺骗我的（Radar #20782873）；</p>
+<h4 id="step-8"><a href="#step-8" class="headerlink" title="step 8"></a>step 8</h4><p><img src="/images/2016-03-03-step8-cascable.jpg" alt="step8"></p>
+<p>大功告成！</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>这是可怕的。我们需要禁用并行构建，来生成中间 header 文件和各种污秽。希望在不久的将来，在 WatchKit app 中我们将看到 build phases 出现！</p>
+<p>在<a href="http://ikennd.ac/pictures/watchkit-versions/Clicker.zip" target="_blank" rel="noopener">这里</a>您可以下载本教程的项目。</p>
+<blockquote>
+<p>本该淡淡然~~~</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/" data-id="cjkrk60c800245mg6pypffte9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WatchKit/">WatchKit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xcode/">Xcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2016-02-25-ARC下OC对象和CF对象之间的桥接" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/" class="article-date">
+  <time datetime="2016-02-25T09:39:31.000Z" itemprop="datePublished">2016-02-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/">ARC下OC对象和CF对象之间的桥接(bridge)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在iOS开发时我们有时会用到Core Foundation对象简称CF，例如Core Graphics、Core Text，并且我们可能需要将CF对象和OC对象进行互相转化，我们知道，ARC环境下编译器不会自动管理CF对象的内存，所以当我们创建了一个CF对象以后就需要我们使用CFRelease将其手动释放，那么CF和OC相互转化的时候该如何管理内存呢？答案就是我们在需要时可以使用<code>__bridge</code>, <code>__bridge_transfer</code>, <code>__bridge_retained</code>，具体介绍和用法如下:</p>
+<h4 id="bridge"><a href="#bridge" class="headerlink" title="__bridge"></a><em>__bridge</em></h4><p>CF和OC对象转化时只涉及对象类型不涉及对象所有权的转化；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSURL *url = [[NSURL alloc] initWithString:@&quot;http://www.baidu.com&quot;];</span><br><span class="line">CFURLRef ref = (CFURLRef)url;</span><br></pre></td></tr></table></figure>
+<p>上面的这段代码在ARC环境下系统会给出错误提示和错误修正，修正后如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSURL *url = [[NSURL alloc] initWithString:@&quot;http://www.baidu.com&quot;];</span><br><span class="line">CFURLRef ref = (__bridge CFURLRef)url;</span><br></pre></td></tr></table></figure>
+<p>系统为我们自动添加了<code>__bridge</code>,因为是OC创建的对象并且在转换时没有涉及对象所有权的转换，所以上面的代码不需要加<code>CFRelease</code></p>
+<h4 id="bridge-transfer"><a href="#bridge-transfer" class="headerlink" title="__bridge_transfer"></a><em>__bridge_transfer</em></h4><p>常用在将CF对象转换成OC对象时，将CF对象的所有权交给OC对象，此时ARC就能自动管理该内存；（作用同<code>CFBridgingRelease</code>()）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CFStringRef cfString= CFURLCreateStringByAddingPercentEscapes(</span><br><span class="line">                                                              NULL,</span><br><span class="line">                                                              (__bridge CFStringRef)text,</span><br><span class="line">                                                              NULL,</span><br><span class="line">                                                              CFSTR(&quot;!*’();:@&amp;=+$,/?%#[]&quot;), </span><br><span class="line">                                                              kCFStringEncodingUTF8);</span><br><span class="line">NSString *ocString = (__bridge_transfer NSString *)cfString;</span><br></pre></td></tr></table></figure>
+<p>此时OC即获得了对象的所有权，ARC负责自动释放该对象。</p>
+<h4 id="bridge-retained"><a href="#bridge-retained" class="headerlink" title="__bridge_retained"></a><em>__bridge_retained</em></h4><p>（与<code>__bridge_transfer</code>相反）常用在将OC对象转换成CF对象时，将OC对象的所有权交给CF对象来管理；(作用同<code>CFBridgingRetain()</code>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NSURL *url = [[NSURL alloc] initWithString:@&quot;http://www.baidu.com&quot;];</span><br><span class="line">CFURLRef ref = (__bridge_retained CFURLRef)url;</span><br><span class="line">//todo something ...</span><br><span class="line">CFRelease(ref);</span><br></pre></td></tr></table></figure>
+<p>当使用<code>_bridge_retained</code>标识符以后，代表OC要将对象所有权交给CF对象自己来管理,所以我们要在ref使用完成以后用<code>CFRelease</code>将其手动释放.</p>
+<blockquote>
+<p>本该淡淡然~~~</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/" data-id="cjkrk60ca00275mg6ycgqidb0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ARC/">ARC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2016-02-24-Xcode-Debug-LLDB" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/24/2016-02-24-Xcode-Debug-LLDB/" class="article-date">
+  <time datetime="2016-02-24T07:10:59.000Z" itemprop="datePublished">2016-02-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/24/2016-02-24-Xcode-Debug-LLDB/">Xcode Debug 竟这般美丽</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><p>之前一直没有深入研究Debug，最近看了下。没想到 Xcode Debug 竟这般美丽。</p>
+<h4 id="使用-LLDB"><a href="#使用-LLDB" class="headerlink" title="使用 LLDB"></a>使用 LLDB</h4><p>LLDB 非常强大并且可以脚本化。 Facebook 发布了一组名为 <a href="https://github.com/facebook/chisel" target="_blank" rel="noopener">Chisel</a> 的 Python 脚本集合 为日常调试提供了非常多的帮助。<code>pviews</code> 和 <code>pvc</code> 等价于视图和视图控制器的层次打印。Chisel 的视图控制器树和上面方法打印的很类似，但是同时还显示了视图的尺寸。 </p>
+<h4 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h4><p>这里有一个简单的小程序，它会打印一个字符串。注意断点已经被加在第 8 行。</p>
+<p><img src="/images/Image_2014-11-20_at_10.01.46_PM.png" alt="demo"></p>
+<p>程序会在这一行停止运行，并且控制台会被打开，允许我们和调试器交互。那我们应该打些什么呢？</p>
+<h5 id="help"><a href="#help" class="headerlink" title="help"></a><em>help</em></h5><p>最简单命令是 <code>help</code>，它会列举出所有的命令。如果你忘记了一个命令是做什么的，或者想知道更多的话，你可以通过 <code>help &lt;command&gt;</code> 来了解更多细节，例如 <code>help print</code> 或者 <code>help thread</code>。如果你甚至忘记了 <code>help</code> 命令是做什么的，你可以试试 <code>help help</code>。不过你如果知道这么做，那就说明你大概还没有忘光这个命令。</p>
+<h5 id="print"><a href="#print" class="headerlink" title="print"></a><em>print</em></h5><p>打印值很简单；只要试试 <code>print</code> 命令:</p>
+<p>LLDB 实际上会作前缀匹配。所以你也可以使用 <code>prin</code>，<code>pri</code>，或者 <code>p</code>。但你不能使用 <code>pr</code>，因为 LLDB 不能消除和 <code>process</code> 的歧义 (幸运的是 <code>p</code> 并没有歧义)。</p>
+<p>你可能还注意到了，结果中有个 <code>$0</code>。实际上你可以使用它来指向这个结果。试试 <code>print $0 + 7</code>，你会看到 <code>106</code>。任何以美元符开头的东西都是存在于 LLDB 的命名空间的，它们是为了帮助你进行调试而存在的。</p>
+<h5 id="expression"><a href="#expression" class="headerlink" title="expression"></a><em>expression</em></h5><p>改变一个值</p>
+<h4 id="添加断点"><a href="#添加断点" class="headerlink" title="添加断点"></a>添加断点</h4><p>利用 LLDB 的 bt 命令，你可以打印断点。bt all 可以达到一样的效果，区别在于会打印全部线程的状态，而不仅是当前的线程。</p>
+<p>随便摘抄了点…<br>后续会来补最近学习使用Debug的用后感。</p>
+<blockquote>
+<p>未完待续…</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/02/24/2016-02-24-Xcode-Debug-LLDB/" data-id="cjkrk60c3001l5mg680b844su" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Debug/">Debug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xcode/">Xcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2013-12-23-autorelease" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/12/23/2013-12-23-autorelease/" class="article-date">
+  <time datetime="2013-12-23T14:43:12.000Z" itemprop="datePublished">2013-12-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/12/23/2013-12-23-autorelease/">autorelease 到底是个什么鬼？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p><code>autorelease</code> 字面上的意思就是“自动释放”。那问题来了，何时会自动释放呢？（MRC 已经离我们远去，本文讨论皆为 ARC 环境下）</p>
+<h3 id="何时释放"><a href="#何时释放" class="headerlink" title="何时释放"></a>何时释放</h3><p>autorelease 对象到底是何时被释放的？废话不多说，先来看代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">     [super viewDidLoad];</span><br><span class="line">     NSArray *tmpArr = [NSArray arrayWithObject:@&quot;小明&quot;]; //这是一个局部对象，封装了autorelease方法</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那么请问，tmpArr 这个临时变量是何时释放的呢？我相信很多人会回答：“出了作用域，就会被释放”。但事实并非如此，下面用几行代码来打印 tmpArr，证明出了作用域依旧没被释放。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">__weak id weakArr;</span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    NSArray *tmpArr = [NSArray arrayWithObject:@&quot;小明&quot;]; //这是一个局部对象，封装了autorelease方法</span><br><span class="line">    weakArr = tmpArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)viewWillAppear:(BOOL)animated &#123;</span><br><span class="line">    [super viewWillAppear:animated];</span><br><span class="line">    NSLog(@&quot;viewWillAppear : %@&quot;, weakArr);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)viewDidAppear:(BOOL)animated &#123;</span><br><span class="line">    [super viewDidAppear:animated];</span><br><span class="line">    NSLog(@&quot;viewWillAppear : %@&quot;, weakArr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在ARC环境下我用一个 <code>__weak</code> 类型来追踪 tmpArr 的释放时机，<code>__weak</code> 并不会对 tmpArr 增加引用计数，因此不干扰其释放，log 显示如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">viewWillAppear : (</span><br><span class="line">    &quot;小明&quot;</span><br><span class="line">)</span><br><span class="line">viewWillAppear : (null)</span><br></pre></td></tr></table></figure>
+<p>我们发现，tmpArr 在 viewWillAppear 还活着，在 viewDidAppear 已经被释放了。这说明了一件事：autorelease 并不是根据作用域来决定释放时机的。那到底是依据什么呢？答案是：<code>runloop</code>。runloop 不在本文讨论范围内，感兴趣的同学请自行查阅资料。简单说，runloop 就是 iOS 中的消息循环机制，当一个 runloop 结束时系统才会一次性清理掉被 autorelease 处理过的对象，其实本质上说是在本次 runloop 迭代结束时清理掉被本次迭代期间被放到 autorelease pool 中的对象的。至于何时 runloop 结束并没有固定的周期。</p>
+<p>那么问题来了：iOS 的这种基于 runloop 的内存回收策略有不方便的时候吗？我认为是显然有的。但凡事物总是有两面性的，使用 autorelease 的确方便，但在一定的情况下会带来性能问题。我们看个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for (int i = 0; i &lt;= 1000; i ++) &#123;</span><br><span class="line">     NSString *filePath = [[NSBundle mainBundle] pathForResource:@&quot;test&quot; ofType:@&quot;PNG&quot;];</span><br><span class="line">     UIImage *image = [[UIImage alloc] initWithContentsOfFile:filePath];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述例子看起来没有什么问题。但是临时 image 对象是一个 autorelease 类型。实际去跑这段程序会发现，在循环1000次的条件下内存持续飙升，因为那个 autorelease 对象并没有如我们预期般在每次 for 循环的花括号结束时释放掉！如果从 runloop 的角度考虑就显得合理了。</p>
+<p>那么问题又来了：既然交给 runloop 处理可能会有问题，那我们可以人工干预 autorelease 对象的释放时机吗？答案是肯定的，上文有提到 autorelease pool，这是下一个问题要解决的任务，在这里不展开，你只需要知道，一旦一个对象被 autorelease，则该对象会被放到iOS的一个自动释放池：autorelease pool，其实这个pool本质上是一个 stack，扔到 pool 中的对象等价于入栈。我们把需要及时释放掉的代码块放入我们生成的 autorelease pool 中，结束后清空这个自定义的 pool，主动地让 pool 清空掉，从而达到及时释放内存的目的。以上述图片处理的例子为例，优化如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for (int i = 0; i &lt;= 1000; i ++) &#123;</span><br><span class="line">    @autoreleasepool&#123;</span><br><span class="line">        NSString *filePath = [[NSBundle mainBundle] pathForResource:@&quot;test&quot; ofType:@&quot;PNG&quot;];</span><br><span class="line">        UIImage *image = [[UIImage alloc] initWithContentsOfFile:filePath];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>释放时机是基于 runloop 而不是作用域；通过 autorelease pool 可以手动干预释放；循环多次时要对 autorelease 进行优化。</p>
+<h3 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h3><p>在文章的最后顺便说下，在 iOS 中有三种常用的遍历方法：for、forin、enumerateObjectsUsingBlcok。实际使用中大家可能没有感觉到太大区别，前面两个比较常用，最后一个是 iOS 特有的遍历方式，但事实上还是有区别的。block 版本的遍历方式已经内嵌了@autoreleasepool{} 操作，而前面两个没有，这样就意味着使用 block 版本的遍历方式会使 App 更加健壮，内存使用效率更加出色，而且最重要的是：逼格高！逼格高！逼格高！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2013/12/23/2013-12-23-autorelease/" data-id="cjkrk60c4001n5mg6zaqrob6g" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Memory/">Memory</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2013-07-17-iphone-lcd-clock-use-system-font" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/07/17/2013-07-17-iphone-lcd-clock-use-system-font/" class="article-date">
+  <time datetime="2013-07-17T14:16:00.000Z" itemprop="datePublished">2013-07-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/07/17/2013-07-17-iphone-lcd-clock-use-system-font/">iphone lcd clock use system font</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>iPhone 默认的液晶时钟效果很是经典，如果您想在自己的应用里显示该时钟，可以用以下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[UIFont fontWithName:@&quot;DBLCDTempBlack&quot; size:58]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>此外，类似 DBLCDTempBlack 的可用字体列表：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">Family name: AppleGothic</span><br><span class="line">Font name: AppleGothic</span><br><span class="line">Family name: Hiragino Kaku Gothic ProN</span><br><span class="line">Font name: HiraKakuProN-W6</span><br><span class="line">Font name: HiraKakuProN-W3</span><br><span class="line">Family name: Arial Unicode MS</span><br><span class="line">Font name: ArialUnicodeMS</span><br><span class="line">Family name: Heiti K</span><br><span class="line">Font name: STHeitiK-Medium</span><br><span class="line">Font name: STHeitiK-Light</span><br><span class="line">Family name: DB LCD Temp</span><br><span class="line">Font name: DBLCDTempBlack</span><br><span class="line">Family name: Helvetica</span><br><span class="line">Font name: Helvetica-Oblique</span><br><span class="line">Font name: Helvetica-BoldOblique</span><br><span class="line">Font name: Helvetica</span><br><span class="line">Font name: Helvetica-Bold</span><br><span class="line">Family name: Marker Felt</span><br><span class="line">Font name: MarkerFelt-Thin</span><br><span class="line">Family name: Times New Roman</span><br><span class="line">Font name: TimesNewRomanPSMT</span><br><span class="line">Font name: TimesNewRomanPS-BoldMT</span><br><span class="line">Font name: TimesNewRomanPS-BoldItalicMT</span><br><span class="line">Font name: TimesNewRomanPS-ItalicMT</span><br><span class="line">Family name: Verdana</span><br><span class="line">Font name: Verdana-Bold</span><br><span class="line">Font name: Verdana-BoldItalic</span><br><span class="line">Font name: Verdana</span><br><span class="line">Font name: Verdana-Italic</span><br><span class="line">Family name: Georgia</span><br><span class="line">Font name: Georgia-Bold</span><br><span class="line">Font name: Georgia</span><br><span class="line">Font name: Georgia-BoldItalic</span><br><span class="line">Font name: Georgia-Italic</span><br><span class="line">Family name: Arial Rounded MT Bold</span><br><span class="line">Font name: ArialRoundedMTBold</span><br><span class="line">Family name: Trebuchet MS</span><br><span class="line">Font name: TrebuchetMS-Italic</span><br><span class="line">Font name: TrebuchetMS</span><br><span class="line">Font name: Trebuchet-BoldItalic</span><br><span class="line">Font name: TrebuchetMS-Bold</span><br><span class="line">Family name: Heiti TC</span><br><span class="line">Font name: STHeitiTC-Light</span><br><span class="line">Font name: STHeitiTC-Medium</span><br><span class="line">Family name: Geeza Pro</span><br><span class="line">Font name: GeezaPro-Bold</span><br><span class="line">Font name: GeezaPro</span><br><span class="line">Family name: Courier</span><br><span class="line">Font name: Courier</span><br><span class="line">Font name: Courier-BoldOblique</span><br><span class="line">Font name: Courier-Oblique</span><br><span class="line">Font name: Courier-Bold</span><br><span class="line">Family name: Arial</span><br><span class="line">Font name: ArialMT</span><br><span class="line">Font name: Arial-BoldMT</span><br><span class="line">Font name: Arial-BoldItalicMT</span><br><span class="line">Font name: Arial-ItalicMT</span><br><span class="line">Family name: Heiti J</span><br><span class="line">Font name: STHeitiJ-Medium</span><br><span class="line">Font name: STHeitiJ-Light</span><br><span class="line">Family name: Arial Hebrew</span><br><span class="line">Font name: ArialHebrew</span><br><span class="line">Font name: ArialHebrew-Bold</span><br><span class="line">Family name: Courier New</span><br><span class="line">Font name: CourierNewPS-BoldMT</span><br><span class="line">Font name: CourierNewPS-ItalicMT</span><br><span class="line">Font name: CourierNewPS-BoldItalicMT</span><br><span class="line">Font name: CourierNewPSMT</span><br><span class="line">Family name: Zapfino</span><br><span class="line">Font name: Zapfino</span><br><span class="line">Family name: American Typewriter</span><br><span class="line">Font name: AmericanTypewriter</span><br><span class="line">Font name: AmericanTypewriter-Bold</span><br><span class="line">Family name: Heiti SC</span><br><span class="line">Font name: STHeitiSC-Medium</span><br><span class="line">Font name: STHeitiSC-Light</span><br><span class="line">Family name: Helvetica Neue</span><br><span class="line">Font name: HelveticaNeue</span><br><span class="line">Font name: HelveticaNeue-Bold</span><br><span class="line">Family name: Thonburi</span><br><span class="line">Font name: Thonburi-Bold</span><br><span class="line">Font name: Thonburi</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>本该淡淡然~~~</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2013/07/17/2013-07-17-iphone-lcd-clock-use-system-font/" data-id="cjkrk60c2001g5mg6sabza6jc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2013-07-03-mac-os-terminal-skill" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/07/03/2013-07-03-mac-os-terminal-skill/" class="article-date">
+  <time datetime="2013-07-03T02:35:00.000Z" itemprop="datePublished">2013-07-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/07/03/2013-07-03-mac-os-terminal-skill/">mac os terminal skill</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##control+u</p>
+<p>如果你在一条终端命令中发现有输入错误的话，那么用 control+u 快捷键可以直接删除这一整条命令，然后你就可以重新输入。</p>
+<p>##mkdir</p>
+<p>很多人可能会很熟悉在 mkdir 是在「终端」中创建文件夹的工具，比如mkdir ./abc，即可在当前目录创建一个名为 abc 的文件夹。但如果想要建立更多层级的目录呢？就需要用 mkdir -p 命令来解决，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ./abc/123/guomii/xxx</span><br></pre></td></tr></table></figure>
+<p>##!!</p>
+<p>有时候，你写了一条长长的命令，按回车之后发现没有执行权限，需要在命令前添加 sudo，这时你可能要崩溃。不过其实可以用 <code>sudo !!</code> 这条命令来解决，它执行的效果和 sudo {上一条命令} 是一样的。</p>
+<p>另外，! 在「终端」中还有一个妙用——它可以用来执行你最后一次以特定字母开头的命令。比如你在一个「终端」会话中已经执行过ls,mkdir,find,chown 等多条命令。这时你可以用 !l 来执行 ls，用 !f 来执行 find…大家都看懂了吧？(very cool)</p>
+<p>##history</p>
+<p>用 history 命令可以显示你最近执行过的命令历史记录，你还可以指定显示条数，比如 history 20即可显示最近的20条命令历史记录。此外，你还可以筛选包含特定字符的命令，比如用 <code>history | grep mk</code>，就可以只显示历史记录中包含 mk 的命令。</p>
+<p>##&amp;&amp;</p>
+<p>&amp;&amp; 可以将两条命令合并成一条命令，其实我们在之前的文章中，已经多次应用过这种写法了，大家可以返回去看看。</p>
+<p>##reset</p>
+<p>reset 的作用很简单——将目前「终端」屏幕上的内容清空，就好像刚刚打开终端一样。（不如新建一个标签，然后关掉之前的，感觉这样更快捷。）</p>
+<p>其实输入命令远没有快捷键方便，“control+l” 可以清屏，”command+k”可以全部清除。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2013/07/03/2013-07-03-mac-os-terminal-skill/" data-id="cjkrk60c0001d5mg6hwlkr3e1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/terminal/">terminal</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2013-06-27-wget-tutorials" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/06/27/2013-06-27-wget-tutorials/" class="article-date">
+  <time datetime="2013-06-27T07:05:00.000Z" itemprop="datePublished">2013-06-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/06/27/2013-06-27-wget-tutorials/">wget tutorials</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Wget是一种很好用的因特网下载工具，他具有的很多特性是其他工具所不能比拟的，再者他是一个轻量级可配置的下载工具。</p>
+<p>本文结合例子介绍Windows下wget的多种下载方法和用途。</p>
+<p>1、用Wget下载单个文件</p>
+<p>下载的时候会显示：</p>
+<p>　　~文件的大小、连接状态、连接地址以及文件的大小</p>
+<p>　　~保存的名称</p>
+<p>　　~下载进度条</p>
+<p>　　~下载速度、时间，还有多少未下载</p>
+<p>例如我下载editplus时输入</p>
+<p>D:\Hack stuff\wget&gt;wget <a href="http://software-files-a.cnet.com/s/software/12/32/81/47/" target="_blank" rel="noopener">http://software-files-a.cnet.com/s/software/12/32/81/47/</a><br>epp331.exe?token=1329413178_4553efa847829f3ecef10c1bc256fcc0&amp;lop=link&amp;ptype=3001<br>&amp;ontid=2352&amp;siteId=4&amp;edId=3&amp;spi=537d5d5485f688682d82c481c4fb15a1&amp;pid=12328147&amp;ps<br>id=10018241&amp;&amp;fileName=epp331.exe<br>则下载时会显示以下内容</p>
+<p>D:\Hack stuff\wget&gt;wget <a href="http://software-files-a.cnet.com/s/software/12/32/81/47/" target="_blank" rel="noopener">http://software-files-a.cnet.com/s/software/12/32/81/47/</a><br>epp331.exe?token=1329413178_4553efa847829f3ecef10c1bc256fcc0&amp;lop=link&amp;ptype=3001<br>&amp;ontid=2352&amp;siteId=4&amp;edId=3&amp;spi=537d5d5485f688682d82c481c4fb15a1&amp;pid=12328147&amp;ps<br>id=10018241&amp;&amp;fileName=epp331.exe<br>–2012-02-16 15:28:50–  <a href="http://software-files-a.cnet.com/s/software/12/32/81/47" target="_blank" rel="noopener">http://software-files-a.cnet.com/s/software/12/32/81/47</a><br>/epp331.exe?token=1329413178_4553efa847829f3ecef10c1bc256fcc0<br>Resolving software-files-a.cnet.com… 204.2.171.33, 204.2.171.35<br>Connecting to software-files-a.cnet.com|204.2.171.33|:80… connected.<br>HTTP request sent, awaiting response… 200 OK<br>Length: 1766464 (1.7M) [application/octet-stream]<br>Saving to: `epp331.exe@token=1329413178_4553efa847829f3ecef10c1bc256fcc0’</p>
+<p>18% [======&gt;                                ] 335,238     20.5K/s  eta 64s</p>
+<p>2、用Wget-O下载可以为下载的文件指定另外一个名字</p>
+<p>默认情况下wget会用最后的斜线后面的所有字符来命名下载下来的文件，如上例所示保存的文件名为</p>
+<p>Saving to: `epp331.exe@token=1329413178_4553efa847829f3ecef10c1bc256fcc0’<br>这不是我们所想要的，我们可以用-O选项来改变将文件保存为editplus.exe</p>
+<p>D:\Hack stuff\wget&gt;wget -O editplus.exe <a href="http://software-files-a.cnet.com/s/software/12/32/81/47/" target="_blank" rel="noopener">http://software-files-a.cnet.com/s/software/12/32/81/47/</a><br>epp331.exe?token=1329413178_4553efa847829f3ecef10c1bc256fcc0&amp;lop=link&amp;ptype=3001<br>&amp;ontid=2352&amp;siteId=4&amp;edId=3&amp;spi=537d5d5485f688682d82c481c4fb15a1&amp;pid=12328147&amp;ps<br>id=10018241&amp;&amp;fileName=epp331.exe</p>
+<p>3、用Wget –limit-rate指定下载的速度</p>
+<p>如下面这个例子限制速度为300k</p>
+<p>D:\Hack stuff\wget&gt;wget –limit-rate=300k <a href="http://downloads.sourceforge.net/project/boost/boost-doc" target="_blank" rel="noopener">http://downloads.sourceforge.net/project/boost/boost-doc</a><br>s/1.47.0/boost_1_47_pdf.zip?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fboost%2F<br>&amp;ts=1329379231&amp;use_mirror=nchc</p>
+<p>4、续传下载用Wget -c</p>
+<p>当你在下载一个大文件时突然中断了那么这个选项就派上用场了</p>
+<p>D:\Hack stuff\wget&gt;wget -c <a href="http://downloads.sourceforge.net/project/boost/boost-doc" target="_blank" rel="noopener">http://downloads.sourceforge.net/project/boost/boost-doc</a><br>s/1.47.0/boost_1_47_pdf.zip?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fboost%2F<br>&amp;ts=1329379231&amp;use_mirror=nchc</p>
+<p>5、后台下载用wget -b</p>
+<p>用此选项下载时只会初始化下载而不会显示相关信息</p>
+<p>D:\Hack stuff\wget&gt;wget -b <a href="http://downloads.sourceforge.net/project/boost/boost-" target="_blank" rel="noopener">http://downloads.sourceforge.net/project/boost/boost-</a><br>docs/1.47.0/boost_1_47_pdf.zip?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fboost<br>%2F&amp;ts=1329379231&amp;use_mirror=nchc<br>Continuing in background, pid 6132.<br>Output will be written to `wget-log’.<br>下载以后会在wget目录下生产wget-log文件，用记事本打开可查看里面的内容如下所示</p>
+<p>–2012-02-16 16:12:55–  <a href="http://downloads.sourceforge.net/project/boost/boost-docs/1.47.0/boost_1_47_pdf.zip?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fboost%2F" target="_blank" rel="noopener">http://downloads.sourceforge.net/project/boost/boost-docs/1.47.0/boost_1_47_pdf.zip?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fboost%2F</a><br>Resolving downloads.sourceforge.net… 216.34.181.59<br>Connecting to downloads.sourceforge.net|216.34.181.59|:80… connected.<br>HTTP request sent, awaiting response… 302 Found<br>Location: <a href="http://nchc.dl.sourceforge.net/project/boost/boost-docs/1.47.0/boost_1_47_pdf.zip" target="_blank" rel="noopener">http://nchc.dl.sourceforge.net/project/boost/boost-docs/1.47.0/boost_1_47_pdf.zip</a> [following]<br>–2012-02-16 16:12:56–  <a href="http://nchc.dl.sourceforge.net/project/boost/boost-docs/1.47.0/boost_1_47_pdf.zip" target="_blank" rel="noopener">http://nchc.dl.sourceforge.net/project/boost/boost-docs/1.47.0/boost_1_47_pdf.zip</a><br>Resolving nchc.dl.sourceforge.net… 211.79.60.17<br>Connecting to nchc.dl.sourceforge.net|211.79.60.17|:80… connected.<br>HTTP request sent, awaiting response… 200 OK<br>Length: 31421410 (30M) [application/zip]<br>Saving to: `boost_1_47_pdf.zip.4’</p>
+<pre><code> 0K .......... .......... .......... .......... ..........  0% 19.7K 25m51s
+50K .......... .......... .......... .......... ..........  0% 29.1K 21m40s
+</code></pre><p>   100K ………. ………. ………. ………. ……….  0% 20.8K 22m35s<br>   150K ………. ………. ………. ………. ……….  0% 19.5K 23m26s<br>   200K ………. ………. ………. ………. ……….  0% 18.4K 24m13s<br>   250K ………. ………. ………. ………. ……….  0% 20.8K 24m13s<br>   300K ………. ………. ………. ………. ……….  1% 18.2K 24m41s<br>   350K ………. ………. ………. ………. ……….  1% 23.5K 24m16s</p>
+<p>6、测试你要下载的地址用Wget –spider</p>
+<p>wget –spider DOWNLOAD-URL<br>如果所给URL是正确的则会显示</p>
+<p>Resolving downloads.sourceforge.net… 216.34.181.59<br>Connecting to downloads.sourceforge.net|216.34.181.59|:80… connected.<br>HTTP request sent, awaiting response… 302 Found<br>Location: <a href="http://ncu.dl.sourceforge.net/project/boost/boost-docs/1.47.0/boost_1" target="_blank" rel="noopener">http://ncu.dl.sourceforge.net/project/boost/boost-docs/1.47.0/boost_1</a>_<br>47_pdf.zip [following]<br>Spider mode enabled. Check if remote file exists.<br>–2012-02-16 16:21:08–  <a href="http://ncu.dl.sourceforge.net/project/boost/boost-docs/" target="_blank" rel="noopener">http://ncu.dl.sourceforge.net/project/boost/boost-docs/</a><br>1.47.0/boost_1_47_pdf.zip<br>Resolving ncu.dl.sourceforge.net… 140.115.17.45<br>Connecting to ncu.dl.sourceforge.net|140.115.17.45|:80… connected.<br>HTTP request sent, awaiting response… 200 OK<br>Length: 31421410 (30M) [application/zip]<br>Remote file exists.<br>否则显示</p>
+<p>Spider mode enabled. Check if remote file exists.<br>–2012-02-16 16:23:06–  <a href="http://downloads.sourceforge.net/project/boost/boost-do" target="_blank" rel="noopener">http://downloads.sourceforge.net/project/boost/boost-do</a><br>cs/1.47.0/boost_1_47_pdf222.zip?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fboos<br>t%2F<br>Resolving downloads.sourceforge.net… 216.34.181.59<br>Connecting to downloads.sourceforge.net|216.34.181.59|:80… connected.<br>HTTP request sent, awaiting response… 404 Not Found<br>Remote file does not exist – broken link!!!</p>
+<p>7、增加重连次数用Wget -tries</p>
+<p>在网络有问题的情况次选项尤其有用，默认是wget会重连20次以成功完成下载，我们可以把他增加为我们期待的次数</p>
+<p>wget –tries=100 DOWNLOAD-URL</p>
+<p>8、下载多个文件/URLS用wget -i</p>
+<p>首先把所有要下载的文件或者URL存到一个记事本中，比如aa.txt，里面内容如下</p>
+<p>URL1<br>URL2<br>URL3<br>URL4<br>接下来输入如下代码就可以批量下载了</p>
+<p>wget -i aa.txt</p>
+<p>9、下载一个完整的网站用wget -mirror</p>
+<p>以下实现是你想完整的下载一个网站用于本地浏览</p>
+<p>wget –mirror  -p –convert-links -P LOCAL-DIR WEBSITE-URL<br>–mirror:打开镜像选项</p>
+<p>-p:下载所有用于显示给定网址所必须的文件</p>
+<p>–convert-links：下载以后，转换链接用于本地显示</p>
+<p>-P LOCAL_DIR：保存所有的文件或目录到指定的目录下</p>
+<p>10、保存输出到日志文件而不是标准输出用wget -o</p>
+<p>当你想要把信息保存到一个文件而不是在终端显示时用以下代码。</p>
+<p>wget -o download.log DOWNLOAD-URL</p>
+<p>11、当超过指定大小时终止下载用wget -Q</p>
+<p>当文件已下载10M，此时你想停止下载可以使用下面的命令行</p>
+<p>wget -Q10m -i FILE-WHICH-HAS-URLS<br>注意：此选项只能在下载多个文件时有用，当你下载一个文件时没用。</p>
+<p>12、下载特定文件类型的文件用wget -r -A</p>
+<p>你可以用此方法下载一下文件：</p>
+<p>~从一个网站下载所有图片<br>~从一个网站下载所有视频</p>
+<p>~从一个网站下载所有PDF文件</p>
+<p>wget -r -A.pdf <a href="http://url-to-webpage-with-pdfs/" target="_blank" rel="noopener">http://url-to-webpage-with-pdfs/</a></p>
+<p>13、指定不下载某一类型的文件用wget –reject</p>
+<p>你发现一个网站很有用，但是你不想下载上面的图片，因为太占流量，此时你可以用如下命令。</p>
+<p>wget –reject=gif WEBSITE-TO-BE-DOWNLOADED</p>
+<p>14、用wget实现FTP下载</p>
+<p>匿名FTP下载用</p>
+<p>wget ftp-url<br>有用户名和密码的FTP下载</p>
+<p>wget –ftp-user=USERNAME –ftp-password=PASSWORD DOWNLOAD-URL</p>
+<p>15、wget下载有的资源时必须用选项 –no-check-certificate，否则会提示没有认证不允许下载</p>
+<p>wget –no-check-certificate URL</p>
+<blockquote>
+<p>本该淡淡然~~~</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2013/06/27/2013-06-27-wget-tutorials/" data-id="cjkrk60c3001i5mg6swjlij1z" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2013-06-21-git-log-geek" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/06/21/2013-06-21-git-log-geek/" class="article-date">
+  <time datetime="2013-06-21T06:21:00.000Z" itemprop="datePublished">2013-06-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/06/21/2013-06-21-git-log-geek/">git log geek</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>打开.gitconfig文件(该文件在用户目录下面)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim .gitconfig</span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置gitconfig</li>
+</ul>
+<p>在打开的文件中加入下面的命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[alias]</span><br><span class="line">       lg = log --color --graph --pretty=format:&apos;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&apos; --abbrev-commit</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看配置后的log</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git lg</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在log中查看哪一行被修发了</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git lg -p</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2013/06/21/2013-06-21-git-log-geek/" data-id="cjkrk60bz001b5mg6j71122if" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2013-06-13-mac-terminal-color" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/06/13/2013-06-13-mac-terminal-color/" class="article-date">
+  <time datetime="2013-06-13T05:49:00.000Z" itemprop="datePublished">2013-06-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/06/13/2013-06-13-mac-terminal-color/">mac terminal 彩色</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###彩色化ls的输出</p>
+<p>Mac中BSD的ls命令可以使用-G参数彩色化输出的文件列表，需要配置LSCOLORS环境变量定义颜色，具体配置方法可以输入man ls查看。</p>
+<p>不过，我推荐安装Linux使用的GNU Coreutils替换Mac的ls命令，因为：</p>
+<ul>
+<li>Coreutils提供了配置工具，定义颜色代码更加方便；</li>
+<li>Coreutils包含的不仅仅是ls，同时作为Linux用户，我更习惯于使用GNU的各种shell工具。</li>
+</ul>
+<hr>
+<ul>
+<li>通过Homebrew安装Coreutils</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install xz coreutils</span><br></pre></td></tr></table></figure>
+<p>注：Coreutils并不依赖于xz，但它的源码是用xz格式压缩的，安装xz才能解压。</p>
+<ul>
+<li>生成颜色定义文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gdircolors --print-database &gt; ~/.dir_colors</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在<code>~/.bash_profile</code>配置文件中加入以下代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if brew list | grep coreutils &gt; /dev/null ; then</span><br><span class="line">  PATH=&quot;$(brew --prefix coreutils)/libexec/gnubin:$PATH&quot;</span><br><span class="line">  alias ls=&apos;ls -F --show-control-chars --color=auto&apos;</span><br><span class="line">  eval `gdircolors -b $HOME/.dir_colors`</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>gdircolor的作用就是设置ls命令使用的环境变量LS_COLORS（BSD是LSCOLORS），我们可以修改~/.dir_colors自定义文件的颜色，此文件中的注释已经包含各种颜色取值的说明。</p>
+<ul>
+<li>grep高亮显示关键字</li>
+</ul>
+<p>这个很简单，加上<code>--color</code>参数就可以了，为了使用方便，可以在<code>~/.bash_profile</code>配置文件中加上alias定义。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alias grep=&apos;grep --color&apos;</span><br><span class="line">alias egrep=&apos;egrep --color&apos;</span><br><span class="line">alias fgrep=&apos;fgrep --color&apos;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Vim语法高亮</li>
+</ul>
+<p>在Vim中输入命令:syntax on激活语法高亮，若需要Vim启动时自动激活，在<code>~/.vimrc</code>中添加一行<code>syntax on</code>即可。</p>
+<blockquote>
+<p>本该淡淡然~~~</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2013/06/13/2013-06-13-mac-terminal-color/" data-id="cjkrk60by00195mg6p5lsgogh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/terminal/">terminal</a></li></ul>
+
     </footer>
   </div>
   
@@ -109,6 +688,11 @@
   
 
 
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
+
 </section>
         
           <aside id="sidebar">
@@ -117,15 +701,29 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARC/">ARC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debug/">Debug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Home-Brew/">Home Brew</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory/">Memory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WatchKit/">WatchKit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xcode/">Xcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminal/">terminal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/Debug/" style="font-size: 10px;">Debug</a> <a href="/tags/Home-Brew/" style="font-size: 10px;">Home Brew</a> <a href="/tags/Memory/" style="font-size: 10px;">Memory</a> <a href="/tags/WatchKit/" style="font-size: 10px;">WatchKit</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/iOS/" style="font-size: 17.5px;">iOS</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mac/" style="font-size: 20px;">mac</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/terminal/" style="font-size: 15px;">terminal</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a></li></ul>
     </div>
   </div>
 
@@ -138,7 +736,23 @@
       <ul>
         
           <li>
-            <a href="/2018/08/12/hello-world/">Hello World</a>
+            <a href="/2016/06/17/2016-06-17-使用xcode查找项目中的中文字符串/">2016--6-17-使用xcode查找项目中的中文字符串</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/">Build-Time CFBundleVersion Values in WatchKit Apps</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/">ARC下OC对象和CF对象之间的桥接(bridge)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/24/2016-02-24-Xcode-Debug-LLDB/">Xcode Debug 竟这般美丽</a>
+          </li>
+        
+          <li>
+            <a href="/2013/12/23/2013-12-23-autorelease/">autorelease 到底是个什么鬼？</a>
           </li>
         
       </ul>
@@ -153,7 +767,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 John Doe<br>
+      &copy; 2018 vvlvv<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

@@ -5,19 +5,22 @@
   
 
   
-  <title>Archives | vvlvv</title>
+  <title>Xcode Debug 竟这般美丽 | vvlvv</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="The medium is the message">
-<meta name="keywords" content="livv">
-<meta property="og:type" content="website">
-<meta property="og:title" content="vvlvv">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="写在前面之前一直没有深入研究Debug，最近看了下。没想到 Xcode Debug 竟这般美丽。 使用 LLDBLLDB 非常强大并且可以脚本化。 Facebook 发布了一组名为 Chisel 的 Python 脚本集合 为日常调试提供了非常多的帮助。pviews 和 pvc 等价于视图和视图控制器的层次打印。Chisel 的视图控制器树和上面方法打印的很类似，但是同时还显示了视图的尺寸。  基">
+<meta name="keywords" content="iOS,Xcode,Debug">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Xcode Debug 竟这般美丽">
+<meta property="og:url" content="http://yoursite.com/2016/02/24/2016-02-24-Xcode-Debug-LLDB/index.html">
 <meta property="og:site_name" content="vvlvv">
-<meta property="og:description" content="The medium is the message">
+<meta property="og:description" content="写在前面之前一直没有深入研究Debug，最近看了下。没想到 Xcode Debug 竟这般美丽。 使用 LLDBLLDB 非常强大并且可以脚本化。 Facebook 发布了一组名为 Chisel 的 Python 脚本集合 为日常调试提供了非常多的帮助。pviews 和 pvc 等价于视图和视图控制器的层次打印。Chisel 的视图控制器树和上面方法打印的很类似，但是同时还显示了视图的尺寸。  基">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/Image_2014-11-20_at_10.01.46_PM.png">
+<meta property="og:updated_time" content="2018-08-12T12:04:36.555Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vvlvv">
-<meta name="twitter:description" content="The medium is the message">
+<meta name="twitter:title" content="Xcode Debug 竟这般美丽">
+<meta name="twitter:description" content="写在前面之前一直没有深入研究Debug，最近看了下。没想到 Xcode Debug 竟这般美丽。 使用 LLDBLLDB 非常强大并且可以脚本化。 Facebook 发布了一组名为 Chisel 的 Python 脚本集合 为日常调试提供了非常多的帮助。pviews 和 pvc 等价于视图和视图控制器的层次打印。Chisel 的视图控制器树和上面方法打印的很类似，但是同时还显示了视图的尺寸。  基">
+<meta name="twitter:image" content="http://yoursite.com/images/Image_2014-11-20_at_10.01.46_PM.png">
   
     <link rel="alternate" href="/atom.xml" title="vvlvv" type="application/atom+xml">
   
@@ -68,226 +71,77 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/06/17/2016-06-17-使用xcode查找项目中的中文字符串/" class="archive-article-date">
-  <time datetime="2016-06-17T01:02:27.000Z" itemprop="datePublished">Jun 17</time>
+        <section id="main"><article id="post-2016-02-24-Xcode-Debug-LLDB" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/24/2016-02-24-Xcode-Debug-LLDB/" class="article-date">
+  <time datetime="2016-02-24T07:10:59.000Z" itemprop="datePublished">2016-02-24</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/06/17/2016-06-17-使用xcode查找项目中的中文字符串/">2016--6-17-使用xcode查找项目中的中文字符串</a>
+    <h1 class="article-title" itemprop="name">
+      Xcode Debug 竟这般美丽
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h4><p>之前一直没有深入研究Debug，最近看了下。没想到 Xcode Debug 竟这般美丽。</p>
+<h4 id="使用-LLDB"><a href="#使用-LLDB" class="headerlink" title="使用 LLDB"></a>使用 LLDB</h4><p>LLDB 非常强大并且可以脚本化。 Facebook 发布了一组名为 <a href="https://github.com/facebook/chisel" target="_blank" rel="noopener">Chisel</a> 的 Python 脚本集合 为日常调试提供了非常多的帮助。<code>pviews</code> 和 <code>pvc</code> 等价于视图和视图控制器的层次打印。Chisel 的视图控制器树和上面方法打印的很类似，但是同时还显示了视图的尺寸。 </p>
+<h4 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h4><p>这里有一个简单的小程序，它会打印一个字符串。注意断点已经被加在第 8 行。</p>
+<p><img src="/images/Image_2014-11-20_at_10.01.46_PM.png" alt="demo"></p>
+<p>程序会在这一行停止运行，并且控制台会被打开，允许我们和调试器交互。那我们应该打些什么呢？</p>
+<h5 id="help"><a href="#help" class="headerlink" title="help"></a><em>help</em></h5><p>最简单命令是 <code>help</code>，它会列举出所有的命令。如果你忘记了一个命令是做什么的，或者想知道更多的话，你可以通过 <code>help &lt;command&gt;</code> 来了解更多细节，例如 <code>help print</code> 或者 <code>help thread</code>。如果你甚至忘记了 <code>help</code> 命令是做什么的，你可以试试 <code>help help</code>。不过你如果知道这么做，那就说明你大概还没有忘光这个命令。</p>
+<h5 id="print"><a href="#print" class="headerlink" title="print"></a><em>print</em></h5><p>打印值很简单；只要试试 <code>print</code> 命令:</p>
+<p>LLDB 实际上会作前缀匹配。所以你也可以使用 <code>prin</code>，<code>pri</code>，或者 <code>p</code>。但你不能使用 <code>pr</code>，因为 LLDB 不能消除和 <code>process</code> 的歧义 (幸运的是 <code>p</code> 并没有歧义)。</p>
+<p>你可能还注意到了，结果中有个 <code>$0</code>。实际上你可以使用它来指向这个结果。试试 <code>print $0 + 7</code>，你会看到 <code>106</code>。任何以美元符开头的东西都是存在于 LLDB 的命名空间的，它们是为了帮助你进行调试而存在的。</p>
+<h5 id="expression"><a href="#expression" class="headerlink" title="expression"></a><em>expression</em></h5><p>改变一个值</p>
+<h4 id="添加断点"><a href="#添加断点" class="headerlink" title="添加断点"></a>添加断点</h4><p>利用 LLDB 的 bt 命令，你可以打印断点。bt all 可以达到一样的效果，区别在于会打印全部线程的状态，而不仅是当前的线程。</p>
+<p>随便摘抄了点…<br>后续会来补最近学习使用Debug的用后感。</p>
+<blockquote>
+<p>未完待续…</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/02/24/2016-02-24-Xcode-Debug-LLDB/" data-id="cjkrk60c3001l5mg680b844su" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Debug/">Debug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xcode/">Xcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          ARC下OC对象和CF对象之间的桥接(bridge)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/12/23/2013-12-23-autorelease/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">autorelease 到底是个什么鬼？</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/" class="archive-article-date">
-  <time datetime="2016-03-03T09:22:01.000Z" itemprop="datePublished">Mar 3</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/">Build-Time CFBundleVersion Values in WatchKit Apps</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/" class="archive-article-date">
-  <time datetime="2016-02-25T09:39:31.000Z" itemprop="datePublished">Feb 25</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/">ARC下OC对象和CF对象之间的桥接(bridge)</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/02/24/2016-02-24-Xcode-Debug-LLDB/" class="archive-article-date">
-  <time datetime="2016-02-24T07:10:59.000Z" itemprop="datePublished">Feb 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/02/24/2016-02-24-Xcode-Debug-LLDB/">Xcode Debug 竟这般美丽</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2013" class="archive-year">2013</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/12/23/2013-12-23-autorelease/" class="archive-article-date">
-  <time datetime="2013-12-23T14:43:12.000Z" itemprop="datePublished">Dec 23</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/12/23/2013-12-23-autorelease/">autorelease 到底是个什么鬼？</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/07/17/2013-07-17-iphone-lcd-clock-use-system-font/" class="archive-article-date">
-  <time datetime="2013-07-17T14:16:00.000Z" itemprop="datePublished">Jul 17</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/07/17/2013-07-17-iphone-lcd-clock-use-system-font/">iphone lcd clock use system font</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/07/03/2013-07-03-mac-os-terminal-skill/" class="archive-article-date">
-  <time datetime="2013-07-03T02:35:00.000Z" itemprop="datePublished">Jul 3</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/07/03/2013-07-03-mac-os-terminal-skill/">mac os terminal skill</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/06/27/2013-06-27-wget-tutorials/" class="archive-article-date">
-  <time datetime="2013-06-27T07:05:00.000Z" itemprop="datePublished">Jun 27</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/06/27/2013-06-27-wget-tutorials/">wget tutorials</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/06/21/2013-06-21-git-log-geek/" class="archive-article-date">
-  <time datetime="2013-06-21T06:21:00.000Z" itemprop="datePublished">Jun 21</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/06/21/2013-06-21-git-log-geek/">git log geek</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2013/06/13/2013-06-13-mac-terminal-color/" class="archive-article-date">
-  <time datetime="2013-06-13T05:49:00.000Z" itemprop="datePublished">Jun 13</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2013/06/13/2013-06-13-mac-terminal-color/">mac terminal 彩色</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

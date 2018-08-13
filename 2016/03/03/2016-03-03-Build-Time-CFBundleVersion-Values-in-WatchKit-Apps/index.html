@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Build-Time CFBundleVersion Values in WatchKit Apps | vvlvv</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="问题原文地址：http://ikennd.ac/blog/2015/05/build-time-cfbundleversion-values-in-watchkit-apps/ 当编译 WatchKit app 时，你经常会遇到下面的错误：   error: The value of CFBundleVersion in your WatchKit app’s Info.plist (1) doe">
+<meta name="keywords" content="Xcode,翻译,WatchKit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Build-Time CFBundleVersion Values in WatchKit Apps">
+<meta property="og:url" content="http://yoursite.com/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/index.html">
+<meta property="og:site_name" content="vvlvv">
+<meta property="og:description" content="问题原文地址：http://ikennd.ac/blog/2015/05/build-time-cfbundleversion-values-in-watchkit-apps/ 当编译 WatchKit app 时，你经常会遇到下面的错误：   error: The value of CFBundleVersion in your WatchKit app’s Info.plist (1) doe">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/2016-03-03-step1-new-aggregate-target.png">
+<meta property="og:image" content="http://yoursite.com/images/2016-03-03-step2-aggregate-with-script.png">
+<meta property="og:image" content="http://yoursite.com/images/2016-03-03-step3-dependency-setup.png">
+<meta property="og:image" content="http://yoursite.com/images/2016-03-03-step4-scheme-build-options.png">
+<meta property="og:image" content="http://yoursite.com/images/2016-03-03-step5-build-settings.png">
+<meta property="og:image" content="http://yoursite.com/images/2016-03-03-step6-info-plist.png">
+<meta property="og:image" content="http://yoursite.com/images/2016-03-03-step8-cascable.jpg">
+<meta property="og:updated_time" content="2018-08-12T12:04:36.556Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Build-Time CFBundleVersion Values in WatchKit Apps">
+<meta name="twitter:description" content="问题原文地址：http://ikennd.ac/blog/2015/05/build-time-cfbundleversion-values-in-watchkit-apps/ 当编译 WatchKit app 时，你经常会遇到下面的错误：   error: The value of CFBundleVersion in your WatchKit app’s Info.plist (1) doe">
+<meta name="twitter:image" content="http://yoursite.com/images/2016-03-03-step1-new-aggregate-target.png">
+  
+    <link rel="alternate" href="/atom.xml" title="vvlvv" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">vvlvv</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">人生短短数十载，本该淡淡然！</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/" class="article-date">
+  <time datetime="2016-03-03T09:22:01.000Z" itemprop="datePublished">2016-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Build-Time CFBundleVersion Values in WatchKit Apps
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>原文地址：<a href="http://ikennd.ac/blog/2015/05/build-time-cfbundleversion-values-in-watchkit-apps/" target="_blank" rel="noopener">http://ikennd.ac/blog/2015/05/build-time-cfbundleversion-values-in-watchkit-apps/</a></p>
+<p>当编译 WatchKit app 时，你经常会遇到下面的错误：</p>
+<blockquote>
+</blockquote>
+<p>error: The value of CFBundleVersion in your WatchKit app’s Info.plist (1) does not match the value in your companion app’s Info.plist (2). These values are required to match.</p>
+<p>很简单，对吗？我们只需要确保全部 target 的 <code>CFBundleVersion</code>的值一样。不过… 如果我们使用动态生成的<code>CFBundleVersion</code>，比如说，git 仓库的 commits 数量。那么，我们只需要在 Xcode 中找到 WatchKit app 的 target 。点击 “Build Phases” 选项卡，然后… oh NO 。 那里并没有我们所希望的东西。</p>
+<p>所以，如果我们需要 WatchKit app 在编译时匹配源 app 的 <code>CFBundleVersion</code>。我们该怎么办？首先，我们想知道这个匹配为什么不会自动完成。其次，在签名之前，我们试着从另一个 target 修改 WatchKit app 的Info.plist 文件。第三，我们想出下面这个可怕的变通方案。</p>
+<h3 id="可怕的变通方案"><a href="#可怕的变通方案" class="headerlink" title="可怕的变通方案"></a>可怕的变通方案</h3><p>这个变通方案就是生成一个包含版本信息定义的 header 文件。然后对 Info.plist 使用预处理，来更新 WatchKit app 的 Info.plist 文件。</p>
+<h4 id="step-1"><a href="#step-1" class="headerlink" title="step 1"></a>step 1</h4><p>新建一个target，选择 “other” 下的 “Aggregate”。</p>
+<p><img src="/images/2016-03-03-step1-new-aggregate-target.png" alt="step1"></p>
+<h4 id="step-2"><a href="#step-2" class="headerlink" title="step 2"></a>step 2</h4><p>在这个新建的 target 下，创建一个 shell script 来生成 header 文件，这个文件包含 C-style #define 语句，来定义version(s)。</p>
+<p>我的例子在这里生成了两个版本号（一个基于 git 版本库 commits 数量的版本号，一个详细版本号给出了详细的描述，commit的哈希值），然后放到build目录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">GIT_RELEASE_VERSION=$(git describe --tags --always --dirty --long)</span><br><span class="line">COMMITS=$(git rev-list HEAD | wc -l)</span><br><span class="line">COMMITS=$(($COMMITS))</span><br><span class="line"></span><br><span class="line">mkdir -p &quot;$BUILT_PRODUCTS_DIR/include&quot;</span><br><span class="line"></span><br><span class="line">echo &quot;#define CBL_VERBOSE_VERSION $&#123;GIT_RELEASE_VERSION#*v&#125;&quot; &gt; &quot;$BUILT_PRODUCTS_DIR/include/CBLVersions.h&quot;</span><br><span class="line">echo &quot;#define CBL_BUNDLE_VERSION $&#123;COMMITS&#125;&quot; &gt;&gt; &quot;$BUILT_PRODUCTS_DIR/include/CBLVersions.h&quot;</span><br><span class="line"></span><br><span class="line">echo &quot;Written to $BUILT_PRODUCTS_DIR/include/CBLVersions.h&quot;</span><br></pre></td></tr></table></figure>
+<p>这个脚本的输出文件如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#define CBL_VERBOSE_VERSION a6f5bd0-dirty</span><br><span class="line">#define CBL_BUNDLE_VERSION 1</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2016-03-03-step2-aggregate-with-script.png" alt="step2"></p>
+<h4 id="step-3"><a href="#step-3" class="headerlink" title="step 3"></a>step 3</h4><p>在其他 target 的“Build Phases”面板中“Target Dependencies”添加新创建的 “aggregate target”。你可以把它添加到所有的使用 version 的 target，但你肯定会把它添加到你的 WatchKit Extension target。</p>
+<p><img src="/images/2016-03-03-step3-dependency-setup.png" alt="step3"></p>
+<h4 id="step-4"><a href="#step-4" class="headerlink" title="step 4"></a>step 4</h4><p>Xcode 是相当聪明的，默认并行编译 target 依赖。然而，这将意味着你的 WatchKit app 将和 aggregate 在同一时间被构建，这将导致构建失败，因为 header 文件还没有及时生成。</p>
+<p>为了解决这个问题，编辑你的 target 的 scheme，在“Build”项，取消“Parallelize Build”的选中状态。这将强制 Xcode 在继续下一步之前等待 header 文件生成。</p>
+<p><img src="/images/2016-03-03-step4-scheme-build-options.png" alt="step4"></p>
+<h4 id="step-5"><a href="#step-5" class="headerlink" title="step 5"></a>step 5</h4><p>选中你的 target，在 build settings 中编辑如下几项：</p>
+<ul>
+<li>Preprocess Info.plist File should be set to Yes.</li>
+<li>Info.plist Other Preprocessor Flags should be set to -traditional.</li>
+<li>Info.plist Preprocessor Prefix File should be set to wherever your generated header file has been placed. In my case, it’s ${CONFIGURATION_BUILD_DIR}/include/CBLVersions.h.</li>
+</ul>
+<p><img src="/images/2016-03-03-step5-build-settings.png" alt="step5"></p>
+<h4 id="step-6"><a href="#step-6" class="headerlink" title="step 6"></a>step 6</h4><p>最后，编辑你的 Info.plist 文件，把<code>CFBundleVersion</code>匹配到你生成的 header 文件。在我的例子中，我设置<code>CFBundleVersion</code> 为 <code>CBL_BUNDLE_VERSION</code>。</p>
+<p><img src="/images/2016-03-03-step6-info-plist.png" alt="step6"></p>
+<h4 id="step-7"><a href="#step-7" class="headerlink" title="step 7"></a>step 7</h4><p>去苹果软件bug报告中心，要求（友好的）他们还给我们 build phases 为 WatchKit apps，如果你喜欢，你可以欺骗我的（Radar #20782873）；</p>
+<h4 id="step-8"><a href="#step-8" class="headerlink" title="step 8"></a>step 8</h4><p><img src="/images/2016-03-03-step8-cascable.jpg" alt="step8"></p>
+<p>大功告成！</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>这是可怕的。我们需要禁用并行构建，来生成中间 header 文件和各种污秽。希望在不久的将来，在 WatchKit app 中我们将看到 build phases 出现！</p>
+<p>在<a href="http://ikennd.ac/pictures/watchkit-versions/Clicker.zip" target="_blank" rel="noopener">这里</a>您可以下载本教程的项目。</p>
+<blockquote>
+<p>本该淡淡然~~~</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/" data-id="cjkrk60c800245mg6pypffte9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WatchKit/">WatchKit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xcode/">Xcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/06/17/2016-06-17-使用xcode查找项目中的中文字符串/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          2016--6-17-使用xcode查找项目中的中文字符串
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ARC下OC对象和CF对象之间的桥接(bridge)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARC/">ARC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debug/">Debug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Home-Brew/">Home Brew</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory/">Memory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WatchKit/">WatchKit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xcode/">Xcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminal/">terminal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/Debug/" style="font-size: 10px;">Debug</a> <a href="/tags/Home-Brew/" style="font-size: 10px;">Home Brew</a> <a href="/tags/Memory/" style="font-size: 10px;">Memory</a> <a href="/tags/WatchKit/" style="font-size: 10px;">WatchKit</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/iOS/" style="font-size: 17.5px;">iOS</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mac/" style="font-size: 20px;">mac</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/terminal/" style="font-size: 15px;">terminal</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/06/17/2016-06-17-使用xcode查找项目中的中文字符串/">2016--6-17-使用xcode查找项目中的中文字符串</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/">Build-Time CFBundleVersion Values in WatchKit Apps</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/">ARC下OC对象和CF对象之间的桥接(bridge)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/24/2016-02-24-Xcode-Debug-LLDB/">Xcode Debug 竟这般美丽</a>
+          </li>
+        
+          <li>
+            <a href="/2013/12/23/2013-12-23-autorelease/">autorelease 到底是个什么鬼？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 vvlvv<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

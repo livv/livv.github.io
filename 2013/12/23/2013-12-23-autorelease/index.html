@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>autorelease 到底是个什么鬼？ | vvlvv</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="写在前面autorelease 字面上的意思就是“自动释放”。那问题来了，何时会自动释放呢？（MRC 已经离我们远去，本文讨论皆为 ARC 环境下） 何时释放autorelease 对象到底是何时被释放的？废话不多说，先来看代码。 1234- (void)viewDidLoad &amp;#123;     [super viewDidLoad];     NSArray *tmpArr = [NSArr">
+<meta name="keywords" content="iOS,Memory">
+<meta property="og:type" content="article">
+<meta property="og:title" content="autorelease 到底是个什么鬼？">
+<meta property="og:url" content="http://yoursite.com/2013/12/23/2013-12-23-autorelease/index.html">
+<meta property="og:site_name" content="vvlvv">
+<meta property="og:description" content="写在前面autorelease 字面上的意思就是“自动释放”。那问题来了，何时会自动释放呢？（MRC 已经离我们远去，本文讨论皆为 ARC 环境下） 何时释放autorelease 对象到底是何时被释放的？废话不多说，先来看代码。 1234- (void)viewDidLoad &amp;#123;     [super viewDidLoad];     NSArray *tmpArr = [NSArr">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-12T12:04:36.555Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="autorelease 到底是个什么鬼？">
+<meta name="twitter:description" content="写在前面autorelease 字面上的意思就是“自动释放”。那问题来了，何时会自动释放呢？（MRC 已经离我们远去，本文讨论皆为 ARC 环境下） 何时释放autorelease 对象到底是何时被释放的？废话不多说，先来看代码。 1234- (void)viewDidLoad &amp;#123;     [super viewDidLoad];     NSArray *tmpArr = [NSArr">
+  
+    <link rel="alternate" href="/atom.xml" title="vvlvv" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">vvlvv</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">人生短短数十载，本该淡淡然！</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2013-12-23-autorelease" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/12/23/2013-12-23-autorelease/" class="article-date">
+  <time datetime="2013-12-23T14:43:12.000Z" itemprop="datePublished">2013-12-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      autorelease 到底是个什么鬼？
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p><code>autorelease</code> 字面上的意思就是“自动释放”。那问题来了，何时会自动释放呢？（MRC 已经离我们远去，本文讨论皆为 ARC 环境下）</p>
+<h3 id="何时释放"><a href="#何时释放" class="headerlink" title="何时释放"></a>何时释放</h3><p>autorelease 对象到底是何时被释放的？废话不多说，先来看代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">     [super viewDidLoad];</span><br><span class="line">     NSArray *tmpArr = [NSArray arrayWithObject:@&quot;小明&quot;]; //这是一个局部对象，封装了autorelease方法</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那么请问，tmpArr 这个临时变量是何时释放的呢？我相信很多人会回答：“出了作用域，就会被释放”。但事实并非如此，下面用几行代码来打印 tmpArr，证明出了作用域依旧没被释放。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">__weak id weakArr;</span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    NSArray *tmpArr = [NSArray arrayWithObject:@&quot;小明&quot;]; //这是一个局部对象，封装了autorelease方法</span><br><span class="line">    weakArr = tmpArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)viewWillAppear:(BOOL)animated &#123;</span><br><span class="line">    [super viewWillAppear:animated];</span><br><span class="line">    NSLog(@&quot;viewWillAppear : %@&quot;, weakArr);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)viewDidAppear:(BOOL)animated &#123;</span><br><span class="line">    [super viewDidAppear:animated];</span><br><span class="line">    NSLog(@&quot;viewWillAppear : %@&quot;, weakArr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在ARC环境下我用一个 <code>__weak</code> 类型来追踪 tmpArr 的释放时机，<code>__weak</code> 并不会对 tmpArr 增加引用计数，因此不干扰其释放，log 显示如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">viewWillAppear : (</span><br><span class="line">    &quot;小明&quot;</span><br><span class="line">)</span><br><span class="line">viewWillAppear : (null)</span><br></pre></td></tr></table></figure>
+<p>我们发现，tmpArr 在 viewWillAppear 还活着，在 viewDidAppear 已经被释放了。这说明了一件事：autorelease 并不是根据作用域来决定释放时机的。那到底是依据什么呢？答案是：<code>runloop</code>。runloop 不在本文讨论范围内，感兴趣的同学请自行查阅资料。简单说，runloop 就是 iOS 中的消息循环机制，当一个 runloop 结束时系统才会一次性清理掉被 autorelease 处理过的对象，其实本质上说是在本次 runloop 迭代结束时清理掉被本次迭代期间被放到 autorelease pool 中的对象的。至于何时 runloop 结束并没有固定的周期。</p>
+<p>那么问题来了：iOS 的这种基于 runloop 的内存回收策略有不方便的时候吗？我认为是显然有的。但凡事物总是有两面性的，使用 autorelease 的确方便，但在一定的情况下会带来性能问题。我们看个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for (int i = 0; i &lt;= 1000; i ++) &#123;</span><br><span class="line">     NSString *filePath = [[NSBundle mainBundle] pathForResource:@&quot;test&quot; ofType:@&quot;PNG&quot;];</span><br><span class="line">     UIImage *image = [[UIImage alloc] initWithContentsOfFile:filePath];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述例子看起来没有什么问题。但是临时 image 对象是一个 autorelease 类型。实际去跑这段程序会发现，在循环1000次的条件下内存持续飙升，因为那个 autorelease 对象并没有如我们预期般在每次 for 循环的花括号结束时释放掉！如果从 runloop 的角度考虑就显得合理了。</p>
+<p>那么问题又来了：既然交给 runloop 处理可能会有问题，那我们可以人工干预 autorelease 对象的释放时机吗？答案是肯定的，上文有提到 autorelease pool，这是下一个问题要解决的任务，在这里不展开，你只需要知道，一旦一个对象被 autorelease，则该对象会被放到iOS的一个自动释放池：autorelease pool，其实这个pool本质上是一个 stack，扔到 pool 中的对象等价于入栈。我们把需要及时释放掉的代码块放入我们生成的 autorelease pool 中，结束后清空这个自定义的 pool，主动地让 pool 清空掉，从而达到及时释放内存的目的。以上述图片处理的例子为例，优化如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for (int i = 0; i &lt;= 1000; i ++) &#123;</span><br><span class="line">    @autoreleasepool&#123;</span><br><span class="line">        NSString *filePath = [[NSBundle mainBundle] pathForResource:@&quot;test&quot; ofType:@&quot;PNG&quot;];</span><br><span class="line">        UIImage *image = [[UIImage alloc] initWithContentsOfFile:filePath];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>释放时机是基于 runloop 而不是作用域；通过 autorelease pool 可以手动干预释放；循环多次时要对 autorelease 进行优化。</p>
+<h3 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h3><p>在文章的最后顺便说下，在 iOS 中有三种常用的遍历方法：for、forin、enumerateObjectsUsingBlcok。实际使用中大家可能没有感觉到太大区别，前面两个比较常用，最后一个是 iOS 特有的遍历方式，但事实上还是有区别的。block 版本的遍历方式已经内嵌了@autoreleasepool{} 操作，而前面两个没有，这样就意味着使用 block 版本的遍历方式会使 App 更加健壮，内存使用效率更加出色，而且最重要的是：逼格高！逼格高！逼格高！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2013/12/23/2013-12-23-autorelease/" data-id="cjkrk60c4001n5mg6zaqrob6g" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Memory/">Memory</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/02/24/2016-02-24-Xcode-Debug-LLDB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Xcode Debug 竟这般美丽
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/07/17/2013-07-17-iphone-lcd-clock-use-system-font/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">iphone lcd clock use system font</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARC/">ARC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debug/">Debug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Home-Brew/">Home Brew</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory/">Memory</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WatchKit/">WatchKit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xcode/">Xcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/other/">other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminal/">terminal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ARC/" style="font-size: 10px;">ARC</a> <a href="/tags/Debug/" style="font-size: 10px;">Debug</a> <a href="/tags/Home-Brew/" style="font-size: 10px;">Home Brew</a> <a href="/tags/Memory/" style="font-size: 10px;">Memory</a> <a href="/tags/WatchKit/" style="font-size: 10px;">WatchKit</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/git/" style="font-size: 12.5px;">git</a> <a href="/tags/iOS/" style="font-size: 17.5px;">iOS</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mac/" style="font-size: 20px;">mac</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/terminal/" style="font-size: 15px;">terminal</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">January 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/08/">August 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/02/">February 2012</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/06/17/2016-06-17-使用xcode查找项目中的中文字符串/">2016--6-17-使用xcode查找项目中的中文字符串</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/03/2016-03-03-Build-Time-CFBundleVersion-Values-in-WatchKit-Apps/">Build-Time CFBundleVersion Values in WatchKit Apps</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/25/2016-02-25-ARC下OC对象和CF对象之间的桥接/">ARC下OC对象和CF对象之间的桥接(bridge)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/24/2016-02-24-Xcode-Debug-LLDB/">Xcode Debug 竟这般美丽</a>
+          </li>
+        
+          <li>
+            <a href="/2013/12/23/2013-12-23-autorelease/">autorelease 到底是个什么鬼？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 vvlvv<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
