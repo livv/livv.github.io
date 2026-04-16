@@ -1,7 +1,427 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vlv - 应用主页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007AFF;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #007AFF;
+        }
+
+        /* Hero 区域 */
+        .hero {
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 20px;
+            opacity: 0.9;
+        }
+
+        /* App 展示区域 */
+        .apps-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+            color: #333;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .app-card {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .app-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .app-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 24px;
+            margin: 0 auto 20px;
+            display: block;
+            background-color: white;
+            padding: 10px;
+        }
+
+        .app-header h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .app-header p {
+            opacity: 0.9;
+            font-size: 16px;
+        }
+
+        .app-content {
+            padding: 30px;
+        }
+
+        .app-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            min-height: 100px;
+        }
+
+        .app-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .app-features li {
+            padding: 8px 0;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .app-features li::before {
+            content: "✓";
+            color: #007AFF;
+            font-weight: bold;
+        }
+
+        .app-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .app-link:hover {
+            transform: translateY(-2px);
+        }
+
+        /* 未来应用预留区域 */
+        .future-apps {
+            background-color: #f5f5f5;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .future-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .future-content h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .future-content p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .apps-grid.empty {
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        }
+
+        .empty-card {
+            background-color: #f0f0f0;
+            border: 2px dashed #ccc;
+            border-radius: 20px;
+            padding: 60px 30px;
+            text-align: center;
+            color: #999;
+        }
+
+        /* 页脚 */
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .copyright {
+            opacity: 0.6;
+            font-size: 14px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">vlv</a>
+            <div class="nav-links">
+                <a href="#apps">我的应用</a>
+                <a href="mailto:vlv666@qq.com">联系我</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero 区域 -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>我的应用作品集</h1>
+                <p>精选实用的 macOS 应用，提升您的开发效率</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- App 展示区域 -->
+    <section id="apps" class="apps-section">
+        <div class="container">
+            <h2 class="section-title">我的应用</h2>
+            <div class="apps-grid">
+                <!-- vPaste 应用卡片 -->
+                <a href="https://livv.github.io/vpaste" class="app-card" target="_blank">
+                    <div class="app-header">
+                        <img src="https://livv.github.io/vpaste/icon.png" alt="vPaste" class="app-icon">
+                        <h2>vPaste</h2>
+                        <p>macOS 剪贴板管理工具</p>
+                    </div>
+                    <div class="app-content">
+                        <p class="app-description">
+                            高效的 macOS 剪贴板管理工具，自动捕获剪贴板历史，快速访问常用内容，让复制粘贴更高效。
+                        </p>
+                        <ul class="app-features">
+                            <li>自动历史记录</li>
+                            <li>快速访问（⌘⇧V）</li>
+                            <li>分组管理</li>
+                            <li>智能搜索</li>
+                            <li>本地存储</li>
+                        </ul>
+                        <span class="app-link">查看详情</span>
+                    </div>
+                </a>
+
+                <!-- vClean 应用卡片 -->
+                <a href="https://livv.github.io/vclean" class="app-card" target="_blank">
+                    <div class="app-header">
+                        <img src="https://livv.github.io/vclean/icon.png" alt="vClean" class="app-icon">
+                        <h2>vClean</h2>
+                        <p>Xcode 编译目录清理工具</p>
+                    </div>
+                    <div class="app-content">
+                        <p class="app-description">
+                            专业的 Xcode 编译目录清理工具，智能扫描和分析文件夹大小，帮助您安全释放宝贵的磁盘空间。
+                        </p>
+                        <ul class="app-features">
+                            <li>智能扫描</li>
+                            <li>安全清理</li>
+                            <li>可视化分析</li>
+                            <li>精准筛选</li>
+                            <li>完全隐私</li>
+                        </ul>
+                        <span class="app-link">查看详情</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 未来应用预留区域 -->
+    <section class="future-apps">
+        <div class="container">
+            <div class="future-content">
+                <h3>更多应用即将推出</h3>
+                <p>我正在开发更多实用的 macOS 应用，敬请期待...</p>
+            </div>
+            <div class="container">
+                <div class="apps-grid empty" style="margin-top: 40px;">
+                    <div class="empty-card">
+                        <p>🚀 敬请期待</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#apps">我的应用</a>
+                    <a href="mailto:vlv666@qq.com">联系我</a>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2026 vlv. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 页面滚动时导航栏效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
 </body>
 </html>
