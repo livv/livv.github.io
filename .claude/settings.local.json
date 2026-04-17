@@ -11,7 +11,8 @@
       "Bash(cp /Users/wei/github/vPaste_pages/icon.png /Users/wei/github/livv.github.io/vpaste/)",
       "Bash(cp /Users/wei/github/vPaste_pages/css/style.css /Users/wei/github/livv.github.io/vpaste/)",
       "Bash(cp /Users/wei/github/vPaste_pages/js/i18n.js /Users/wei/github/livv.github.io/vpaste/)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost/vclean/index.html)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost/vclean/index.html)",
+      "Bash(git push:*)"
     ]
   }
 }
