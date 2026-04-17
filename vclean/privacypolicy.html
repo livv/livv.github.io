@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vClean 隐私政策</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 0px;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            margin-bottom: 40px;  
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007AFF;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .lang-switch {
+            background: none;
+            border: 1px solid #007AFF;
+            color: #007AFF;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .lang-switch:hover {
+            background-color: #007AFF;
+            color: white;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #007AFF;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .highlight strong {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 24px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        h3 {
+            color: #555;
+            font-size: 18px;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        ul {
+            margin-left: 25px;
+            margin-bottom: 20px;
+            border-left: 3px solid #667eea;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        li strong {
+            color: #667eea;
+        }
+
+        .section-card {
+            background-color: #f8f9ff;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .section-card h3 {
+            color: #667eea;
+            margin-top: 0;
+        }
+
+        .section-card p:first-child {
+            margin-top: 0;
+        }
+
+        .section-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .footer p {
+            color: white;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .last-updated {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .content {
+                padding: 25px;
+            }
+
+            .header {
+                padding: 40px 25px;
+            }
+
+            ul {
+                margin-left: 15px;
+                padding-left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo" style="text-decoration: none;">vClean</a>
+            <div class="nav-links">
+                <a href="index.html#features" data-lang="nav.features">功能特色</a>
+                <a href="index.html#screenshot" data-lang="nav.screenshot">截图展示</a>
+                <a href="index.html#download" data-lang="nav.download">下载</a>
+                <a href="privacypolicy.html" style="color: #007AFF;" data-lang="nav.privacy">隐私政策</a>
+                <button id="lang-switch-btn" class="lang-switch">English</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1 data-lang="privacy.header.title">🛡️ vClean 隐私政策</h1>
+            <p data-lang="privacy.header.subtitle">我们承诺保护您的隐私，所有操作均在本地完成</p>
+        </div>
+
+        <div class="content">
+            <div class="highlight">
+                <strong data-lang="privacy.last_updated">最后更新日期：2026年4月14日</strong><br>
+                <strong data-lang="privacy.effective_date">生效日期：2026年4月14日</strong>
+            </div>
+
+            <p data-lang="privacy.intro">感谢您选择 vClean 应用（以下简称"本应用"）。我们高度重视您的隐私保护，本应用承诺不会收集、存储、传输或分享任何个人数据。</p>
+
+            <div class="section-card">
+                <h2 data-lang="privacy.section1.title">1. 信息收集政策</h2>
+                <p data-lang="privacy.section1.content">本应用完全尊重并保护用户隐私，<strong>不会收集任何形式的个人信息</strong>，包括但不限于：</p>
+                <ul>
+                    <li data-lang="privacy.section1.list1">个人身份信息（姓名、地址、电话号码、电子邮件等）</li>
+                    <li data-lang="privacy.section1.list2">设备信息（设备型号、操作系统版本、唯一设备标识符等）</li>
+                    <li data-lang="privacy.section1.list3">使用数据（使用习惯、偏好设置、崩溃报告等）</li>
+                    <li data-lang="privacy.section1.list4">位置信息</li>
+                    <li data-lang="privacy.section1.list5">网络信息（IP地址、网络运营商等）</li>
+                </ul>
+            </div>
+
+            <div class="section-card">
+                <h2 data-lang="privacy.section2.title">2. 应用功能说明</h2>
+                <p data-lang="privacy.section2.content">vClean 是一款专为 macOS 开发者设计的 Xcode 编译目录清理工具，主要功能包括：</p>
+                <ul>
+                    <li data-lang="privacy.section2.list1">扫描和分析 Xcode 编译目录</li>
+                    <li data-lang="privacy.section2.list2">显示编译文件夹的大小和最后访问时间</li>
+                    <li data-lang="privacy.section2.list3">提供安全的删除功能，清理不需要的编译文件</li>
+                    <li data-lang="privacy.section2.list4">支持拖放操作，方便用户添加自定义路径</li>
+                </ul>
+                <p data-lang="privacy.section2.footer">所有这些功能都在您的本地设备上完成，不需要访问互联网，也不会与任何第三方服务通信。</p>
+            </div>
+
+            <div class="section-card">
+                <h2 data-lang="privacy.section3.title">3. 数据存储方式</h2>
+                <p data-lang="privacy.section3.content">本应用所有的扫描结果、设置和缓存数据都<strong>仅存储在您的本地设备上</strong>，包括：</p>
+                <ul>
+                    <li data-lang="privacy.section3.list1">扫描到的文件夹信息（路径、大小、访问时间）</li>
+                    <li data-lang="privacy.section3.list2">用户偏好设置</li>
+                    <li data-lang="privacy.section3.list3">应用缓存数据</li>
+                </ul>
+                <p data-lang="privacy.section3.footer">这些数据不会上传到任何服务器，也不会与第三方共享。</p>
+            </div>
+
+            <div class="section-card">
+                <h2 data-lang="privacy.section4.title">4. 第三方服务</h2>
+                <p data-lang="privacy.section4.content">本应用<strong>不使用任何第三方分析工具、广告网络或社交媒体插件</strong>。我们没有集成任何需要收集用户数据的 SDK 或服务。</p>
+            </div>
+
+            <div class="section-card">
+                <h2 data-lang="privacy.section5.title">5. 儿童隐私保护</h2>
+                <p data-lang="privacy.section5.content">本应用不面向儿童用户，也不会收集任何儿童个人信息。如果您是13岁以下儿童，请勿使用本应用。</p>
+            </div>
+
+            <div class="section-card">
+                <h2 data-lang="privacy.section6.title">6. 数据安全</h2>
+                <p data-lang="privacy.section6.content">由于本应用不收集或存储任何个人数据，因此不存在数据泄露风险。所有操作都在您的本地设备上完成，确保了数据的绝对安全。</p>
+            </div>
+
+            <div class="section-card">
+                <h2 data-lang="privacy.section7.title">7. 您的权利</h2>
+                <p data-lang="privacy.section7.content">由于本应用不收集任何个人数据，您无需行使以下权利：</p>
+                <ul>
+                    <li data-lang="privacy.section7.list1">访问权：查看我们持有的您的个人信息</li>
+                    <li data-lang="privacy.section7.list2">更正权：更正不准确的个人信息</li>
+                    <li data-lang="privacy.section7.list3">删除权：要求删除您的个人信息</li>
+                    <li data-lang="privacy.section7.list4">数据可携带权：获取您的数据副本</li>
+                    <li data-lang="privacy.section7.list5">限制处理权：限制对您数据的处理</li>
+                    <li data-lang="privacy.section7.list6">反对权：反对对您数据的处理</li>
+                </ul>
+            </div>
+
+            <div class="section-card">
+                <h2 data-lang="privacy.section8.title">8. 隐私政策变更</h2>
+                <p data-lang="privacy.section8.content">我们保留随时更新本隐私政策的权利。任何变更都会在应用内显著位置公布，并更新"最后更新日期"。建议您定期查看本政策以了解最新信息。</p>
+            </div>
+
+            <div class="section-card">
+                <h2 data-lang="privacy.section9.title">9. 联系我们</h2>
+                <p data-lang="privacy.section9.content">如果您对本隐私政策有任何疑问或建议,请通过以下方式联系我们：</p>
+                <ul>
+                    <li data-lang="privacy.section9.list1">Email: <a href="mailto:vlv666@qq.com" style="color: #667eea; text-decoration: none;">vlv666@qq.com</a></li>
+                    <li data-lang="privacy.section9.list2">应用内反馈功能</li>
+                </ul>
+                <p data-lang="privacy.section9.footer">我们将在收到您的反馈后尽快回复。</p>
+            </div>
+
+            <div class="last-updated">
+                <p data-lang="privacy.footer.updated">最后更新：2026年4月14日</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>
+                <a href="mailto:vlv666@qq.com" style="color: white; text-decoration: none;">
+                    Email: vlv666@qq.com
+                </a>
+            </p>
+            <p data-lang="privacy.footer.copyright">&copy; 2026 vClean. All rights reserved.</p>
+            <p style="margin-top: 10px;" data-lang="privacy.footer.updated">最后更新：2026年4月14日</p>
+        </div>
+    </div>
+
+    <script src="language.js"></script>
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 页面滚动时导航栏效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>

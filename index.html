@@ -3,8 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>vlv - 应用主页</title>
+    <title>vlv - 未来应用实验室</title>
+
     <style>
+        /* 未来主义科技美学变量 */
+        :root {
+            --neon-blue: #00f3ff;
+            --cyber-purple: #8b5cf6;
+            --matrix-green: #00ff41;
+            --void-black: #0a0a0a;
+            --chrome-white: #f8fafc;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+
+            --font-display: 'Orbitron', 'SF Pro Display', system-ui, sans-serif;
+            --font-body: 'JetBrains Mono', 'SF Pro Text', monospace;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -12,11 +29,45 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: var(--font-body);
+            line-height: 1.7;
+            color: var(--chrome-white);
+            background: var(--void-black);
             min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 赛博朋克背景效果 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(0, 243, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(0, 255, 65, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* 网格背景 */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
         }
 
         .container {
@@ -25,28 +76,97 @@
             padding: 0 20px;
         }
 
-        /* 导航栏 */
+        /* 未来主义导航栏 */
         .navbar {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid var(--glass-border);
+            position: fixed;
             top: 0;
+            width: 100%;
             z-index: 1000;
+            padding: 1rem 0;
+            transform: translateY(-100%);
+            animation: navbarSlideDown 1s ease-out forwards;
+        }
+
+        @keyframes navbarSlideDown {
+            to { transform: translateY(0); }
         }
 
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: auto;
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #007AFF;
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--neon-blue), var(--cyber-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             text-decoration: none;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-blue);
+            transition: width 0.3s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--chrome-white);
+            text-decoration: none;
+            font-weight: 500;
+            font-family: var(--font-body);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--matrix-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--matrix-green);
         }
 
         .nav-links {
@@ -66,79 +186,195 @@
             color: #007AFF;
         }
 
-        /* Hero 区域 */
+        /* 未来主义Hero区域 */
         .hero {
-            color: white;
-            padding: 100px 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(circle, transparent 20%, var(--void-black) 20%),
+                radial-gradient(circle, transparent 20%, var(--void-black) 20%);
+            background-size: 60px 60px;
+            animation: gridRotate 20s linear infinite;
+        }
+
+        @keyframes gridRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            animation: heroEntrance 1.5s ease-out;
+        }
+
+        @keyframes heroEntrance {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            font-weight: 700;
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--neon-blue), var(--cyber-purple), var(--matrix-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -2px;
         }
 
         .hero p {
-            font-size: 20px;
-            opacity: 0.9;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            opacity: 0.8;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            font-family: var(--font-body);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        /* App 展示区域 */
+        /* 未来主义应用展示区域 */
         .apps-section {
-            padding: 80px 0;
-            background-color: white;
+            padding: 12rem 2rem 6rem;
+            position: relative;
+            z-index: 3;
         }
 
         .section-title {
             text-align: center;
-            font-size: 36px;
-            margin-bottom: 60px;
-            color: #333;
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--neon-blue), var(--matrix-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 4rem;
+            letter-spacing: -1px;
         }
 
         .apps-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-bottom: 80px;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-bottom: 8rem;
         }
 
         .app-card {
-            background-color: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            border-radius: 2rem;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
             text-decoration: none;
             color: inherit;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--neon-blue), var(--cyber-purple), var(--matrix-green));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 2rem;
+            z-index: -1;
         }
 
         .app-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow:
+                0 25px 50px rgba(0, 243, 255, 0.1),
+                0 0 30px rgba(0, 255, 65, 0.05);
+        }
+
+        .app-card:hover::before {
+            opacity: 0.1;
         }
 
         .app-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 40px 30px;
+            padding: 3rem 2rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .app-card:hover .app-header::after {
+            left: 100%;
         }
 
         .app-icon {
-            width: 100px;
-            height: 100px;
-            border-radius: 24px;
-            margin: 0 auto 20px;
+            width: 120px;
+            height: 120px;
+            border-radius: 2rem;
+            margin: 0 auto 1.5rem;
             display: block;
-            background-color: white;
-            padding: 10px;
+            background: linear-gradient(135deg, var(--chrome-white), #e2e8f0);
+            padding: 1.5rem;
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: transform 0.4s ease;
+        }
+
+        .app-card:hover .app-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .app-header h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--neon-blue), var(--matrix-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        .app-header p {
+            opacity: 0.7;
+            font-size: 1.1rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .app-header h2 {
@@ -152,92 +388,181 @@
         }
 
         .app-content {
-            padding: 30px;
+            padding: 2rem;
         }
 
         .app-description {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            min-height: 100px;
+            color: rgba(248, 250, 252, 0.8);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            min-height: 120px;
         }
 
         .app-features {
             list-style: none;
-            margin-bottom: 30px;
+            margin-bottom: 2.5rem;
         }
 
         .app-features li {
-            padding: 8px 0;
-            color: #555;
+            padding: 0.75rem 0;
+            color: rgba(248, 250, 252, 0.9);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 1rem;
+            font-size: 1rem;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+            padding-left: 1rem;
+        }
+
+        .app-features li:hover {
+            border-left-color: var(--matrix-green);
+            padding-left: 1.5rem;
+            color: var(--matrix-green);
         }
 
         .app-features li::before {
-            content: "✓";
-            color: #007AFF;
+            content: '▸';
+            color: var(--neon-blue);
             font-weight: bold;
+            font-size: 1.2rem;
+            min-width: 1rem;
         }
 
         .app-link {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 25px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, var(--neon-blue), var(--cyber-purple));
+            color: var(--void-black);
+            padding: 1rem 2rem;
+            border-radius: 2rem;
             text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s;
+            font-weight: 700;
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow:
+                0 10px 30px rgba(0, 243, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .app-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s ease;
         }
 
         .app-link:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow:
+                0 15px 40px rgba(0, 243, 255, 0.4),
+                0 0 20px rgba(0, 255, 65, 0.2);
         }
 
-        /* 未来应用预留区域 */
+        .app-link:hover::before {
+            left: 100%;
+        }
+
+        /* 未来应用实验室区域 */
         .future-apps {
-            background-color: #f5f5f5;
-            padding: 80px 0;
-            text-align: center;
+            background: linear-gradient(135deg, var(--void-black), rgba(10, 10, 10, 0.9));
+            padding: 8rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .future-apps::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 30% 70%, rgba(0, 243, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .future-content {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            text-align: center;
         }
 
         .future-content h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #333;
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--neon-blue), var(--matrix-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
         }
 
         .future-content p {
-            color: #666;
-            margin-bottom: 30px;
+            font-size: 1.3rem;
+            opacity: 0.7;
+            margin-bottom: 4rem;
+            font-family: var(--font-body);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .apps-grid.empty {
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
         }
 
         .empty-card {
-            background-color: #f0f0f0;
-            border: 2px dashed #ccc;
-            border-radius: 20px;
-            padding: 60px 30px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 2px dashed var(--glass-border);
+            border-radius: 2rem;
+            padding: 4rem 3rem;
             text-align: center;
-            color: #999;
+            color: rgba(248, 250, 252, 0.6);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* 页脚 */
+        .empty-card::before {
+            content: '🚀';
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* 未来主义页脚 */
         .footer {
-            background-color: #333;
-            color: white;
-            padding: 40px 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-top: 1px solid var(--glass-border);
+            padding: 3rem 2rem;
             text-align: center;
+            position: relative;
+            z-index: 3;
         }
 
         .footer-content {
@@ -248,46 +573,109 @@
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-bottom: 20px;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
 
         .footer-links a {
-            color: white;
+            color: rgba(248, 250, 252, 0.8);
             text-decoration: none;
-            opacity: 0.8;
-            transition: opacity 0.3s;
+            font-family: var(--font-body);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-blue);
+            transition: width 0.3s ease;
         }
 
         .footer-links a:hover {
-            opacity: 1;
+            color: var(--matrix-green);
+        }
+
+        .footer-links a:hover::before {
+            width: 100%;
         }
 
         .copyright {
-            opacity: 0.6;
-            font-size: 14px;
+            opacity: 0.5;
+            font-size: 0.9rem;
+            font-family: var(--font-body);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* 响应式设计 */
+        /* 未来主义响应式设计 */
+        @media (max-width: 1024px) {
+            .apps-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 2rem;
+            }
+        }
+
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 36px;
+            .nav-container {
+                padding: 0 1.5rem;
             }
 
-            .hero p {
-                font-size: 18px;
+            .nav-links {
+                gap: 1.5rem;
             }
 
-            .section-title {
-                font-size: 28px;
+            .apps-section,
+            .future-apps {
+                padding: 8rem 1.5rem 4rem;
+            }
+
+            .app-header {
+                padding: 2rem 1.5rem;
+            }
+
+            .app-icon {
+                width: 100px;
+                height: 100px;
+                padding: 1.2rem;
+            }
+
+            .app-header h2 {
+                font-size: 2rem;
+            }
+
+            .footer-links {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
             }
 
             .apps-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
-            .nav-links {
-                display: none;
+            .app-card {
+                border-radius: 1.5rem;
+            }
+
+            .empty-card {
+                padding: 3rem 2rem;
             }
         }
     </style>
@@ -320,9 +708,9 @@
             <h2 class="section-title">我的应用</h2>
             <div class="apps-grid">
                 <!-- vPaste 应用卡片 -->
-                <a href="https://livv.github.io/vpaste" class="app-card" target="_blank">
+                <a href="/vpaste/" class="app-card" onclick="window.location.href='/vpaste/'; return false;">
                     <div class="app-header">
-                        <img src="https://livv.github.io/vpaste/icon.png" alt="vPaste" class="app-icon">
+                        <img src="/vpaste/icon.png" alt="vPaste" class="app-icon">
                         <h2>vPaste</h2>
                         <p>macOS 剪贴板管理工具</p>
                     </div>
@@ -342,9 +730,9 @@
                 </a>
 
                 <!-- vClean 应用卡片 -->
-                <a href="https://livv.github.io/vclean" class="app-card" target="_blank">
+                <a href="/vclean/" class="app-card" onclick="window.location.href='/vclean/'; return false;">
                     <div class="app-header">
-                        <img src="https://livv.github.io/vclean/icon.png" alt="vClean" class="app-icon">
+                        <img src="/vclean/icon.png" alt="vClean" class="app-icon">
                         <h2>vClean</h2>
                         <p>Xcode 编译目录清理工具</p>
                     </div>
@@ -399,29 +787,119 @@
     </footer>
 
     <script>
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        // 未来主义交互效果
+        document.addEventListener('DOMContentLoaded', () => {
+            // 导航栏滚动效果
+            const navbar = document.querySelector('.navbar');
+            let lastScrollTop = 0;
+
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (scrollTop > 100) {
+                    navbar.style.backdropFilter = 'blur(30px) saturate(200%)';
+                    navbar.style.borderBottomColor = 'rgba(0, 243, 255, 0.3)';
+                } else {
+                    navbar.style.backdropFilter = 'blur(20px) saturate(180%)';
+                    navbar.style.borderBottomColor = 'rgba(255, 255, 255, 0.1)';
                 }
+
+                // 滚动方向检测
+                if (scrollTop > lastScrollTop) {
+                    navbar.style.transform = 'translateY(-100%)';
+                } else {
+                    navbar.style.transform = 'translateY(0)';
+                }
+                lastScrollTop = scrollTop;
+            });
+
+            // 应用卡片悬停效果增强
+            const cards = document.querySelectorAll('.app-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.setProperty('--hover-glow', '0 0 40px rgba(0, 255, 65, 0.3)');
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.setProperty('--hover-glow', 'none');
+                });
+            });
+
+            // 打字机效果标题
+            const heroTitle = document.querySelector('.hero h1');
+            const originalText = heroTitle.textContent;
+            heroTitle.textContent = '';
+
+            function typeWriter(text, i, callback) {
+                if (i < text.length) {
+                    heroTitle.textContent += text.charAt(i);
+                    setTimeout(() => typeWriter(text, i + 1, callback), 100);
+                } else if (callback) {
+                    callback();
+                }
+            }
+
+            // 开始打字机效果
+            setTimeout(() => {
+                typeWriter(originalText, 0, () => {
+                    // 打字完成后添加闪烁光标
+                    const cursor = document.createElement('span');
+                    cursor.className = 'cursor';
+                    cursor.textContent = '|';
+                    cursor.style.color = 'var(--neon-blue)';
+                    cursor.style.animation = 'blink 1s infinite';
+                    heroTitle.appendChild(cursor);
+                });
+            }, 1000);
+
+            // 网格动画
+            const grid = document.createElement('div');
+            grid.className = 'cyber-grid';
+            grid.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: -1;
+                background-image:
+                    linear-gradient(rgba(0, 243, 255, 0.02) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 243, 255, 0.02) 1px, transparent 1px);
+                background-size: 30px 30px;
+                opacity: 0.5;
+            `;
+            document.body.appendChild(grid);
+
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
             });
         });
 
-        // 页面滚动时导航栏效果
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
-            } else {
-                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+        // 添加CSS动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes blink {
+                0%, 50% { opacity: 1; }
+                51%, 100% { opacity: 0; }
             }
-        });
+
+            .cursor {
+                display: inline-block;
+                font-weight: bold;
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>

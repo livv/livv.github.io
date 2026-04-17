@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="vPaste - 高效的 macOS 剪贴板管理工具，自动捕获历史记录，快速粘贴，提升工作效率">
+    <meta name="keywords" content="vPaste, macOS, 剪贴板, 剪贴板管理, clipboard manager, Mac app">
+    <title>vPaste - macOS 剪贴板管理工具</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="icon.png">
+</head>
+<body data-i18n-title-key="index.title" data-i18n-meta-key="index.metaDescription" data-i18n-keywords-key="index.metaKeywords">
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="icon.png" alt="vPaste" class="logo-icon">
+                <span>vPaste</span>
+            </a>
+            <div class="nav-actions">
+                <ul class="nav-links">
+                    <li><a href="#features" data-i18n="index.nav.features">功能</a></li>
+                    <li><a href="#screenshot" data-i18n="index.nav.screenshot">截图</a></li>
+                    <li><a href="#download" data-i18n="index.nav.download">下载</a></li>
+                    <li><a href="privacy.html" data-i18n="index.nav.privacy">隐私协议</a></li>
+                    <li><a href="terms.html" data-i18n="index.nav.terms">服务条款</a></li>
+                    <li><a href="/" onclick="window.location.href='/'; return false;" style="color: #007AFF;">返回主站</a></li>
+                </ul>
+                <div class="lang-button">
+                    <button type="button" class="lang-switch-btn" data-i18n="lang.switch">
+                        English
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>vPaste</h1>
+                    <p class="tagline" data-i18n="index.hero.tagline">高效的 macOS 剪贴板管理工具</p>
+                    <p class="description" data-i18n="index.hero.description">自动捕获剪贴板历史，快速访问常用内容，让复制粘贴更高效</p>
+                    <div class="cta-buttons">
+                        <a href="https://apps.apple.com/cn/app/vpaste/id6444913968?mt=12" class="btn btn-primary" target="_blank" rel="noopener noreferrer" data-app-store>
+                            <svg class="apple-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                            </svg>
+                            <span data-i18n="index.hero.btnStore">App Store 下载</span>
+                        </a>
+                        <a href="#features" class="btn btn-secondary" data-i18n="index.hero.btnMore">了解更多</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="icon.png" alt="vPaste 应用图标" class="app-icon" data-i18n-alt="index.hero.iconAlt">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title" data-i18n="index.featuresTitle">核心功能</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 data-i18n="index.f1.title">自动历史记录</h3>
+                    <p data-i18n="index.f1.desc">自动捕获剪贴板内容，再也不用担心覆盖重要信息</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 data-i18n="index.f2.title">快速访问</h3>
+                    <p data-i18n="index.f2.desc">通过快捷键 ⌘⇧V 快速唤起，一键粘贴历史内容</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                        </svg>
+                    </div>
+                    <h3 data-i18n="index.f3.title">分组管理</h3>
+                    <p data-i18n="index.f3.desc">将常用内容分组保存，项目资料整理更高效</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </div>
+                    <h3 data-i18n="index.f4.title">智能搜索</h3>
+                    <p data-i18n="index.f4.desc">专业版支持全文搜索，快速找到任意历史内容</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 data-i18n="index.f5.title">暂停监控</h3>
+                    <p data-i18n="index.f5.desc">复制敏感内容时一键暂停，保护您的隐私安全</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 data-i18n="index.f6.title">本地存储</h3>
+                    <p data-i18n="index.f6.desc">所有数据仅保存在本地，无需担心云端泄露</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="screenshot" class="screenshot">
+        <div class="container">
+            <h2 class="section-title" data-i18n="index.screenshotTitle">应用截图</h2>
+            <div class="screenshot-container">
+                <img src="vPaste_sample.png" alt="vPaste 应用截图" class="screenshot-image" data-i18n-alt="index.screenshotAlt">
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="download">
+        <div class="container">
+            <h2 class="section-title" data-i18n="index.downloadTitle">立即下载</h2>
+            <p class="download-description" data-i18n="index.downloadDesc">支持 macOS 15.0 及以上版本</p>
+            <a href="https://apps.apple.com/cn/app/vpaste/id6444913968?mt=12" class="btn btn-primary btn-large" target="_blank" rel="noopener noreferrer" data-app-store>
+                <svg class="apple-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                </svg>
+                <span data-i18n="index.downloadBtn">App Store 下载</span>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="icon.png" alt="vPaste" class="footer-logo">
+                    <span>vPaste</span>
+                </div>
+                <div class="footer-links">
+                    <a href="privacy.html" data-i18n="index.footer.privacy">隐私协议</a>
+                    <a href="terms.html" data-i18n="index.footer.terms">服务条款</a>
+                    <a href="mailto:vlv666@qq.com" data-i18n="index.footer.contact">联系我们</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="index.footer.copy">&copy; 2026 vPaste. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/i18n.js" defer></script>
+</body>
+</html>

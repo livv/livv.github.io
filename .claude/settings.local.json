@@ -4,7 +4,14 @@
       "Bash(git add:*)",
       "Bash(git rm:*)",
       "Bash(git commit:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(cp -r /Users/wei/github/vClean_pages/* /Users/wei/github/livv.github.io/vclean/)",
+      "Bash(cp -r /Users/wei/github/vPaste_pages/* /Users/wei/github/livv.github.io/vpaste/)",
+      "Bash(cp /Users/wei/github/vPaste_pages/index.html /Users/wei/github/livv.github.io/vpaste/)",
+      "Bash(cp /Users/wei/github/vPaste_pages/icon.png /Users/wei/github/livv.github.io/vpaste/)",
+      "Bash(cp /Users/wei/github/vPaste_pages/css/style.css /Users/wei/github/livv.github.io/vpaste/)",
+      "Bash(cp /Users/wei/github/vPaste_pages/js/i18n.js /Users/wei/github/livv.github.io/vpaste/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost/vclean/index.html)"
     ]
   }
 }
