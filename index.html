@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>vlv - 未来应用实验室</title>
+    <title data-i18n-title="index.title">vlv - 未来应用实验室</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="i18n.js" defer></script>
 
     <style>
         /* 未来主义科技美学变量 */
@@ -686,8 +689,13 @@
         <div class="container nav-container">
             <a href="#" class="logo">vlv</a>
             <div class="nav-links">
-                <a href="#apps">我的应用</a>
-                <a href="mailto:vlv666@qq.com">联系我</a>
+                <a href="#apps" data-i18n-nav="nav.apps">我的应用</a>
+                <a href="mailto:vlv666@qq.com" data-i18n-nav="nav.contact">联系我</a>
+            </div>
+            <div class="lang-button">
+                <button type="button" class="lang-switch-btn" data-i18n="lang.switch">
+                    English
+                </button>
             </div>
         </div>
     </nav>
@@ -696,8 +704,8 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>我的应用作品集</h1>
-                <p>精选实用的 macOS 应用，提升您的开发效率</p>
+                <h1 data-i18n-hero="title">我的应用作品集</h1>
+                <p data-i18n-hero="subtitle">精选实用的 macOS 应用，提升您的开发效率</p>
             </div>
         </div>
     </section>
@@ -705,17 +713,17 @@
     <!-- App 展示区域 -->
     <section id="apps" class="apps-section">
         <div class="container">
-            <h2 class="section-title">我的应用</h2>
+            <h2 class="section-title" data-i18n-app="title">我的应用</h2>
             <div class="apps-grid">
                 <!-- vPaste 应用卡片 -->
                 <a href="/vpaste/" class="app-card" onclick="window.location.href='/vpaste/'; return false;">
                     <div class="app-header">
                         <img src="/vpaste/icon.png" alt="vPaste" class="app-icon">
-                        <h2>vPaste</h2>
-                        <p>macOS 剪贴板管理工具</p>
+                        <h2 data-i18n-app="vpaste.name">vPaste</h2>
+                        <p data-i18n-app="vpaste.tagline">macOS 剪贴板管理工具</p>
                     </div>
                     <div class="app-content">
-                        <p class="app-description">
+                        <p class="app-description" data-i18n-app="vpaste.description">
                             高效的 macOS 剪贴板管理工具，自动捕获剪贴板历史，快速访问常用内容，让复制粘贴更高效。
                         </p>
                         <ul class="app-features">
@@ -733,11 +741,11 @@
                 <a href="/vclean/" class="app-card" onclick="window.location.href='/vclean/'; return false;">
                     <div class="app-header">
                         <img src="/vclean/icon.png" alt="vClean" class="app-icon">
-                        <h2>vClean</h2>
-                        <p>Xcode 编译目录清理工具</p>
+                        <h2 data-i18n-app="vclean.name">vClean</h2>
+                        <p data-i18n-app="vclean.tagline">Xcode 编译目录清理工具</p>
                     </div>
                     <div class="app-content">
-                        <p class="app-description">
+                        <p class="app-description" data-i18n-app="vclean.description">
                             专业的 Xcode 编译目录清理工具，智能扫描和分析文件夹大小，帮助您安全释放宝贵的磁盘空间。
                         </p>
                         <ul class="app-features">
@@ -758,8 +766,8 @@
     <section class="future-apps">
         <div class="container">
             <div class="future-content">
-                <h3>更多应用即将推出</h3>
-                <p>我正在开发更多实用的 macOS 应用，敬请期待...</p>
+                <h3 data-i18n-future="title">更多应用即将推出</h3>
+                <p data-i18n-future="subtitle">我正在开发更多实用的 macOS 应用，敬请期待...</p>
             </div>
             <div class="container">
                 <div class="apps-grid empty" style="margin-top: 40px;">
@@ -776,18 +784,18 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-links">
-                    <a href="#apps">我的应用</a>
-                    <a href="mailto:vlv666@qq.com">联系我</a>
+                    <a href="#apps" data-i18n-footer="apps">我的应用</a>
+                    <a href="mailto:vlv666@qq.com" data-i18n-footer="contact">联系我</a>
                 </div>
                 <div class="copyright">
-                    <p>&copy; 2026 vlv. All rights reserved.</p>
+                    <p data-i18n-footer="copyright">&copy; 2026 vlv. All rights reserved.</p>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // 未来主义交互效果
+        // 未来主义交互效果（保留原有功能）
         document.addEventListener('DOMContentLoaded', () => {
             // 导航栏滚动效果
             const navbar = document.querySelector('.navbar');
