@@ -2,7 +2,7 @@ class LanguageManager {
   constructor() {
     this.currentLang = this.getSavedLanguage() || this.detectBrowserLanguage();
     this.translations = {
-      'zh-CN': {
+      'zh': {
         // 导航栏
         'nav.features': '功能特色',
         'nav.screenshot': '截图展示',
@@ -208,16 +208,28 @@ class LanguageManager {
   }
 
   getSavedLanguage() {
-    return localStorage.getItem('preferred-language');
+    // 优先使用统一的 vlv_lang key（与首页 i18n.js 同步）
+    let lang = localStorage.getItem('vlv_lang');
+    if (lang === 'zh' || lang === 'en') return lang;
+
+    // 兼容旧的 preferred-language key
+    lang = localStorage.getItem('preferred-language');
+    if (lang === 'zh' || lang === 'en') {
+      return lang;
+    }
+    return null;
   }
 
   detectBrowserLanguage() {
     const lang = navigator.language || navigator.userLanguage;
-    return lang.startsWith('zh') ? 'zh-CN' : 'en';
+    return lang.startsWith('zh') ? 'zh' : 'en';
   }
 
   saveLanguage(lang) {
-    localStorage.setItem('preferred-language', lang);
+    // 统一使用 vlv_lang key，同时兼容旧的 preferred-language
+    const normalizedLang = lang === 'zh-CN' ? 'zh' : lang;
+    localStorage.setItem('vlv_lang', normalizedLang);
+    localStorage.setItem('preferred-language', normalizedLang === 'zh' ? 'zh-CN' : normalizedLang);
   }
 
   getCurrentLanguage() {
@@ -225,7 +237,7 @@ class LanguageManager {
   }
 
   toggleLanguage() {
-    this.currentLang = this.currentLang === 'zh-CN' ? 'en' : 'zh-CN';
+    this.currentLang = this.currentLang === 'zh' ? 'en' : 'zh';
     this.saveLanguage(this.currentLang);
     return this.currentLang;
   }
@@ -245,7 +257,7 @@ class LanguageManager {
   }
 
   applyTranslations() {
-    document.documentElement.lang = this.currentLang === 'zh-CN' ? 'zh-CN' : 'en';
+    document.documentElement.lang = this.currentLang === 'zh' ? 'zh-CN' : 'en';
 
     document.querySelectorAll('[data-lang]').forEach(element => {
       const key = element.getAttribute('data-lang');

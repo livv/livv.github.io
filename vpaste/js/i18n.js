@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var STORAGE_KEY = 'vpaste_lang';
+  var STORAGE_KEY = 'vlv_lang';
   var APP_STORE = {
     zh: 'https://apps.apple.com/cn/app/vpaste/id6444913968?mt=12',
     en: 'https://apps.apple.com/app/vpaste/id6444913968'
