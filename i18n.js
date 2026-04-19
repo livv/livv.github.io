@@ -10,7 +10,7 @@
         nav: { apps: '我的应用', contact: '联系我' },
         hero: {
           title: '我的应用作品集',
-          subtitle: '精选实用的 macOS 应用，提升您的开发效率'
+          subtitle: '精选实用的 Apple 生态应用，提升您的效率'
         },
         appsSection: {
           title: '我的应用',
@@ -31,7 +31,7 @@
         },
         futureApps: {
           title: '更多应用即将推出',
-          subtitle: '我正在开发更多实用的 macOS 应用，敬请期待...',
+          subtitle: '我正在开发更多实用的 Apple 生态应用，敬请期待...',
           placeholder: '🚀 敬请期待'
         },
         footer: {
@@ -53,7 +53,7 @@
         nav: { apps: 'My Apps', contact: 'Contact Me' },
         hero: {
           title: 'My App Portfolio',
-          subtitle: 'Curated collection of useful macOS applications to boost your development productivity'
+          subtitle: 'Curated collection of useful Apple ecosystem applications to boost your productivity'
         },
         appsSection: {
           title: 'My Applications',
@@ -74,7 +74,7 @@
         },
         futureApps: {
           title: 'More Apps Coming Soon',
-          subtitle: 'I\'m developing more useful macOS applications. Stay tuned...',
+          subtitle: 'I\'m developing more useful Apple ecosystem applications. Stay tuned...',
           placeholder: '🚀 Coming Soon'
         },
         footer: {
