@@ -53,29 +53,29 @@
         nav: { apps: 'My Apps', contact: 'Contact Me' },
         hero: {
           title: 'My App Portfolio',
-          subtitle: 'Curated collection of useful Apple ecosystem applications to boost your productivity'
+          subtitle: 'A curated collection of useful Apple ecosystem apps to boost your productivity'
         },
         appsSection: {
           title: 'My Applications',
           vpaste: {
             name: 'vPaste',
-            tagline: 'Clipboard Manager for macOS',
-            link: 'View Details',
+            tagline: 'A clipboard manager for macOS',
+            link: 'View details',
             description: 'A powerful macOS clipboard manager that automatically captures history, provides quick access to frequently used content, and makes copy and paste operations more efficient.',
             features: ['Automatic History', 'Quick Access (⌘⇧V)', 'Group Management', 'Smart Search', 'Local Storage']
           },
           vclean: {
             name: 'vClean',
-            tagline: 'Xcode Build Directory Cleaner',
-            link: 'View Details',
+            tagline: 'An Xcode build directory cleaner',
+            link: 'View details',
             description: 'A professional Xcode build directory cleanup tool with intelligent scanning and analysis to help you safely free up valuable disk space.',
             features: ['Smart Scanning', 'Safe Cleanup', 'Visual Analysis', 'Precise Filtering', 'Complete Privacy']
           }
         },
         futureApps: {
-          title: 'More Apps Coming Soon',
+          title: 'More apps coming soon',
           subtitle: 'I\'m developing more useful Apple ecosystem applications. Stay tuned...',
-          placeholder: '🚀 Coming Soon'
+          placeholder: '🚀 Coming soon'
         },
         footer: {
           apps: 'My Apps',

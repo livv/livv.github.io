@@ -1,0 +1,11 @@
+{
+  "feishu": {
+    "appId": "cli_a96ecd4810f81bd6",
+    "appSecret": "OtaUeqqnk21nw6cqrXO8TbcPBKGSgfHi"
+  },
+  "claude": {
+    "bin": "claude",
+    "workDir": "/Users/wei/github/livv.github.io",
+    "timeoutMs": 3600000
+  }
+}
