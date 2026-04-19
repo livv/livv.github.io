@@ -19,7 +19,8 @@
       "Bash(curl -s \"http://localhost:8000/i18n.js\")",
       "Bash(curl:*)",
       "Bash(pkill:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Skill(commit-commands:commit)"
     ]
   }
 }

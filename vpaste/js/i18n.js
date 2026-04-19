@@ -14,7 +14,7 @@
         metaDescription:
           'vPaste - 高效的 macOS 剪贴板管理工具，自动捕获历史记录，快速粘贴，提升工作效率',
         metaKeywords: 'vPaste, macOS, 剪贴板, 剪贴板管理, clipboard manager, Mac app',
-        nav: { features: '功能', screenshot: '截图', download: '下载', privacy: '隐私协议', terms: '服务条款' },
+        nav: { features: '功能', screenshot: '截图', download: '下载', privacy: '隐私协议', terms: '服务条款', home: '首页' },
         hero: {
           tagline: '高效的 macOS 剪贴板管理工具',
           description: '自动捕获剪贴板历史，快速访问常用内容，让复制粘贴更高效',
@@ -186,7 +186,7 @@
         metaDescription:
           'vPaste - A powerful macOS clipboard manager that captures history automatically, pastes faster, and boosts your productivity.',
         metaKeywords: 'vPaste, macOS, clipboard, clipboard manager, Mac app',
-        nav: { features: 'Features', screenshot: 'Screenshots', download: 'Download', privacy: 'Privacy', terms: 'Terms' },
+        nav: { features: 'Features', screenshot: 'Screenshots', download: 'Download', privacy: 'Privacy', terms: 'Terms', home: 'Home' },
         hero: {
           tagline: 'Clipboard manager for macOS',
           description:
