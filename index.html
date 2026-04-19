@@ -168,8 +168,233 @@
             width: 100%;
         }
 
+        /* 导航栏语言切换器动画 */
+        @keyframes dropdownAppear {
+            from {
+                opacity: 0;
+                transform: translateY(-10px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .lang-dropdown.show {
+            animation: dropdownAppear 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .lang-switcher {
+                margin-top: 1rem;
+            }
+
+            .lang-toggle {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.8rem;
+            }
+
+            .lang-dropdown {
+                min-width: 100px;
+            }
+
+            .lang-option {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .lang-switcher {
+                width: 100%;
+            }
+
+            .lang-toggle {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .lang-dropdown {
+                left: 0;
+                right: 0;
+                min-width: auto;
+            }
+        }
+
         .nav-links a:hover {
             color: var(--matrix-green);
+        }
+
+        /* 未来主义语言切换器 */
+        .lang-switcher {
+            position: relative;
+            z-index: 1001;
+        }
+
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            padding: 0.6rem 1rem;
+            color: var(--chrome-white);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lang-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .lang-toggle:hover::before {
+            left: 100%;
+        }
+
+        .lang-text {
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .lang-arrow {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            transition: transform 0.3s ease;
+        }
+
+        .lang-toggle[aria-expanded="true"] .lang-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* 语言下拉菜单 */
+        .lang-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            list-style: none;
+            margin: 0;
+            padding: 0.5rem 0;
+            min-width: 120px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(0, 243, 255, 0.1);
+            z-index: 1002;
+        }
+
+        .lang-dropdown.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 0.75rem 1.25rem;
+            background: none;
+            border: none;
+            color: var(--chrome-white);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .lang-option::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 0;
+            background: var(--neon-blue);
+            transition: height 0.2s ease;
+        }
+
+        .lang-option:hover,
+        .lang-option.selected {
+            background: rgba(0, 243, 255, 0.1);
+            color: var(--neon-blue);
+        }
+
+        .lang-option:hover::before,
+        .lang-option.selected::before {
+            height: 80%;
+        }
+
+        .lang-flag {
+            width: 20px;
+            height: 14px;
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lang-flag.zh {
+            background: linear-gradient(to bottom, #DE2910 50%, #FFDE00 50%);
+        }
+
+        .lang-flag.en {
+            background: linear-gradient(to bottom, #012169 33%, white 33% 66%, #C8102E 66%);
+        }
+
+        .lang-flag::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 1px;
+        }
+
+        .lang-name {
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .nav-links {
@@ -692,10 +917,25 @@
                 <a href="#apps" data-i18n-nav="nav.apps">我的应用</a>
                 <a href="mailto:vlv666@qq.com" data-i18n-nav="nav.contact">联系我</a>
             </div>
-            <div class="lang-button">
-                <button type="button" class="lang-switch-btn" data-i18n="lang.switch">
-                    English
+            <div class="lang-switcher">
+                <button type="button" class="lang-toggle" aria-label="切换语言" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="lang-text" data-i18n="lang.current">English</span>
+                    <span class="lang-arrow" aria-hidden="true">▼</span>
                 </button>
+                <ul class="lang-dropdown" role="listbox">
+                    <li>
+                        <button type="button" class="lang-option" role="option" data-lang="zh" aria-selected="false">
+                            <span class="lang-flag zh"></span>
+                            <span class="lang-name" data-i18n="lang.zh">中文</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="lang-option" role="option" data-lang="en" aria-selected="false">
+                            <span class="lang-flag en"></span>
+                            <span class="lang-name" data-i18n="lang.en">English</span>
+                        </button>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -727,11 +967,11 @@
                             高效的 macOS 剪贴板管理工具，自动捕获剪贴板历史，快速访问常用内容，让复制粘贴更高效。
                         </p>
                         <ul class="app-features">
-                            <li>自动历史记录</li>
-                            <li>快速访问（⌘⇧V）</li>
-                            <li>分组管理</li>
-                            <li>智能搜索</li>
-                            <li>本地存储</li>
+                            <li data-i18n-feature="vpaste.feature1">自动历史记录</li>
+                            <li data-i18n-feature="vpaste.feature2">快速访问（⌘⇧V）</li>
+                            <li data-i18n-feature="vpaste.feature3">分组管理</li>
+                            <li data-i18n-feature="vpaste.feature4">智能搜索</li>
+                            <li data-i18n-feature="vpaste.feature5">本地存储</li>
                         </ul>
                         <span class="app-link">查看详情</span>
                     </div>
@@ -749,11 +989,11 @@
                             专业的 Xcode 编译目录清理工具，智能扫描和分析文件夹大小，帮助您安全释放宝贵的磁盘空间。
                         </p>
                         <ul class="app-features">
-                            <li>智能扫描</li>
-                            <li>安全清理</li>
-                            <li>可视化分析</li>
-                            <li>精准筛选</li>
-                            <li>完全隐私</li>
+                            <li data-i18n-feature="vclean.feature1">智能扫描</li>
+                            <li data-i18n-feature="vclean.feature2">安全清理</li>
+                            <li data-i18n-feature="vclean.feature3">可视化分析</li>
+                            <li data-i18n-feature="vclean.feature4">精准筛选</li>
+                            <li data-i18n-feature="vclean.feature5">完全隐私</li>
                         </ul>
                         <span class="app-link">查看详情</span>
                     </div>

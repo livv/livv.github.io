@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>i18n 功能测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #007AFF;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056CC;
+        }
+        pre {
+            background: #f8f8f8;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>i18n 功能测试</h1>
+
+    <div class="test-section">
+        <h2>测试语言切换器</h2>
+        <p>点击下面的按钮测试语言切换功能：</p>
+        <button onclick="testLanguageSwitch()">测试中文切换</button>
+        <button onclick="testEnglishSwitch()">测试英文切换</button>
+    </div>
+
+    <div class="test-section">
+        <h2>当前语言状态</h2>
+        <p>当前语言: <span id="currentLang">加载中...</span></p>
+        <p>本地存储中的语言: <span id="storedLang">加载中...</span></p>
+    </div>
+
+    <div class="test-section">
+        <h2>测试结果</h2>
+        <pre id="results"></pre>
+    </div>
+
+    <script src="i18n.js"></script>
+    <script>
+        // 显示当前语言状态
+        function updateStatus() {
+            try {
+                var currentLang = getLocale();
+                document.getElementById('currentLang').textContent = currentLang;
+
+                var storedLang = localStorage.getItem('vlv_lang');
+                document.getElementById('storedLang').textContent = storedLang || '未设置';
+
+                appendResult('✓ 当前语言: ' + currentLang + ', 存储: ' + storedLang);
+            } catch (e) {
+                document.getElementById('currentLang').textContent = '错误';
+                document.getElementById('storedLang').textContent = '错误';
+                appendResult('✗ 获取语言状态失败: ' + e.message);
+            }
+        }
+
+        // 测试中文切换
+        function testLanguageSwitch() {
+            try {
+                setLocale('zh');
+                applyI18n();
+
+                setTimeout(() => {
+                    updateStatus();
+                    appendResult('✓ 切换到中文成功');
+                    appendResult('✓ 页面标题: ' + document.title);
+                    appendResult('✓ HTML lang属性: ' + document.documentElement.lang);
+                }, 100);
+            } catch (e) {
+                appendResult('✗ 切换中文失败: ' + e.message);
+            }
+        }
+
+        // 测试英文切换
+        function testEnglishSwitch() {
+            try {
+                setLocale('en');
+                applyI18n();
+
+                setTimeout(() => {
+                    updateStatus();
+                    appendResult('✓ 切换到英文成功');
+                    appendResult('✓ 页面标题: ' + document.title);
+                    appendResult('✓ HTML lang属性: ' + document.documentElement.lang);
+                }, 100);
+            } catch (e) {
+                appendResult('✗ 切换英文失败: ' + e.message);
+            }
+        }
+
+        // 添加结果显示
+        function appendResult(text) {
+            var results = document.getElementById('results');
+            var line = document.createElement('div');
+            line.textContent = text;
+            results.appendChild(line);
+            results.scrollTop = results.scrollHeight;
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStatus();
+
+            // 测试初始语言检测
+            appendResult('开始测试...');
+            appendResult('✓ i18n.js 已加载');
+
+            // 检查 STRINGS 对象
+            if (typeof STRINGS !== 'undefined') {
+                appendResult('✓ STRINGS 对象存在');
+                appendResult('✓ 中文字符串数量: ' + Object.keys(STRINGS.zh.index).length);
+                appendResult('✓ 英文字符串数量: ' + Object.keys(STRINGS.en.index).length);
+            } else {
+                appendResult('✗ STRINGS 对象未找到');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -12,7 +12,14 @@
       "Bash(cp /Users/wei/github/vPaste_pages/css/style.css /Users/wei/github/livv.github.io/vpaste/)",
       "Bash(cp /Users/wei/github/vPaste_pages/js/i18n.js /Users/wei/github/livv.github.io/vpaste/)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost/vclean/index.html)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(python3 -m py_compile /dev/null)",
+      "Bash(open http://localhost:8000/test-i18n.html)",
+      "Bash(python3:*)",
+      "Bash(curl -s \"http://localhost:8000/i18n.js\")",
+      "Bash(curl:*)",
+      "Bash(pkill:*)",
+      "Bash(node:*)"
     ]
   }
 }
