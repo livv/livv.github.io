@@ -325,9 +325,7 @@
         }
 
         .lang-option {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
+            display: block;
             width: 100%;
             padding: 0.75rem 1.25rem;
             background: none;
@@ -341,18 +339,7 @@
             position: relative;
         }
 
-        .lang-option::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 3px;
-            height: 0;
-            background: var(--neon-blue);
-            transition: height 0.2s ease;
-        }
-
+        
         .lang-option:hover,
         .lang-option.selected {
             background: rgba(0, 243, 255, 0.1);
@@ -364,33 +351,7 @@
             height: 80%;
         }
 
-        .lang-flag {
-            width: 20px;
-            height: 14px;
-            border-radius: 2px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .lang-flag.zh {
-            background: linear-gradient(to bottom, #DE2910 50%, #FFDE00 50%);
-        }
-
-        .lang-flag.en {
-            background: linear-gradient(to bottom, #012169 33%, white 33% 66%, #C8102E 66%);
-        }
-
-        .lang-flag::after {
-            content: '';
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            right: 2px;
-            bottom: 2px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 1px;
-        }
-
+        
         .lang-name {
             font-weight: 500;
             text-transform: uppercase;
@@ -482,7 +443,7 @@
 
         /* 未来主义应用展示区域 */
         .apps-section {
-            padding: 12rem 2rem 6rem;
+            padding: 8rem 2rem 4rem;
             position: relative;
             z-index: 3;
         }
@@ -502,21 +463,21 @@
 
         .apps-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
-            margin-bottom: 8rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
         }
 
         .app-card {
             background: var(--glass-bg);
             backdrop-filter: blur(20px) saturate(180%);
             border: 1px solid var(--glass-border);
-            border-radius: 2rem;
+            border-radius: 1.5rem;
             overflow: hidden;
             text-decoration: none;
             color: inherit;
             position: relative;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             transform-style: preserve-3d;
         }
 
@@ -529,16 +490,16 @@
             bottom: 0;
             background: linear-gradient(45deg, var(--neon-blue), var(--cyber-purple), var(--matrix-green));
             opacity: 0;
-            transition: opacity 0.4s ease;
-            border-radius: 2rem;
+            transition: opacity 0.3s ease;
+            border-radius: 1.5rem;
             z-index: -1;
         }
 
         .app-card:hover {
-            transform: translateY(-10px) rotateX(5deg);
+            transform: translateY(-5px) rotateX(3deg);
             box-shadow:
-                0 25px 50px rgba(0, 243, 255, 0.1),
-                0 0 30px rgba(0, 255, 65, 0.05);
+                0 15px 30px rgba(0, 243, 255, 0.1),
+                0 0 20px rgba(0, 255, 65, 0.05);
         }
 
         .app-card:hover::before {
@@ -546,7 +507,7 @@
         }
 
         .app-header {
-            padding: 3rem 2rem;
+            padding: 2rem 1.5rem;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -568,13 +529,13 @@
         }
 
         .app-icon {
-            width: 120px;
-            height: 120px;
-            border-radius: 2rem;
-            margin: 0 auto 1.5rem;
+            width: 100px;
+            height: 100px;
+            border-radius: 1.5rem;
+            margin: 0 auto 1.2rem;
             display: block;
             background: transparent;
-            padding: 1.5rem;
+            padding: 1.2rem;
             box-shadow: none;
             transition: transform 0.4s ease;
         }
@@ -585,13 +546,13 @@
 
         .app-header h2 {
             font-family: var(--font-display);
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 900;
             background: linear-gradient(45deg, var(--neon-blue), var(--matrix-green));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             letter-spacing: -1px;
         }
 
@@ -614,16 +575,16 @@
         }
 
         .app-content {
-            padding: 2rem;
+            padding: 1.5rem;
         }
 
         .app-description {
             color: rgba(248, 250, 252, 0.8);
-            line-height: 1.8;
-            margin-bottom: 2rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
             font-family: var(--font-body);
-            font-size: 1.1rem;
-            min-height: 120px;
+            font-size: 1rem;
+            min-height: 100px;
         }
 
         .app-features {
@@ -663,8 +624,8 @@
             justify-content: center;
             background: linear-gradient(45deg, var(--neon-blue), var(--cyber-purple));
             color: var(--void-black);
-            padding: 1rem 2rem;
-            border-radius: 2rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 1.5rem;
             text-decoration: none;
             font-weight: 700;
             font-family: var(--font-display);
@@ -672,9 +633,9 @@
             letter-spacing: 1px;
             position: relative;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0, 0, 0.2, 1);
             box-shadow:
-                0 10px 30px rgba(0, 243, 255, 0.3),
+                0 8px 25px rgba(0, 243, 255, 0.25),
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
@@ -703,7 +664,7 @@
         /* 未来应用实验室区域 */
         .future-apps {
             background: linear-gradient(135deg, var(--void-black), rgba(10, 10, 10, 0.9));
-            padding: 8rem 2rem;
+            padding: 6rem 2rem;
             position: relative;
             overflow: hidden;
         }
@@ -759,8 +720,8 @@
             background: var(--glass-bg);
             backdrop-filter: blur(20px) saturate(180%);
             border: 2px dashed var(--glass-border);
-            border-radius: 2rem;
-            padding: 4rem 3rem;
+            border-radius: 1.5rem;
+            padding: 3rem 2rem;
             text-align: center;
             color: rgba(248, 250, 252, 0.6);
             position: relative;
@@ -769,9 +730,9 @@
 
         .empty-card::before {
             content: '🚀';
-            font-size: 4rem;
+            font-size: 3rem;
             display: block;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             animation: float 3s ease-in-out infinite;
         }
 
@@ -839,7 +800,6 @@
             opacity: 0.5;
             font-size: 0.9rem;
             font-family: var(--font-body);
-            text-transform: uppercase;
             letter-spacing: 1px;
         }
 
@@ -923,13 +883,11 @@
                 <ul class="lang-dropdown" role="listbox">
                     <li>
                         <button type="button" class="lang-option" role="option" data-lang="zh" aria-selected="false">
-                            <span class="lang-flag zh"></span>
                             <span class="lang-name" data-i18n="lang.zh">中文</span>
                         </button>
                     </li>
                     <li>
                         <button type="button" class="lang-option" role="option" data-lang="en" aria-selected="false">
-                            <span class="lang-flag en"></span>
                             <span class="lang-name" data-i18n="lang.en">English</span>
                         </button>
                     </li>
