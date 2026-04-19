@@ -17,19 +17,22 @@
           vpaste: {
             name: 'vPaste',
             tagline: 'macOS 剪贴板管理工具',
+            link: '查看详情',
             description: '高效的 macOS 剪贴板管理工具，自动捕获剪贴板历史，快速访问常用内容，让复制粘贴更高效。',
             features: ['自动历史记录', '快速访问（⌘⇧V）', '分组管理', '智能搜索', '本地存储']
           },
           vclean: {
             name: 'vClean',
             tagline: 'Xcode 编译目录清理工具',
+            link: '查看详情',
             description: '专业的 Xcode 编译目录清理工具，智能扫描和分析文件夹大小，帮助您安全释放宝贵的磁盘空间。',
             features: ['智能扫描', '安全清理', '可视化分析', '精准筛选', '完全隐私']
           }
         },
         futureApps: {
           title: '更多应用即将推出',
-          subtitle: '我正在开发更多实用的 macOS 应用，敬请期待...'
+          subtitle: '我正在开发更多实用的 macOS 应用，敬请期待...',
+          placeholder: '🚀 敬请期待'
         },
         footer: {
           apps: '我的应用',
@@ -57,19 +60,22 @@
           vpaste: {
             name: 'vPaste',
             tagline: 'Clipboard Manager for macOS',
+            link: 'View Details',
             description: 'A powerful macOS clipboard manager that automatically captures history, provides quick access to frequently used content, and makes copy and paste operations more efficient.',
             features: ['Automatic History', 'Quick Access (⌘⇧V)', 'Group Management', 'Smart Search', 'Local Storage']
           },
           vclean: {
             name: 'vClean',
             tagline: 'Xcode Build Directory Cleaner',
+            link: 'View Details',
             description: 'A professional Xcode build directory cleanup tool with intelligent scanning and analysis to help you safely free up valuable disk space.',
             features: ['Smart Scanning', 'Safe Cleanup', 'Visual Analysis', 'Precise Filtering', 'Complete Privacy']
           }
         },
         futureApps: {
           title: 'More Apps Coming Soon',
-          subtitle: 'I\'m developing more useful macOS applications. Stay tuned...'
+          subtitle: 'I\'m developing more useful macOS applications. Stay tuned...',
+          placeholder: '🚀 Coming Soon'
         },
         footer: {
           apps: 'My Apps',
@@ -168,9 +174,11 @@
       'vpaste.name': t(locale, 'index.appsSection.vpaste.name'),
       'vpaste.tagline': t(locale, 'index.appsSection.vpaste.tagline'),
       'vpaste.description': t(locale, 'index.appsSection.vpaste.description'),
+      'vpaste.link': t(locale, 'index.appsSection.vpaste.link'),
       'vclean.name': t(locale, 'index.appsSection.vclean.name'),
       'vclean.tagline': t(locale, 'index.appsSection.vclean.tagline'),
-      'vclean.description': t(locale, 'index.appsSection.vclean.description')
+      'vclean.description': t(locale, 'index.appsSection.vclean.description'),
+      'vclean.link': t(locale, 'index.appsSection.vclean.link')
     };
     Object.keys(appSectionTitles).forEach(function(key) {
       var elements = document.querySelectorAll('[data-i18n-app="' + key + '"]');
@@ -202,7 +210,8 @@
     // 更新未来应用区域
     var futureTexts = {
       'title': t(locale, 'index.futureApps.title'),
-      'subtitle': t(locale, 'index.futureApps.subtitle')
+      'subtitle': t(locale, 'index.futureApps.subtitle'),
+      'placeholder': t(locale, 'index.futureApps.placeholder')
     };
     Object.keys(futureTexts).forEach(function(key) {
       var elements = document.querySelectorAll('[data-i18n-future="' + key + '"]');

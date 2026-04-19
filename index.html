@@ -45,10 +45,10 @@
         body::before {
             content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: -25%;
+            left: -25%;
+            width: 150%;
+            height: 150%;
             background:
                 radial-gradient(circle at 20% 80%, rgba(0, 243, 255, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
@@ -428,10 +428,10 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
             background:
                 radial-gradient(circle, transparent 20%, var(--void-black) 20%),
                 radial-gradient(circle, transparent 20%, var(--void-black) 20%);
@@ -573,11 +573,9 @@
             border-radius: 2rem;
             margin: 0 auto 1.5rem;
             display: block;
-            background: linear-gradient(135deg, var(--chrome-white), #e2e8f0);
+            background: transparent;
             padding: 1.5rem;
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            box-shadow: none;
             transition: transform 0.4s ease;
         }
 
@@ -912,7 +910,7 @@
     <!-- 导航栏 -->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="#" class="logo">vlv</a>
+            <a href="#" class="logo" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})">vlv</a>
             <div class="nav-links">
                 <a href="#apps" data-i18n-nav="nav.apps">我的应用</a>
                 <a href="mailto:vlv666@qq.com" data-i18n-nav="nav.contact">联系我</a>
@@ -973,7 +971,7 @@
                             <li data-i18n-feature="vpaste.feature4">智能搜索</li>
                             <li data-i18n-feature="vpaste.feature5">本地存储</li>
                         </ul>
-                        <span class="app-link">查看详情</span>
+                        <span class="app-link" data-i18n-app="vpaste.link">查看详情</span>
                     </div>
                 </a>
 
@@ -995,7 +993,7 @@
                             <li data-i18n-feature="vclean.feature4">精准筛选</li>
                             <li data-i18n-feature="vclean.feature5">完全隐私</li>
                         </ul>
-                        <span class="app-link">查看详情</span>
+                        <span class="app-link" data-i18n-app="vclean.link">查看详情</span>
                     </div>
                 </a>
             </div>
@@ -1012,7 +1010,7 @@
             <div class="container">
                 <div class="apps-grid empty" style="margin-top: 40px;">
                     <div class="empty-card">
-                        <p>🚀 敬请期待</p>
+                        <p data-i18n-future="placeholder">🚀 敬请期待</p>
                     </div>
                 </div>
             </div>
