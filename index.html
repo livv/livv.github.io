@@ -1,1107 +1,146 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n-title="index.title">vlv - 未来应用实验室</title>
-
-    <link rel="stylesheet" href="css/style.css">
-    <script src="i18n.js" defer></script>
-
-    <style>
-        /* 未来主义科技美学变量 */
-        :root {
-            --neon-blue: #00f3ff;
-            --cyber-purple: #8b5cf6;
-            --matrix-green: #00ff41;
-            --void-black: #0a0a0a;
-            --chrome-white: #f8fafc;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-
-            --font-display: 'Orbitron', 'SF Pro Display', system-ui, sans-serif;
-            --font-body: 'JetBrains Mono', 'SF Pro Text', monospace;
-        }
-
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-body);
-            line-height: 1.7;
-            color: var(--chrome-white);
-            background: var(--void-black);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* 赛博朋克背景效果 */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -25%;
-            left: -25%;
-            width: 150%;
-            height: 150%;
-            background:
-                radial-gradient(circle at 20% 80%, rgba(0, 243, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(0, 255, 65, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        /* 网格背景 */
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* 未来主义导航栏 */
-        .navbar {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid var(--glass-border);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1rem 0;
-            transform: translateY(-100%);
-            animation: navbarSlideDown 1s ease-out forwards;
-        }
-
-        @keyframes navbarSlideDown {
-            to { transform: translateY(0); }
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            height: auto;
-        }
-
-        .logo {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--neon-blue), var(--cyber-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-            letter-spacing: 2px;
-            position: relative;
-        }
-
-        .logo::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--neon-blue);
-            transition: width 0.3s ease;
-        }
-
-        .logo:hover::after {
-            width: 100%;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--chrome-white);
-            text-decoration: none;
-            font-weight: 500;
-            font-family: var(--font-body);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--matrix-green);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::before {
-            width: 100%;
-        }
-
-        /* 导航栏语言切换器动画 */
-        @keyframes dropdownAppear {
-            from {
-                opacity: 0;
-                transform: translateY(-10px) scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .lang-dropdown.show {
-            animation: dropdownAppear 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* 响应式调整 */
-        @media (max-width: 768px) {
-            .lang-switcher {
-                margin-top: 1rem;
-            }
-
-            .lang-toggle {
-                padding: 0.5rem 0.75rem;
-                font-size: 0.8rem;
-            }
-
-            .lang-dropdown {
-                min-width: 100px;
-            }
-
-            .lang-option {
-                padding: 0.6rem 1rem;
-                font-size: 0.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
-            }
-
-            .lang-switcher {
-                width: 100%;
-            }
-
-            .lang-toggle {
-                justify-content: center;
-                width: 100%;
-            }
-
-            .lang-dropdown {
-                left: 0;
-                right: 0;
-                min-width: auto;
-            }
-        }
-
-        .nav-links a:hover {
-            color: var(--matrix-green);
-        }
-
-        /* 未来主义语言切换器 */
-        .lang-switcher {
-            position: relative;
-            z-index: 1001;
-        }
-
-        .lang-toggle {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid var(--glass-border);
-            border-radius: 1.5rem;
-            padding: 0.6rem 1rem;
-            color: var(--chrome-white);
-            font-family: var(--font-body);
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .lang-toggle::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .lang-toggle:hover {
-            border-color: var(--neon-blue);
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .lang-toggle:hover::before {
-            left: 100%;
-        }
-
-        .lang-text {
-            min-width: 40px;
-            text-align: center;
-        }
-
-        .lang-arrow {
-            font-size: 0.7rem;
-            opacity: 0.7;
-            transition: transform 0.3s ease;
-        }
-
-        .lang-toggle[aria-expanded="true"] .lang-arrow {
-            transform: rotate(180deg);
-        }
-
-        /* 语言下拉菜单 */
-        .lang-dropdown {
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            list-style: none;
-            margin: 0;
-            padding: 0.5rem 0;
-            min-width: 120px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, 0.3),
-                0 0 20px rgba(0, 243, 255, 0.1);
-            z-index: 1002;
-        }
-
-        .lang-dropdown.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .lang-option {
-            display: block;
-            width: 100%;
-            padding: 0.75rem 1.25rem;
-            background: none;
-            border: none;
-            color: var(--chrome-white);
-            font-family: var(--font-body);
-            font-size: 0.9rem;
-            text-align: left;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            position: relative;
-        }
-
-        
-        .lang-option:hover,
-        .lang-option.selected {
-            background: rgba(0, 243, 255, 0.1);
-            color: var(--neon-blue);
-        }
-
-        .lang-option:hover::before,
-        .lang-option.selected::before {
-            height: 80%;
-        }
-
-        
-        .lang-name {
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #007AFF;
-        }
-
-        /* 未来主义Hero区域 */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -100%;
-            left: -100%;
-            width: 300%;
-            height: 300%;
-            background:
-                radial-gradient(circle, transparent 20%, var(--void-black) 20%),
-                radial-gradient(circle, transparent 20%, var(--void-black) 20%);
-            background-size: 60px 60px;
-            animation: gridRotate 20s linear infinite;
-        }
-
-        @keyframes gridRotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-            animation: heroEntrance 1.5s ease-out;
-        }
-
-        @keyframes heroEntrance {
-            0% { opacity: 0; transform: translateY(50px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero h1 {
-            font-family: var(--font-display);
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--neon-blue), var(--cyber-purple), var(--matrix-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            letter-spacing: -2px;
-        }
-
-        .hero p {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            opacity: 0.8;
-            font-weight: 300;
-            margin-bottom: 3rem;
-            font-family: var(--font-body);
-            letter-spacing: 2px;
-        }
-
-        /* 未来主义应用展示区域 */
-        .apps-section {
-            padding: 8rem 2rem 4rem;
-            position: relative;
-            z-index: 3;
-        }
-
-        .section-title {
-            text-align: center;
-            font-family: var(--font-display);
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--neon-blue), var(--matrix-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 4rem;
-            letter-spacing: -1px;
-        }
-
-        .apps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 6rem;
-        }
-
-        .app-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid var(--glass-border);
-            border-radius: 1.5rem;
-            overflow: hidden;
-            text-decoration: none;
-            color: inherit;
-            position: relative;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-style: preserve-3d;
-        }
-
-        .app-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, var(--neon-blue), var(--cyber-purple), var(--matrix-green));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            border-radius: 1.5rem;
-            z-index: -1;
-        }
-
-        .app-card:hover {
-            transform: translateY(-5px) rotateX(3deg);
-            box-shadow:
-                0 15px 30px rgba(0, 243, 255, 0.1),
-                0 0 20px rgba(0, 255, 65, 0.05);
-        }
-
-        .app-card:hover::before {
-            opacity: 0.1;
-        }
-
-        .app-header {
-            padding: 2rem 1.5rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .app-header::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .app-card:hover .app-header::after {
-            left: 100%;
-        }
-
-        .app-icon {
-            width: 100px;
-            height: 100px;
-            border-radius: 1.5rem;
-            margin: 0 auto 1.2rem;
-            display: block;
-            background: transparent;
-            padding: 1.2rem;
-            box-shadow: none;
-            transition: transform 0.4s ease;
-        }
-
-        .app-card:hover .app-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .app-header h2 {
-            font-family: var(--font-display);
-            font-size: 2rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--neon-blue), var(--matrix-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.3rem;
-            letter-spacing: -1px;
-        }
-
-        .app-header p {
-            opacity: 0.7;
-            font-size: 1.1rem;
-            font-weight: 300;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .app-header h2 {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-
-        .app-header p {
-            opacity: 0.9;
-            font-size: 16px;
-        }
-
-        .app-content {
-            padding: 1.5rem;
-        }
-
-        .app-description {
-            color: rgba(248, 250, 252, 0.8);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            font-family: var(--font-body);
-            font-size: 1rem;
-            min-height: 100px;
-        }
-
-        .app-features {
-            list-style: none;
-            margin-bottom: 2.5rem;
-        }
-
-        .app-features li {
-            padding: 0.75rem 0;
-            color: rgba(248, 250, 252, 0.9);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 1rem;
-            border-left: 3px solid transparent;
-            transition: all 0.3s ease;
-            padding-left: 1rem;
-        }
-
-        .app-features li:hover {
-            border-left-color: var(--matrix-green);
-            padding-left: 1.5rem;
-            color: var(--matrix-green);
-        }
-
-        .app-features li::before {
-            content: '▸';
-            color: var(--neon-blue);
-            font-weight: bold;
-            font-size: 1.2rem;
-            min-width: 1rem;
-        }
-
-        .app-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(45deg, var(--neon-blue), var(--cyber-purple));
-            color: var(--void-black);
-            padding: 0.8rem 1.5rem;
-            border-radius: 1.5rem;
-            text-decoration: none;
-            font-weight: 700;
-            font-family: var(--font-display);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0, 0, 0.2, 1);
-            box-shadow:
-                0 8px 25px rgba(0, 243, 255, 0.25),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        }
-
-        .app-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .app-link:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow:
-                0 15px 40px rgba(0, 243, 255, 0.4),
-                0 0 20px rgba(0, 255, 65, 0.2);
-        }
-
-        .app-link:hover::before {
-            left: 100%;
-        }
-
-        /* 未来应用实验室区域 */
-        .future-apps {
-            background: linear-gradient(135deg, var(--void-black), rgba(10, 10, 10, 0.9));
-            padding: 6rem 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .future-apps::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                radial-gradient(circle at 30% 70%, rgba(0, 243, 255, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 70% 30%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .future-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-            text-align: center;
-        }
-
-        .future-content h3 {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--neon-blue), var(--matrix-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1.5rem;
-            letter-spacing: -1px;
-        }
-
-        .future-content p {
-            font-size: 1.3rem;
-            opacity: 0.7;
-            margin-bottom: 4rem;
-            font-family: var(--font-body);
-            letter-spacing: 2px;
-        }
-
-        .apps-grid.empty {
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-        }
-
-        .empty-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px) saturate(180%);
-            border: 2px dashed var(--glass-border);
-            border-radius: 1.5rem;
-            padding: 3rem 2rem;
-            text-align: center;
-            color: rgba(248, 250, 252, 0.6);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .empty-card::before {
-            content: '🚀';
-            font-size: 3rem;
-            display: block;
-            margin-bottom: 1rem;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* 未来主义页脚 */
-        .footer {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px) saturate(180%);
-            border-top: 1px solid var(--glass-border);
-            padding: 3rem 2rem;
-            text-align: center;
-            position: relative;
-            z-index: 3;
-        }
-
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: rgba(248, 250, 252, 0.8);
-            text-decoration: none;
-            font-family: var(--font-body);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-            position: relative;
-            padding: 0.5rem 0;
-            transition: all 0.3s ease;
-        }
-
-        .footer-links a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--neon-blue);
-            transition: width 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--matrix-green);
-        }
-
-        .footer-links a:hover::before {
-            width: 100%;
-        }
-
-        .copyright {
-            opacity: 0.5;
-            font-size: 0.9rem;
-            font-family: var(--font-body);
-            letter-spacing: 1px;
-        }
-
-        /* 未来主义响应式设计 */
-        @media (max-width: 1024px) {
-            .apps-grid {
-                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-                gap: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-container {
-                padding: 0 1.5rem;
-            }
-
-            .nav-links {
-                gap: 1.5rem;
-            }
-
-            .apps-section,
-            .future-apps {
-                padding: 8rem 1.5rem 4rem;
-            }
-
-            .app-header {
-                padding: 2rem 1.5rem;
-            }
-
-            .app-icon {
-                width: 100px;
-                height: 100px;
-                padding: 1.2rem;
-            }
-
-            .app-header h2 {
-                font-size: 2rem;
-            }
-
-            .footer-links {
-                gap: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
-            }
-
-            .apps-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .app-card {
-                border-radius: 1.5rem;
-            }
-
-            .empty-card {
-                padding: 3rem 2rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Apps | Personal Application Portfolio</title>
+  <meta name="description" content="A showcase of elegant and powerful macOS applications designed to enhance your productivity and workflow.">
+  <meta name="keywords" content="macOS apps, productivity tools, developer tools, clipboard manager">
+  <meta name="author" content="vlv">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="My Apps | Personal Application Portfolio">
+  <meta property="og:description" content="Discover elegant and powerful macOS applications designed to enhance your productivity.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="My Apps | Personal Application Portfolio">
+  <meta name="twitter:description" content="Discover elegant and powerful macOS applications designed to enhance your productivity.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
-    <!-- 导航栏 -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})">vlv</a>
-            <div class="nav-links">
-                <a href="#apps" data-i18n-nav="nav.apps">我的应用</a>
-                <a href="mailto:vlv666@qq.com" data-i18n-nav="nav.contact">联系我</a>
-            </div>
-            <div class="lang-switcher">
-                <button type="button" class="lang-toggle" aria-label="切换语言" aria-haspopup="listbox" aria-expanded="false">
-                    <span class="lang-text" data-i18n="lang.current">English</span>
-                    <span class="lang-arrow" aria-hidden="true">▼</span>
-                </button>
-                <ul class="lang-dropdown" role="listbox">
-                    <li>
-                        <button type="button" class="lang-option" role="option" data-lang="zh" aria-selected="false">
-                            <span class="lang-name" data-i18n="lang.zh">中文</span>
-                        </button>
-                    </li>
-                    <li>
-                        <button type="button" class="lang-option" role="option" data-lang="en" aria-selected="false">
-                            <span class="lang-name" data-i18n="lang.en">English</span>
-                        </button>
-                    </li>
-                </ul>
-            </div>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-content">
+      <a href="/" class="logo">
+        <span>vlv</span>
+      </a>
+      
+      <nav class="nav">
+        <ul class="nav-links">
+          <li><a href="/" class="nav-link active" data-i18n="nav_home">Home</a></li>
+          <li><a href="#apps" class="nav-link" data-i18n="nav_apps">Apps</a></li>
+        </ul>
+        
+        <div class="header-actions">
+          <button class="theme-toggle" aria-label="Toggle theme">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <button class="lang-toggle" aria-label="Toggle language">EN</button>
+          <button class="mobile-menu-btn" aria-label="Toggle menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
         </div>
-    </nav>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Hero 区域 -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 data-i18n-hero="title">我的应用作品集</h1>
-                <p data-i18n-hero="subtitle">精选实用的 Apple 生态应用，提升您的效率</p>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title" data-i18n="hero_title">My Apps Collection</h1>
+      <p class="hero-subtitle" data-i18n="hero_subtitle">A showcase of elegant and powerful macOS applications designed to enhance your productivity and workflow.</p>
+      <div class="hero-actions">
+        <a href="#apps" class="btn btn-primary" data-i18n="hero_cta_apps">View Apps</a>
+        <a href="mailto:contact@example.com" class="btn btn-secondary" data-i18n="hero_cta_contact">Contact</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Apps Section -->
+  <section class="apps-section" id="apps">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" data-i18n="apps_title">Featured Apps</h2>
+        <p class="section-subtitle" data-i18n="apps_subtitle">Discover tools that make a difference</p>
+      </div>
+      
+      <div class="apps-grid">
+        <!-- vClean App Card -->
+        <article class="app-card">
+          <div class="app-card-icon-wrapper">
+            <img src="/assets/images/vclean/icon.png" alt="vClean Icon" class="app-card-icon-large">
+          </div>
+          <div class="app-card-content">
+            <div class="app-card-header">
+              <div>
+                <h3 class="app-card-title" data-i18n="vclean_name">vClean</h3>
+                <span class="app-card-category" data-i18n="vclean_category">Developer Tools</span>
+              </div>
             </div>
-        </div>
-    </section>
-
-    <!-- App 展示区域 -->
-    <section id="apps" class="apps-section">
-        <div class="container">
-            <h2 class="section-title" data-i18n-app="title">我的应用</h2>
-            <div class="apps-grid">
-                <!-- vPaste 应用卡片 -->
-                <a href="/vpaste/" class="app-card" onclick="window.location.href='/vpaste/'; return false;">
-                    <div class="app-header">
-                        <img src="/vpaste/icon.png" alt="vPaste" class="app-icon">
-                        <h2 data-i18n-app="vpaste.name">vPaste</h2>
-                        <p data-i18n-app="vpaste.tagline">macOS 剪贴板管理工具</p>
-                    </div>
-                    <div class="app-content">
-                        <p class="app-description" data-i18n-app="vpaste.description">
-                            高效的 macOS 剪贴板管理工具，自动捕获剪贴板历史，快速访问常用内容，让复制粘贴更高效。
-                        </p>
-                        <ul class="app-features">
-                            <li data-i18n-feature="vpaste.feature1">自动历史记录</li>
-                            <li data-i18n-feature="vpaste.feature2">快速访问（⌘⇧V）</li>
-                            <li data-i18n-feature="vpaste.feature3">分组管理</li>
-                            <li data-i18n-feature="vpaste.feature4">智能搜索</li>
-                            <li data-i18n-feature="vpaste.feature5">本地存储</li>
-                        </ul>
-                        <span class="app-link" data-i18n-app="vpaste.link">查看详情</span>
-                    </div>
-                </a>
-
-                <!-- vClean 应用卡片 -->
-                <a href="/vclean/" class="app-card" onclick="window.location.href='/vclean/'; return false;">
-                    <div class="app-header">
-                        <img src="/vclean/icon.png" alt="vClean" class="app-icon">
-                        <h2 data-i18n-app="vclean.name">vClean</h2>
-                        <p data-i18n-app="vclean.tagline">Xcode 编译目录清理工具</p>
-                    </div>
-                    <div class="app-content">
-                        <p class="app-description" data-i18n-app="vclean.description">
-                            专业的 Xcode 编译目录清理工具，智能扫描和分析文件夹大小，帮助您安全释放宝贵的磁盘空间。
-                        </p>
-                        <ul class="app-features">
-                            <li data-i18n-feature="vclean.feature1">智能扫描</li>
-                            <li data-i18n-feature="vclean.feature2">安全清理</li>
-                            <li data-i18n-feature="vclean.feature3">可视化分析</li>
-                            <li data-i18n-feature="vclean.feature4">精准筛选</li>
-                            <li data-i18n-feature="vclean.feature5">完全隐私</li>
-                        </ul>
-                        <span class="app-link" data-i18n-app="vclean.link">查看详情</span>
-                    </div>
-                </a>
+            <p class="app-card-description" data-i18n="vclean_description">A powerful Xcode build folder cleaner for macOS. Quickly reclaim disk space by removing unnecessary build artifacts, derived data, and cache files.</p>
+            <div class="app-card-footer">
+              <a href="/vclean/" class="app-card-link">
+                <span data-i18n="app_learn_more">Learn More</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
             </div>
-        </div>
-    </section>
+          </div>
+        </article>
 
-    <!-- 未来应用预留区域 -->
-    <section class="future-apps">
-        <div class="container">
-            <div class="future-content">
-                <h3 data-i18n-future="title">更多应用即将推出</h3>
-                <p data-i18n-future="subtitle">我正在开发更多实用的 Apple 生态应用，敬请期待...</p>
+        <!-- vPaste App Card -->
+        <article class="app-card">
+          <div class="app-card-icon-wrapper">
+            <img src="/assets/images/vpaste/icon.png" alt="vPaste Icon" class="app-card-icon-large">
+          </div>
+          <div class="app-card-content">
+            <div class="app-card-header">
+              <div>
+                <h3 class="app-card-title" data-i18n="vpaste_name">vPaste</h3>
+                <span class="app-card-category" data-i18n="vpaste_category">Productivity</span>
+              </div>
             </div>
-            <div class="container">
-                <div class="apps-grid empty" style="margin-top: 40px;">
-                    <div class="empty-card">
-                        <p data-i18n-future="placeholder">🚀 敬请期待</p>
-                    </div>
-                </div>
+            <p class="app-card-description" data-i18n="vpaste_description">A modern clipboard manager for macOS. Save, search, and organize your clipboard history. Supports text, images, files, and code snippets.</p>
+            <div class="app-card-footer">
+              <a href="/vpaste/" class="app-card-link">
+                <span data-i18n="app_learn_more">Learn More</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
             </div>
-        </div>
-    </section>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <!-- 页脚 -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="#apps" data-i18n-footer="apps">我的应用</a>
-                    <a href="mailto:vlv666@qq.com" data-i18n-footer="contact">联系我</a>
-                </div>
-                <div class="copyright">
-                    <p data-i18n-footer="copyright">&copy; 2026 vlv. All rights reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p class="footer-text">&copy; 2024 vlv. <span data-i18n="footer_rights">All rights reserved.</span></p>
+    </div>
+  </footer>
 
-    <script>
-        // 未来主义交互效果（保留原有功能）
-        document.addEventListener('DOMContentLoaded', () => {
-            // 导航栏滚动效果
-            const navbar = document.querySelector('.navbar');
-            let lastScrollTop = 0;
-
-            window.addEventListener('scroll', function() {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-                if (scrollTop > 100) {
-                    navbar.style.backdropFilter = 'blur(30px) saturate(200%)';
-                    navbar.style.borderBottomColor = 'rgba(0, 243, 255, 0.3)';
-                } else {
-                    navbar.style.backdropFilter = 'blur(20px) saturate(180%)';
-                    navbar.style.borderBottomColor = 'rgba(255, 255, 255, 0.1)';
-                }
-
-                // 滚动方向检测
-                if (scrollTop > lastScrollTop) {
-                    navbar.style.transform = 'translateY(-100%)';
-                } else {
-                    navbar.style.transform = 'translateY(0)';
-                }
-                lastScrollTop = scrollTop;
-            });
-
-            // 应用卡片悬停效果增强
-            const cards = document.querySelectorAll('.app-card');
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.setProperty('--hover-glow', '0 0 40px rgba(0, 255, 65, 0.3)');
-                });
-
-                card.addEventListener('mouseleave', function() {
-                    this.style.setProperty('--hover-glow', 'none');
-                });
-            });
-
-            // 打字机效果标题
-            const heroTitle = document.querySelector('.hero h1');
-            const originalText = heroTitle.textContent;
-            heroTitle.textContent = '';
-
-            function typeWriter(text, i, callback) {
-                if (i < text.length) {
-                    heroTitle.textContent += text.charAt(i);
-                    setTimeout(() => typeWriter(text, i + 1, callback), 100);
-                } else if (callback) {
-                    callback();
-                }
-            }
-
-            // 开始打字机效果
-            setTimeout(() => {
-                typeWriter(originalText, 0, () => {
-                    // 打字完成后添加闪烁光标
-                    const cursor = document.createElement('span');
-                    cursor.className = 'cursor';
-                    cursor.textContent = '|';
-                    cursor.style.color = 'var(--neon-blue)';
-                    cursor.style.animation = 'blink 1s infinite';
-                    heroTitle.appendChild(cursor);
-                });
-            }, 1000);
-
-            // 网格动画
-            const grid = document.createElement('div');
-            grid.className = 'cyber-grid';
-            grid.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                pointer-events: none;
-                z-index: -1;
-                background-image:
-                    linear-gradient(rgba(0, 243, 255, 0.02) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(0, 243, 255, 0.02) 1px, transparent 1px);
-                background-size: 30px 30px;
-                opacity: 0.5;
-            `;
-            document.body.appendChild(grid);
-
-            // 平滑滚动
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        });
-
-        // 添加CSS动画
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes blink {
-                0%, 50% { opacity: 1; }
-                51%, 100% { opacity: 0; }
-            }
-
-            .cursor {
-                display: inline-block;
-                font-weight: bold;
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
+  <!-- Scripts -->
+  <script src="/assets/js/i18n.js"></script>
+  <script src="/assets/js/main.js"></script>
 </body>
 </html>
