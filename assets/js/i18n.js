@@ -196,14 +196,20 @@ class I18n {
       el.placeholder = this.t(key);
     });
 
+    // Toggle bilingual blocks (e.g. legal page body)
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.hidden = el.getAttribute('data-lang') !== this.currentLang;
+    });
+
     // Update HTML lang attribute
     document.documentElement.lang = this.currentLang;
 
-    // Update language toggle button
     const langBtn = document.querySelector('.lang-toggle');
     if (langBtn) {
-      langBtn.textContent = this.currentLang === 'en' ? 'EN' : '中';
+      langBtn.textContent = this.currentLang === 'zh' ? 'EN' : '中';
     }
+
+    document.dispatchEvent(new CustomEvent('livv-lang-updated'));
   }
 
   getCurrentLang() {

@@ -3,27 +3,35 @@
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initMobileMenu();
+  initLanguageToggle();
   initAnimations();
 
-  // Initialize App Store badges after DOM is ready
+  // Initialize App Store badges after DOM is ready (locale + light/dark)
   setTimeout(() => {
     const html = document.documentElement;
     const badges = document.querySelectorAll('.app-store-badge[data-theme-light][data-theme-dark]');
 
     function updateBadgeSrc() {
       const theme = html.getAttribute('data-theme');
+      const lang = typeof i18n !== 'undefined' && i18n.getCurrentLang ? i18n.getCurrentLang() : 'en';
       badges.forEach(badge => {
-        const lightSrc = badge.getAttribute('data-theme-light');
-        const darkSrc = badge.getAttribute('data-theme-dark');
-        const src = theme === 'dark' ? darkSrc : lightSrc;
-        badge.src = src;
+        const zhLight = badge.getAttribute('data-theme-light');
+        const zhDark = badge.getAttribute('data-theme-dark');
+        const enLight = badge.getAttribute('data-en-light');
+        const enDark = badge.getAttribute('data-en-dark');
+        let lightSrc = zhLight;
+        let darkSrc = zhDark;
+        if (lang === 'en' && enLight && enDark) {
+          lightSrc = enLight;
+          darkSrc = enDark;
+        }
+        badge.src = theme === 'dark' ? darkSrc : lightSrc;
       });
     }
 
-    // Initial update
     updateBadgeSrc();
+    document.addEventListener('livv-lang-updated', updateBadgeSrc);
 
-    // Update when theme changes
     const observer = new MutationObserver(updateBadgeSrc);
     observer.observe(html, { attributes: true, attributeFilter: ['data-theme'] });
   }, 100);
