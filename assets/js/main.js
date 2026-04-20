@@ -9,30 +9,30 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize App Store badges after DOM is ready (locale + light/dark)
   setTimeout(() => {
     const html = document.documentElement;
-    const badges = document.querySelectorAll('.app-store-badge[data-theme-light][data-theme-dark]');
+    const themeImages = document.querySelectorAll('img[data-theme-light][data-theme-dark]');
 
-    function updateBadgeSrc() {
+    function updateThemeImageSrc() {
       const theme = html.getAttribute('data-theme');
       const lang = typeof i18n !== 'undefined' && i18n.getCurrentLang ? i18n.getCurrentLang() : 'en';
-      badges.forEach(badge => {
-        const zhLight = badge.getAttribute('data-theme-light');
-        const zhDark = badge.getAttribute('data-theme-dark');
-        const enLight = badge.getAttribute('data-en-light');
-        const enDark = badge.getAttribute('data-en-dark');
+      themeImages.forEach(img => {
+        const zhLight = img.getAttribute('data-theme-light');
+        const zhDark = img.getAttribute('data-theme-dark');
+        const enLight = img.getAttribute('data-en-light');
+        const enDark = img.getAttribute('data-en-dark');
         let lightSrc = zhLight;
         let darkSrc = zhDark;
         if (lang === 'en' && enLight && enDark) {
           lightSrc = enLight;
           darkSrc = enDark;
         }
-        badge.src = theme === 'dark' ? darkSrc : lightSrc;
+        img.src = theme === 'dark' ? darkSrc : lightSrc;
       });
     }
 
-    updateBadgeSrc();
-    document.addEventListener('livv-lang-updated', updateBadgeSrc);
+    updateThemeImageSrc();
+    document.addEventListener('livv-lang-updated', updateThemeImageSrc);
 
-    const observer = new MutationObserver(updateBadgeSrc);
+    const observer = new MutationObserver(updateThemeImageSrc);
     observer.observe(html, { attributes: true, attributeFilter: ['data-theme'] });
   }, 100);
 });

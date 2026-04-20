@@ -32,6 +32,9 @@ const translations = {
     app_features: "Key Features",
     app_download_section: "Download",
     app_download_text: "Get started with",
+    app_download_qr_caption: "Scan with your iPhone or iPad to download on the App Store.",
+    vpaste_qr_alt: "QR code to download vPaste on the App Store",
+    vclean_qr_alt: "QR code to download vClean on the App Store",
     
     // vClean Features
     vclean_feature_1_title: "Smart Detection",
@@ -106,6 +109,9 @@ const translations = {
     app_features: "主要功能",
     app_download_section: "下载",
     app_download_text: "开始使用",
+    app_download_qr_caption: "使用 iPhone 或 iPad 扫描二维码，在 App Store 下载。",
+    vpaste_qr_alt: "在 App Store 下载 vPaste 的二维码",
+    vclean_qr_alt: "在 App Store 下载 vClean 的二维码",
     
     // vClean Features
     vclean_feature_1_title: "智能检测",
@@ -194,6 +200,11 @@ class I18n {
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
       const key = el.getAttribute('data-i18n-placeholder');
       el.placeholder = this.t(key);
+    });
+
+    document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+      const key = el.getAttribute('data-i18n-alt');
+      el.setAttribute('alt', this.t(key));
     });
 
     // Toggle bilingual blocks (e.g. legal page body)
