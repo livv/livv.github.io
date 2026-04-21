@@ -26,6 +26,10 @@ const translations = {
     vpaste_category: "Productivity",
     vpaste_description: "A modern clipboard manager for macOS. Save, search, and organize your clipboard history. Supports text, images, files, and code snippets. Quick access via menu bar and keyboard shortcuts.",
     
+    vjson_name: "vJSON",
+    vjson_category: "Developer Tools",
+    vjson_description: "A Safari extension for macOS that turns raw JSON into a foldable, syntax-highlighted tree—with toolbar controls, nested JSON expansion, and quick copy.",
+    
     // App Pages
     app_learn_more: "Learn More",
     app_download: "Download",
@@ -34,6 +38,7 @@ const translations = {
     app_download_text: "Get started with",
     app_download_qr_caption: "Scan with your iPhone or iPad to download on the App Store.",
     vpaste_qr_alt: "QR code to download vPaste on the App Store",
+    vjson_qr_alt: "QR code to download vJSON on the App Store",
     vclean_qr_alt: "QR code to download vClean on the App Store",
     
     // vClean Features
@@ -61,6 +66,18 @@ const translations = {
     
     vpaste_feature_4_title: "Sync & Backup",
     vpaste_feature_4_desc: "Sync your clipboard history across devices. Automatic backup ensures you never lose important content.",
+    
+    vjson_feature_1_title: "Syntax & structure",
+    vjson_feature_1_desc: "VS Code-style theme, indentation guides, and key/value counts so large payloads stay readable.",
+    
+    vjson_feature_2_title: "Fold & expand",
+    vjson_feature_2_desc: "Expand or collapse all, fold to a chosen depth, and toggle word wrap from the toolbar.",
+    
+    vjson_feature_3_title: "Nested JSON strings",
+    vjson_feature_3_desc: "Detect embedded JSON in string values and expand them inline without leaving the page.",
+    
+    vjson_feature_4_title: "URLs & copy",
+    vjson_feature_4_desc: "Clickable links for detected URLs and one-click copy for the full JSON body.",
     
     // Legal Pages
     privacy_title: "Privacy Policy",
@@ -103,6 +120,10 @@ const translations = {
     vpaste_category: "效率工具",
     vpaste_description: "现代剪贴板管理器。保存、搜索和管理剪贴板历史。支持文本、图片、文件和代码片段。通过菜单栏和快捷键快速访问。",
     
+    vjson_name: "vJSON",
+    vjson_category: "开发者工具",
+    vjson_description: "面向 macOS 的 Safari 扩展，将原始 JSON 页面渲染为可折叠、语法高亮的树状视图，支持工具栏操作、嵌套 JSON 展开与一键复制。",
+    
     // App Pages
     app_learn_more: "了解更多",
     app_download: "下载",
@@ -111,6 +132,7 @@ const translations = {
     app_download_text: "开始使用",
     app_download_qr_caption: "使用 iPhone 或 iPad 扫描二维码，在 App Store 下载。",
     vpaste_qr_alt: "在 App Store 下载 vPaste 的二维码",
+    vjson_qr_alt: "在 App Store 下载 vJSON 的二维码",
     vclean_qr_alt: "在 App Store 下载 vClean 的二维码",
     
     // vClean Features
@@ -138,6 +160,18 @@ const translations = {
     
     vpaste_feature_4_title: "同步与备份",
     vpaste_feature_4_desc: "跨设备同步剪贴板历史。自动备份确保您永远不会丢失重要内容。",
+    
+    vjson_feature_1_title: "语法与结构",
+    vjson_feature_1_desc: "类 VS Code 主题、缩进参考线与键值数量提示，让大型 JSON 依然易读。",
+    
+    vjson_feature_2_title: "折叠与展开",
+    vjson_feature_2_desc: "全部展开或折叠、按层级折叠，以及从工具栏切换自动换行。",
+    
+    vjson_feature_3_title: "嵌套 JSON 字符串",
+    vjson_feature_3_desc: "识别字符串中的嵌入 JSON，并在页面内联展开，无需跳转。",
+    
+    vjson_feature_4_title: "链接与复制",
+    vjson_feature_4_desc: "自动识别 URL 并支持点击打开，以及一键复制完整 JSON 正文。",
     
     // Legal Pages
     privacy_title: "隐私政策",
@@ -230,6 +264,18 @@ class I18n {
 
 // Create global instance
 const i18n = new I18n();
+
+// Re-apply after full parse (covers edge cases where the first pass runs too early)
+function livvI18nSync() {
+  if (typeof i18n !== 'undefined') {
+    i18n.updatePage();
+  }
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', livvI18nSync);
+} else {
+  livvI18nSync();
+}
 
 // Export for module usage
 if (typeof module !== 'undefined' && module.exports) {
