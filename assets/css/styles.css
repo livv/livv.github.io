@@ -139,13 +139,10 @@ button {
 .logo-icon {
   width: 2rem;
   height: 2rem;
-  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
   border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 700;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
 }
 
 .nav {
