@@ -1,0 +1,116 @@
+{
+  "project": "vJSON 高级功能测试",
+  "version": "2.0.0",
+  "description": "这是一个用于测试 vJSON 扩展高级功能的示例文件",
+  "features": {
+    "performance": {
+      "lazyLoading": true,
+      "maxItemsPerRender": 1000,
+      "autoCollapseThreshold": 50,
+      "description": "这是一个用于测试 vJSON 扩展高级功能的示例文件这是一个用于测试 vJSON 扩展高级功能的示例文件这是一个用于测试 vJSON 扩展高级功能的示例文件这是一个用于测试 vJSON 扩展高级功能的示例文件这是一个用于测试 vJSON 扩展高级功能的示例文件这是一个用于测试 vJSON 扩展高级功能的示例文件这是一个用于测试 vJSON 扩展高级功能的示例文件这是一个用于测试 vJSON 扩展高级功能的示例文件这是一个用于测试 vJSON 扩展高级功能的示例文件这是一个用于测试 vJSON 扩展高级功能的示例文件这是一个用于测试 vJSON 扩展高级功能的示例文件这是一个用于测试 vJSON 扩展高级功能的示例文件"
+    },
+    "ui": {
+      "theme": "VS Code Dark",
+      "syntaxHighlighting": true,
+      "indentationGuides": true,
+      "responsiveDesign": true,
+      "animations": ["fadeIn", "slideIn", "collapse"]
+    },
+    "collapsing": {
+      "levels": [1, 2, 3, 4, 5],
+      "shortcuts": {
+        "expandAll": "展开全部",
+        "collapseAll": "折叠全部",
+        "collapseToLevel": "折叠到指定层级"
+      },
+      "smartAutoCollapse": true
+    },
+    "nestedJSON": {
+      "enabled": true,
+      "autoDetect": true,
+      "example": "{\"nested\": \"This is a JSON string\", \"value\": 123}"
+    }
+  },
+  "largeArray": [
+    {"id": 1, "name": "项目 1", "active": true},
+    {"id": 2, "name": "项目 2", "active": false},
+    {"id": 3, "name": "项目 3", "active": true},
+    {"id": 4, "name": "项目 4", "active": false},
+    {"id": 5, "name": "项目 5", "active": true},
+    {"id": 6, "name": "项目 6", "active": false},
+    {"id": 7, "name": "项目 7", "active": true},
+    {"id": 8, "name": "项目 8", "active": false},
+    {"id": 9, "name": "项目 9", "active": true},
+    {"id": 10, "name": "项目 10", "active": false}
+  ],
+  "deeplyNested": {
+    "level1": {
+      "level2": {
+        "level3": {
+          "level4": {
+            "level5": {
+              "level6": {
+                "level7": {
+                  "message": "这是第7层嵌套",
+                  "value": 42
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "urls": {
+    "github": "https://github.com/yourusername/vjson",
+    "api": "https://api.example.com/v1/data",
+    "documentation": "https://docs.example.com/vjson",
+    "cdn": "https://cdn.example.com/assets/vjson.js"
+  },
+  "dataTypes": {
+    "strings": {
+      "simple": "简单字符串",
+      "withQuotes": "包含 \"引号\" 的字符串",
+      "multiline": "第一行\n第二行\n第三行",
+      "emoji": "🎉 支持 emoji 表情 🚀",
+      "chinese": "中文字符测试：你好世界",
+      "special": "特殊字符：< > & ' \""
+    },
+    "numbers": {
+      "integer": 42,
+      "negative": -100,
+      "float": 3.14159,
+      "exponential": 1.23e-10,
+      "large": 9007199254740991,
+      "zero": 0
+    },
+    "booleans": {
+      "true": true,
+      "false": false
+    },
+    "nullValues": {
+      "null": null,
+      "notNull": "这不是 null"
+    }
+  },
+  "nestedJSONStrings": {
+    "simpleObject": "{\"key\": \"value\", \"number\": 123}",
+    "simpleArray": "[1, 2, 3, 4, 5]",
+    "complexNested": "{\"user\": {\"name\": \"张三\", \"age\": 30, \"skills\": [\"JavaScript\", \"Python\", \"Swift\"]}, \"timestamp\": \"2025-10-30T12:00:00Z\"}"
+  },
+  "performance": {
+    "itemCount": 100,
+    "nestingDepth": 7,
+    "totalNodes": 250,
+    "renderTime": "< 100ms",
+    "memoryUsage": "优化后显著降低"
+  },
+  "metadata": {
+    "created": "2025-10-30T12:00:00Z",
+    "updated": "2025-10-30T15:30:00Z",
+    "author": "vJSON Team",
+    "license": "MIT",
+    "tags": ["json", "viewer", "safari", "extension", "performance"]
+  }
+}
+
