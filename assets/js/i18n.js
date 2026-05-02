@@ -9,7 +9,7 @@ const translations = {
     
     // Hero Section
     hero_title: "My Apps Collection",
-    hero_subtitle: "A showcase of elegant and powerful macOS applications designed to enhance your productivity and workflow.",
+    hero_subtitle: "A showcase of elegant and powerful Apple applications designed to enhance your productivity and workflow.",
     hero_cta_apps: "View Apps",
     hero_cta_contact: "Contact",
     
@@ -30,6 +30,10 @@ const translations = {
     vjson_category: "Developer Tools",
     vjson_description: "A Safari extension for macOS that turns raw JSON into a foldable, syntax-highlighted tree—with toolbar controls, nested JSON expansion, and quick copy.",
     
+    milklog_name: "MilkLog",
+    milklog_category: "Parenting",
+    milklog_description: "Track baby feeding on iPhone — formula, breast milk, and direct nursing — with quick entry, charts, home screen widgets, feeding reminders, optional iCloud sync, and Siri shortcuts.",
+    
     // App Pages
     app_learn_more: "Learn More",
     app_download: "Download",
@@ -40,6 +44,7 @@ const translations = {
     vpaste_qr_alt: "QR code to download vPaste on the App Store",
     vjson_qr_alt: "QR code to download vJSON on the App Store",
     vclean_qr_alt: "QR code to download vClean on the App Store",
+    milklog_qr_alt: "QR code to download MilkLog on the App Store",
     
     // vClean Features
     vclean_feature_1_title: "Smart Detection",
@@ -79,6 +84,18 @@ const translations = {
     vjson_feature_4_title: "URLs & copy",
     vjson_feature_4_desc: "Clickable links for detected URLs and one-click copy for the full JSON body.",
     
+    milklog_feature_1_title: "Quick logging",
+    milklog_feature_1_desc: "Log formula, pumped milk, or direct breastfeeding with amounts, duration, and sides — fast entry when you only have one hand free.",
+    
+    milklog_feature_2_title: "Charts & trends",
+    milklog_feature_2_desc: "See day, week, and month views to understand feeding patterns and daily totals at a glance.",
+    
+    milklog_feature_3_title: "Widgets & Siri",
+    milklog_feature_3_desc: "Glance at the last feed from the Home Screen and log with Siri Shortcuts using natural phrases.",
+    
+    milklog_feature_4_title: "Reminders & sync",
+    milklog_feature_4_desc: "Optional next-feed reminders, CSV export for your records, and optional iCloud sync across your iPhone (data tied to your Apple ID).",
+    
     // Legal Pages
     privacy_title: "Privacy Policy",
     terms_title: "Terms of Service",
@@ -103,7 +120,7 @@ const translations = {
     
     // Hero Section
     hero_title: "我的应用集合",
-    hero_subtitle: "精心设计的 macOS 应用，旨在提升您的工作效率和体验。",
+    hero_subtitle: "精心设计的 Apple 应用，旨在提升您的工作效率和体验。",
     hero_cta_apps: "浏览应用",
     hero_cta_contact: "联系我",
     
@@ -124,6 +141,10 @@ const translations = {
     vjson_category: "开发者工具",
     vjson_description: "面向 macOS 的 Safari 扩展，将原始 JSON 页面渲染为可折叠、语法高亮的树状视图，支持工具栏操作、嵌套 JSON 展开与一键复制。",
     
+    milklog_name: "奶记",
+    milklog_category: "育儿",
+    milklog_description: "在 iPhone 上记录宝宝喝奶与亲喂：配方奶、母乳瓶喂、亲喂时长与左右侧等；支持快捷录入、图表、主屏幕小组件、喂养提醒、可选 iCloud 同步与 Siri 捷径。",
+    
     // App Pages
     app_learn_more: "了解更多",
     app_download: "下载",
@@ -134,6 +155,7 @@ const translations = {
     vpaste_qr_alt: "在 App Store 下载 vPaste 的二维码",
     vjson_qr_alt: "在 App Store 下载 vJSON 的二维码",
     vclean_qr_alt: "在 App Store 下载 vClean 的二维码",
+    milklog_qr_alt: "在 App Store 下载 MilkLog（奶记）的二维码",
     
     // vClean Features
     vclean_feature_1_title: "智能检测",
@@ -172,6 +194,18 @@ const translations = {
     
     vjson_feature_4_title: "链接与复制",
     vjson_feature_4_desc: "自动识别 URL 并支持点击打开，以及一键复制完整 JSON 正文。",
+    
+    milklog_feature_1_title: "快捷记录",
+    milklog_feature_1_desc: "记录配方奶、吸出的母乳或亲喂，包含奶量、时长与左右侧——单手也能快速完成。",
+    
+    milklog_feature_2_title: "图表与趋势",
+    milklog_feature_2_desc: "按日、周、月查看喂养规律与每日总量，一目了然。",
+    
+    milklog_feature_3_title: "小组件与 Siri",
+    milklog_feature_3_desc: "在主屏幕查看上次喂养摘要，并用自然语句通过 Siri 捷径快速记录。",
+    
+    milklog_feature_4_title: "提醒与同步",
+    milklog_feature_4_desc: "可选的下次喂养提醒、CSV 导出留档，以及可选的 iCloud 跨设备同步（与您的 Apple ID 关联）。",
     
     // Legal Pages
     privacy_title: "隐私政策",

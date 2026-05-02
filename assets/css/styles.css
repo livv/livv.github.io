@@ -701,6 +701,34 @@ button {
   height: auto;
 }
 
+/* Portrait / phone screenshots — cap size so tall assets stay balanced in the hero */
+.app-hero-screenshot--portrait {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: min(18rem, 100%);
+  margin-inline: auto;
+}
+
+.app-hero-screenshot--portrait img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: min(62vh, 32rem);
+  object-fit: contain;
+  margin-inline: auto;
+}
+
+@media (max-width: 768px) {
+  .app-hero-screenshot--portrait {
+    max-width: min(16rem, 72vw);
+  }
+
+  .app-hero-screenshot--portrait img {
+    max-height: min(58vh, 28rem);
+  }
+}
+
 .app-features {
   padding: 4rem 0;
 }
