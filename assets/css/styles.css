@@ -698,6 +698,7 @@ button {
   gap: var(--screenshot-strip-gap);
   width: 100%;
   max-width: 100%;
+  box-sizing: border-box;
   overflow-x: auto;
   overflow-y: visible;
   overscroll-behavior-x: contain;
@@ -764,11 +765,13 @@ button {
 }
 
 @media (max-width: 768px) {
+  /* True edge-to-edge strip: break out of .container padding symmetrically */
   .app-hero-screenshots {
-    width: calc(100% + 3rem);
-    margin-inline: -1.5rem;
-    padding-inline: 1.5rem;
-    scroll-padding-inline: 1.5rem;
+    width: 100vw;
+    max-width: none;
+    margin-inline: calc(50% - 50vw);
+    padding-inline: env(safe-area-inset-left, 0px) env(safe-area-inset-right, 0px);
+    scroll-padding-inline: env(safe-area-inset-left, 0px) env(safe-area-inset-right, 0px);
   }
 
   .app-hero-screenshot--portrait {
@@ -785,6 +788,15 @@ button {
 
   .app-hero-screenshots .app-hero-screenshot--portrait img {
     max-height: min(48vh, 22rem);
+  }
+}
+
+@supports (width: 100dvw) {
+  @media (max-width: 768px) {
+    .app-hero-screenshots {
+      width: 100dvw;
+      margin-inline: calc(50% - 50dvw);
+    }
   }
 }
 
