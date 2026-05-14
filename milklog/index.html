@@ -73,8 +73,27 @@
           <span class="app-detail-category" data-i18n="milklog_category">Parenting</span>
           <p class="app-detail-description" data-i18n="milklog_description">Track baby feeding on iPhone — formula, breast milk, and direct nursing — with quick entry, charts, home screen widgets, feeding reminders, optional iCloud sync, and Siri shortcuts.</p>
         </div>
-        <div class="app-hero-screenshot app-hero-screenshot--portrait">
-          <img src="/assets/images/milklog/milklog_sample.png" alt="MilkLog Screenshot">
+        <div class="app-hero-screenshots app-hero-screenshots--fan" role="region" data-i18n-aria-label="milklog_screenshots_region" aria-label="MilkLog screenshots">
+          <div class="app-hero-screenshot app-hero-screenshot--portrait">
+            <button type="button" class="app-hero-screenshot__open" data-lightbox-open aria-haspopup="dialog" data-i18n-aria-label="milklog_lightbox_zoom" aria-label="View full size">
+              <img src="/assets/images/milklog/milklog_sample.png" alt="MilkLog app screenshot 1 of 4">
+            </button>
+          </div>
+          <div class="app-hero-screenshot app-hero-screenshot--portrait">
+            <button type="button" class="app-hero-screenshot__open" data-lightbox-open aria-haspopup="dialog" data-i18n-aria-label="milklog_lightbox_zoom" aria-label="View full size">
+              <img src="/assets/images/milklog/milklog_sample_0.png" alt="MilkLog app screenshot 2 of 4" loading="lazy">
+            </button>
+          </div>
+          <div class="app-hero-screenshot app-hero-screenshot--portrait">
+            <button type="button" class="app-hero-screenshot__open" data-lightbox-open aria-haspopup="dialog" data-i18n-aria-label="milklog_lightbox_zoom" aria-label="View full size">
+              <img src="/assets/images/milklog/milklog_sample_1.png" alt="MilkLog app screenshot 3 of 4" loading="lazy">
+            </button>
+          </div>
+          <div class="app-hero-screenshot app-hero-screenshot--portrait">
+            <button type="button" class="app-hero-screenshot__open" data-lightbox-open aria-haspopup="dialog" data-i18n-aria-label="milklog_lightbox_zoom" aria-label="View full size">
+              <img src="/assets/images/milklog/milklog_sample_2.png" alt="MilkLog app screenshot 4 of 4" loading="lazy">
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -160,6 +179,18 @@
     </div>
   </section>
 
+  <dialog class="image-lightbox" id="milklog-screenshot-lightbox" data-image-lightbox aria-modal="true" data-i18n-aria-label="milklog_lightbox_title" aria-label="Screenshot preview">
+    <div class="image-lightbox__shell">
+      <button type="button" class="image-lightbox__close" data-lightbox-close data-i18n-aria-label="milklog_lightbox_close" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <img class="image-lightbox__img" alt="" decoding="async">
+    </div>
+  </dialog>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="container footer-content">
@@ -172,7 +203,8 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="/assets/js/i18n.js?v=2"></script>
+  <script src="/assets/js/i18n.js?v=3"></script>
   <script src="/assets/js/main.js?v=2"></script>
+  <script src="/assets/js/lightbox.js?v=2"></script>
 </body>
 </html>

@@ -45,7 +45,11 @@ const translations = {
     vjson_qr_alt: "QR code to download vJSON on the App Store",
     vclean_qr_alt: "QR code to download vClean on the App Store",
     milklog_qr_alt: "QR code to download MilkLog on the App Store",
-    
+    milklog_screenshots_region: "MilkLog screenshots",
+    milklog_lightbox_title: "Screenshot preview",
+    milklog_lightbox_close: "Close",
+    milklog_lightbox_zoom: "View full size",
+
     // vClean Features
     vclean_feature_1_title: "Smart Detection",
     vclean_feature_1_desc: "Automatically identifies Xcode build directories, derived data, and cache folders across all projects.",
@@ -156,7 +160,11 @@ const translations = {
     vjson_qr_alt: "在 App Store 下载 vJSON 的二维码",
     vclean_qr_alt: "在 App Store 下载 vClean 的二维码",
     milklog_qr_alt: "在 App Store 下载 MilkLog（奶记）的二维码",
-    
+    milklog_screenshots_region: "MilkLog 应用截图",
+    milklog_lightbox_title: "应用截图预览",
+    milklog_lightbox_close: "关闭",
+    milklog_lightbox_zoom: "查看大图",
+
     // vClean Features
     vclean_feature_1_title: "智能检测",
     vclean_feature_1_desc: "自动识别所有项目中的 Xcode 构建目录、派生数据和缓存文件夹。",
@@ -273,6 +281,11 @@ class I18n {
     document.querySelectorAll('[data-i18n-alt]').forEach(el => {
       const key = el.getAttribute('data-i18n-alt');
       el.setAttribute('alt', this.t(key));
+    });
+
+    document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
+      const key = el.getAttribute('data-i18n-aria-label');
+      el.setAttribute('aria-label', this.t(key));
     });
 
     // Toggle bilingual blocks (e.g. legal page body)
