@@ -28,6 +28,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 │   ├── index.html
 │   ├── privacy.html
 │   └── terms.html
+├── aiusage/                # Cursor 用量分析应用页面
+│   ├── index.html
+│   ├── privacy.html
+│   └── terms.html
 └── vpaste/                 # 剪贴板管理工具应用页面
     ├── index.html
     ├── privacy.html

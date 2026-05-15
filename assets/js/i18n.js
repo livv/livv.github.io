@@ -21,6 +21,10 @@ const translations = {
     vclean_name: "vClean",
     vclean_category: "Developer Tools",
     vclean_description: "A powerful Xcode build folder cleaner for macOS. Quickly reclaim disk space by removing unnecessary build artifacts, derived data, and cache files. Supports custom cleaning rules and safe deletion with preview.",
+
+    aiusage_name: "AI Usage",
+    aiusage_category: "Developer Tools",
+    aiusage_description: "A Cursor usage tracker for macOS and iOS. Monitor spending, billing cycles, model rankings, and team usage with local cookie storage, widgets, and automatic refresh.",
     
     vpaste_name: "vPaste",
     vpaste_category: "Productivity",
@@ -44,6 +48,18 @@ const translations = {
     vpaste_qr_alt: "QR code to download vPaste on the App Store",
     vjson_qr_alt: "QR code to download vJSON on the App Store",
     vclean_qr_alt: "QR code to download vClean on the App Store",
+    aiusage_qr_alt: "QR code to download AI Usage on the App Store",
+    aiusage_qr_caption: "Scan the QR code to open the App Store page on your device.",
+    aiusage_coming_soon_title: "App Store Coming Soon",
+    aiusage_coming_soon_desc: "The App Store listing is not live yet. We will add the store download here once it launches.",
+    aiusage_install_methods_title: "Other Installation Methods",
+    aiusage_install_homebrew_title: "Homebrew Tap",
+    aiusage_install_homebrew_desc: "Install via the community tap maintained for AI Usage.",
+    aiusage_install_homebrew_cmd: "brew tap 13awan/aiusage && brew install --cask ai-usage",
+    aiusage_install_command_copy: "Copy Command",
+    aiusage_install_command_copied: "Copied",
+    aiusage_cta_contact: "Contact Developer",
+    aiusage_action_section_title: "Get Started",
     milklog_qr_alt: "QR code to download MilkLog on the App Store",
     milklog_screenshots_region: "MilkLog screenshots",
     milklog_lightbox_title: "Screenshot preview",
@@ -62,6 +78,18 @@ const translations = {
     
     vclean_feature_4_title: "Custom Rules",
     vclean_feature_4_desc: "Create custom cleaning rules based on file age, size, or type. Automate your cleanup workflow.",
+
+    aiusage_feature_1_title: "Live Usage Dashboard",
+    aiusage_feature_1_desc: "Track total, auto, and API usage with a clear billing cycle overview and quick access to current spending.",
+
+    aiusage_feature_2_title: "Billing Analysis",
+    aiusage_feature_2_desc: "Review daily trends, model ranking, and recent paid requests to understand where usage is going.",
+
+    aiusage_feature_3_title: "Menu Bar & Widgets",
+    aiusage_feature_3_desc: "Check usage at a glance from the menu bar, desktop window, or widget without opening the full app.",
+
+    aiusage_feature_4_title: "Local Privacy",
+    aiusage_feature_4_desc: "Store the Cursor cookie on device, mirror it for the widget, and keep all usage data local to your Apple devices.",
     
     // vPaste Features
     vpaste_feature_1_title: "History Management",
@@ -136,6 +164,10 @@ const translations = {
     vclean_name: "vClean",
     vclean_category: "开发者工具",
     vclean_description: "强大的 Xcode 构建目录清理工具。快速清理不必要的构建产物、派生数据和缓存文件。支持自定义清理规则和安全的预览删除功能。",
+
+    aiusage_name: "AI Usage",
+    aiusage_category: "开发者工具",
+    aiusage_description: "面向 macOS 和 iOS 的 Cursor 用量追踪工具。结合本地 Cookie 存储、小组件与自动刷新，监控消费、计费周期、模型排行和团队用量。",
     
     vpaste_name: "vPaste",
     vpaste_category: "效率工具",
@@ -159,6 +191,18 @@ const translations = {
     vpaste_qr_alt: "在 App Store 下载 vPaste 的二维码",
     vjson_qr_alt: "在 App Store 下载 vJSON 的二维码",
     vclean_qr_alt: "在 App Store 下载 vClean 的二维码",
+    aiusage_qr_alt: "在 App Store 下载 AI Usage 的二维码",
+    aiusage_qr_caption: "扫描二维码即可在设备上打开 App Store 页面。",
+    aiusage_coming_soon_title: "App Store 即将上线",
+    aiusage_coming_soon_desc: "App Store 上架尚未完成，正式上线后会在这里提供下载入口。",
+    aiusage_install_methods_title: "其他安装方式",
+    aiusage_install_homebrew_title: "Homebrew Tap",
+    aiusage_install_homebrew_desc: "通过为 AI Usage 维护的社区 Tap 安装。",
+    aiusage_install_homebrew_cmd: "brew tap 13awan/aiusage && brew install --cask ai-usage",
+    aiusage_install_command_copy: "复制命令",
+    aiusage_install_command_copied: "已复制",
+    aiusage_cta_contact: "联系开发者",
+    aiusage_action_section_title: "开始使用",
     milklog_qr_alt: "在 App Store 下载 MilkLog（奶记）的二维码",
     milklog_screenshots_region: "MilkLog 应用截图",
     milklog_lightbox_title: "应用截图预览",
@@ -177,6 +221,18 @@ const translations = {
     
     vclean_feature_4_title: "自定义规则",
     vclean_feature_4_desc: "根据文件年龄、大小或类型创建自定义清理规则，自动化清理工作流程。",
+
+    aiusage_feature_1_title: "实时用量面板",
+    aiusage_feature_1_desc: "清晰查看总量、自动与 API 用量，并快速了解当前消费与计费周期。",
+
+    aiusage_feature_2_title: "计费分析",
+    aiusage_feature_2_desc: "按日趋势、模型排行和最近付费请求梳理用量去向。",
+
+    aiusage_feature_3_title: "菜单栏与小组件",
+    aiusage_feature_3_desc: "无需打开完整应用，也能从菜单栏、桌面窗口或小组件快速查看用量。",
+
+    aiusage_feature_4_title: "本地隐私",
+    aiusage_feature_4_desc: "将 Cursor Cookie 保存在设备本地，并为小组件做本地镜像，所有用量数据都留在你的 Apple 设备上。",
     
     // vPaste Features
     vpaste_feature_1_title: "历史管理",

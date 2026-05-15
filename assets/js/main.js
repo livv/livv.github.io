@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initLanguageToggle();
   initAnimations();
+  initCopyCommands();
 
   // Initialize App Store badges after DOM is ready (locale + light/dark)
   setTimeout(() => {
@@ -177,6 +178,49 @@ function initAnimations() {
   });
 }
 
+// ===== Copy Commands =====
+function initCopyCommands() {
+  document.querySelectorAll('[data-copy-command]').forEach(button => {
+    button.addEventListener('click', async () => {
+      const targetId = button.getAttribute('data-copy-target');
+      const target = targetId ? document.getElementById(targetId) : null;
+      const command = target ? target.textContent.trim() : '';
+      if (!command) return;
+
+      const copyLabelKey = button.getAttribute('data-copy-label-key') || 'aiusage_install_command_copy';
+      const copiedLabelKey = button.getAttribute('data-copied-label-key') || 'aiusage_install_command_copied';
+      const defaultLabel = button.textContent.trim();
+      const copiedLabel = typeof i18n !== 'undefined' ? i18n.t(copiedLabelKey) : copiedLabelKey;
+
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(command);
+        } else {
+          const textarea = document.createElement('textarea');
+          textarea.value = command;
+          textarea.setAttribute('readonly', '');
+          textarea.style.position = 'absolute';
+          textarea.style.left = '-9999px';
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand('copy');
+          textarea.remove();
+        }
+        button.textContent = copiedLabel;
+        button.classList.add('is-copied');
+        window.setTimeout(() => {
+          button.textContent = typeof i18n !== 'undefined' ? i18n.t(copyLabelKey) : defaultLabel;
+          button.classList.remove('is-copied');
+        }, 1600);
+      } catch (error) {
+        button.textContent = defaultLabel;
+        button.classList.remove('is-copied');
+        console.warn('Failed to copy command:', error);
+      }
+    });
+  });
+}
+
 // ===== SEO & Meta =====
 function updateMetaTags(title, description, keywords = '') {
   // Update title
@@ -209,4 +253,3 @@ function updateMetaTags(title, description, keywords = '') {
     meta.setAttribute('content', content);
   });
 }
-
