@@ -37,6 +37,10 @@ const translations = {
     milklog_name: "MilkLog",
     milklog_category: "Parenting",
     milklog_description: "Track baby feeding on iPhone — formula, breast milk, and direct nursing — with quick entry, charts, home screen widgets, feeding reminders, optional iCloud sync, and Siri shortcuts.",
+
+    supertext_name: "SuperText",
+    supertext_category: "Utilities",
+    supertext_description: "A playful text-effects app for iPhone, iPad, Mac, and Apple Vision Pro. Create dot-matrix text, grid paper layouts, simplified/traditional conversions, and inverted text for easy sharing.",
     
     // App Pages
     app_learn_more: "Learn More",
@@ -65,6 +69,11 @@ const translations = {
     milklog_lightbox_title: "Screenshot preview",
     milklog_lightbox_close: "Close",
     milklog_lightbox_zoom: "View full size",
+    supertext_qr_alt: "QR code to download SuperText on the App Store",
+    supertext_screenshots_region: "SuperText screenshots",
+    supertext_lightbox_title: "Screenshot preview",
+    supertext_lightbox_close: "Close",
+    supertext_lightbox_zoom: "View full size",
 
     // vClean Features
     vclean_feature_1_title: "Smart Detection",
@@ -127,6 +136,18 @@ const translations = {
     
     milklog_feature_4_title: "Reminders & sync",
     milklog_feature_4_desc: "Optional next-feed reminders, CSV export for your records, and optional iCloud sync across your iPhone (data tied to your Apple ID).",
+
+    supertext_feature_1_title: "Dot-matrix text",
+    supertext_feature_1_desc: "Turn text into a bold dot-matrix style for posters, images, and shareable visuals.",
+
+    supertext_feature_2_title: "Grid layouts",
+    supertext_feature_2_desc: "Create neat grid paper layouts for writing practice, note-taking, or stylized text presentation.",
+
+    supertext_feature_3_title: "Simplified / traditional",
+    supertext_feature_3_desc: "Convert between simplified and traditional Chinese with a clean editing workflow.",
+
+    supertext_feature_4_title: "Inverted text & couplets",
+    supertext_feature_4_desc: "Generate reversed text and couplet-style outputs for creative posts and festive content.",
     
     // Legal Pages
     privacy_title: "Privacy Policy",
@@ -180,6 +201,10 @@ const translations = {
     milklog_name: "奶记",
     milklog_category: "育儿",
     milklog_description: "在 iPhone 上记录宝宝喝奶与亲喂：配方奶、母乳瓶喂、亲喂时长与左右侧等；支持快捷录入、图表、主屏幕小组件、喂养提醒、可选 iCloud 同步与 Siri 捷径。",
+
+    supertext_name: "超级文本",
+    supertext_category: "工具",
+    supertext_description: "一款有趣的文字效果工具，支持 iPhone、iPad、Mac 和 Apple Vision Pro。可以生成点阵字、田字格样式、简繁转换和颠倒文字，方便快速分享。",
     
     // App Pages
     app_learn_more: "了解更多",
@@ -208,6 +233,11 @@ const translations = {
     milklog_lightbox_title: "应用截图预览",
     milklog_lightbox_close: "关闭",
     milklog_lightbox_zoom: "查看大图",
+    supertext_qr_alt: "在 App Store 下载超级文本 的二维码",
+    supertext_screenshots_region: "超级文本 截图",
+    supertext_lightbox_title: "应用截图预览",
+    supertext_lightbox_close: "关闭",
+    supertext_lightbox_zoom: "查看大图",
 
     // vClean Features
     vclean_feature_1_title: "智能检测",
@@ -270,6 +300,18 @@ const translations = {
     
     milklog_feature_4_title: "提醒与同步",
     milklog_feature_4_desc: "可选的下次喂养提醒、CSV 导出留档，以及可选的 iCloud 跨设备同步（与您的 Apple ID 关联）。",
+
+    supertext_feature_1_title: "点阵文字",
+    supertext_feature_1_desc: "将文字转成醒目的点阵风格，适合海报、图片和分享内容。",
+
+    supertext_feature_2_title: "田字格排版",
+    supertext_feature_2_desc: "生成整齐的田字格样式，适合练字、记笔记或做风格化排版。",
+
+    supertext_feature_3_title: "简繁转换",
+    supertext_feature_3_desc: "在简体和繁体中文之间快速转换，保持清晰顺畅的编辑体验。",
+
+    supertext_feature_4_title: "颠倒文字与对联",
+    supertext_feature_4_desc: "生成颠倒文字和对联风格输出，适合创意发布和节庆内容。",
     
     // Legal Pages
     privacy_title: "隐私政策",
