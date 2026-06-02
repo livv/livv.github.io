@@ -41,6 +41,10 @@ const translations = {
     supertext_name: "SuperText",
     supertext_category: "Utilities",
     supertext_description: "A playful text-effects app for iPhone, iPad, Mac, and Apple Vision Pro. Create dot-matrix text, grid paper layouts, simplified/traditional conversions, and inverted text for easy sharing.",
+
+    myhomework_name: "My Homework",
+    myhomework_category: "Education",
+    myhomework_description: "An iPhone homework manager for parents and students. Paste WeChat group messages to add tasks, organize by subject, sync via iCloud family sharing, and track progress with charts and widgets.",
     
     // App Pages
     app_learn_more: "Learn More",
@@ -74,6 +78,11 @@ const translations = {
     supertext_lightbox_title: "Screenshot preview",
     supertext_lightbox_close: "Close",
     supertext_lightbox_zoom: "View full size",
+    myhomework_qr_alt: "QR code to download My Homework on the App Store",
+    myhomework_screenshots_region: "My Homework screenshots",
+    myhomework_lightbox_title: "Screenshot preview",
+    myhomework_lightbox_close: "Close",
+    myhomework_lightbox_zoom: "View full size",
 
     // vClean Features
     vclean_feature_1_title: "Smart Detection",
@@ -148,6 +157,18 @@ const translations = {
 
     supertext_feature_4_title: "Inverted text & couplets",
     supertext_feature_4_desc: "Generate reversed text and couplet-style outputs for creative posts and festive content.",
+
+    myhomework_feature_1_title: "Paste to add",
+    myhomework_feature_1_desc: "Copy homework from group chats, parse subjects and tasks automatically, then confirm—or add tasks manually.",
+
+    myhomework_feature_2_title: "Parent & student sharing",
+    myhomework_feature_2_desc: "Parents record and share; students accept the iCloud invite and mark tasks done, with clear roles for each side.",
+
+    myhomework_feature_3_title: "Stats & trends",
+    myhomework_feature_3_desc: "Charts for the last 14 or 30 days show workload, completion rate, and subject breakdown.",
+
+    myhomework_feature_4_title: "History, media & widget",
+    myhomework_feature_4_desc: "Browse past days and photo attachments, and check today’s summary from the Home Screen widget.",
     
     // Legal Pages
     privacy_title: "Privacy Policy",
@@ -205,6 +226,10 @@ const translations = {
     supertext_name: "超级文本",
     supertext_category: "工具",
     supertext_description: "一款有趣的文字效果工具，支持 iPhone、iPad、Mac 和 Apple Vision Pro。可以生成点阵字、田字格样式、简繁转换和颠倒文字，方便快速分享。",
+
+    myhomework_name: "我的作业",
+    myhomework_category: "教育",
+    myhomework_description: "面向家长和学生的 iPhone 作业管理工具。粘贴微信群消息快速录入，按科目整理每日任务，通过 iCloud 家庭共享同步，配合统计图表与主屏幕小组件。",
     
     // App Pages
     app_learn_more: "了解更多",
@@ -238,6 +263,11 @@ const translations = {
     supertext_lightbox_title: "应用截图预览",
     supertext_lightbox_close: "关闭",
     supertext_lightbox_zoom: "查看大图",
+    myhomework_qr_alt: "在 App Store 下载我的作业 的二维码",
+    myhomework_screenshots_region: "我的作业 截图",
+    myhomework_lightbox_title: "应用截图预览",
+    myhomework_lightbox_close: "关闭",
+    myhomework_lightbox_zoom: "查看大图",
 
     // vClean Features
     vclean_feature_1_title: "智能检测",
@@ -312,6 +342,18 @@ const translations = {
 
     supertext_feature_4_title: "颠倒文字与对联",
     supertext_feature_4_desc: "生成颠倒文字和对联风格输出，适合创意发布和节庆内容。",
+
+    myhomework_feature_1_title: "粘贴快速录入",
+    myhomework_feature_1_desc: "从微信群复制作业原文，智能解析科目与任务，确认后即可保存；也支持手动逐条添加。",
+
+    myhomework_feature_2_title: "家长与学生共享",
+    myhomework_feature_2_desc: "家长录入并分享，学生接受 iCloud 邀请后自动同步；学生可勾选完成，双方角色清晰分工。",
+
+    myhomework_feature_3_title: "统计与趋势",
+    myhomework_feature_3_desc: "近 14 天或 30 天作业量、完成率与科目分布图表，帮助了解学习节奏与负担。",
+
+    myhomework_feature_4_title: "历史、附件与小组件",
+    myhomework_feature_4_desc: "按日期浏览历史作业与图片附件，主屏幕小组件随时查看今日任务摘要。",
     
     // Legal Pages
     privacy_title: "隐私政策",
